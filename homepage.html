@@ -845,4 +845,13 @@
 
   // Hero thumbnail click — swap main image
   document.querySelectorAll('.hero-thumb').forEach(thumb => {
-    thumb.addEventListener('click', () 
+    thumb.addEventListener('click', () => {
+      const main = document.querySelector('.hero-img-main');
+      const tempSrc = main.src;
+      main.src = thumb.src;
+      thumb.src = tempSrc;
+    });
+  });
+</script>
+</body>
+</html>
