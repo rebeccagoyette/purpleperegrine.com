@@ -256,7 +256,7 @@
       const eased = pct * pct;
       const scissorBottom = -160 + (screenH + 200) * eased;
       scissorsWrap.style.bottom = scissorBottom + 'px';
-      cutLine.style.height = Math.max(0, scissorBottom + 130) + 'px';
+      cutLine.style.height = Math.max(0, scissorBottom + 52) + 'px';
       if (pct < 1) { requestAnimationFrame(step); }
       else {
         scissorsWrap.style.transition = 'opacity 0.2s';
