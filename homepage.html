@@ -75,8 +75,9 @@
       background: var(--cream);
       border-bottom: 2px solid var(--paper-dark);
       padding: 0 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 96px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      height: 140px;
+      padding-bottom: 12px;
     }
     .nav-brand {
       font-family: 'Cormorant Garamond', serif;
@@ -535,12 +536,13 @@
       body, a, button, .flip-card { cursor: auto !important; }
       a, button { cursor: pointer !important; }
       /* Shrink nav logo on mobile */
-      .nav-brand img { width: 44px !important; height: 44px !important; }
+      .nav-brand img { width: 56px !important; height: 56px !important; }
 
       /* Nav — hide links, show brand only */
       nav {
-        padding: 0 20px;
-        height: 68px;
+        padding: 0 20px 8px;
+        height: 80px;
+        align-items: flex-end;
       }
       .nav-links {
         display: none;
@@ -662,7 +664,7 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-brand">
-      <img src="images/Logo2.svg" alt="Purple Peregrine logo" style="height:90px;width:90px;margin-right:14px;flex-shrink:0;">Purple Peregrine
+      <img src="images/Logo2.svg" alt="Purple Peregrine logo" style="height:120px;width:120px;margin-right:16px;flex-shrink:0;">Purple Peregrine
     </a>
   <div class="nav-links">
     <a href="#">Gallery</a>
@@ -996,10 +998,4 @@
     thumb.addEventListener('click', () => {
       const main = document.querySelector('.hero-img-main');
       const tempSrc = main.src;
-      main.src = thumb.src;
-      thumb.src = tempSrc;
-    });
-  });
-</script>
-</body>
-</html>
+      main.src = thumb.src
