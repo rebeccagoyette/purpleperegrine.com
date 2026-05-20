@@ -199,7 +199,7 @@
     }, 150);
   });
 
-  document.addEventListener('click', e => { if (animDone) spawnConfetti(e.clientX, e.clientY); });
+  document.addEventListener('click', e => { if (animDone && !e.target.closest('a')) spawnConfetti(e.clientX, e.clientY); });
 
   function spawnConfetti(x, y) {
     const colors = ['#62385e','#4e2c4f','#ebdb43','#9b55bb','#EDE0D4','#9b6a96','#b06fd4'];
@@ -269,14 +269,8 @@
 
   function enterSite() {
     spawnConfetti(window.innerWidth/2, window.innerHeight/2);
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.6s';
-        document.body.style.opacity = '0';
-    }, 300);
-    setTimeout(() => {
-        window.location.href = 'homepage.html';
-    }, 900);
-}
+    setTimeout(() => { document.body.style.transition='opacity 0.6s'; document.body.style.opacity='0'; }, 300);
+  }
 
   window.addEventListener('load', runAnimation);
 </script>
