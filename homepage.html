@@ -525,6 +525,12 @@
     /* ── MOBILE RESPONSIVE ── */
     @media (max-width: 768px) {
 
+
+      /* Hide scissors cursor on mobile — use normal cursor instead */
+      #site-cursor { display: none !important; }
+      body, a, button, .flip-card { cursor: auto !important; }
+      a, button { cursor: pointer !important; }
+
       /* Nav — hide links, show brand only */
       nav {
         padding: 0 20px;
