@@ -605,7 +605,7 @@
       <div class="flip-back">
         <img src="images/bee-bookmark-layers.JPEG" alt="Bumble Bee Bookmark layers"/>
         <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4319542413" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/4319542413','_blank');return false;">View on Etsy →</a>
+          <a href="https://purpleperegrine.etsy.com/listing/4319542413" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -619,7 +619,7 @@
       <div class="flip-back">
         <img src="images/butterfly-corner-layers.JPEG" alt="Butterfly Door Corner layers"/>
         <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4462083736/butterfly-door-corner-set-svgs-layered" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/4462083736/butterfly-door-corner-set-svgs-layered','_blank');return false;">View on Etsy →</a>
+          <a href="https://purpleperegrine.etsy.com/listing/4462083736/butterfly-door-corner-set-svgs-layered" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -633,7 +633,7 @@
       <div class="flip-back">
         <img src="images/communion-card-layers.JPEG" alt="First Communion Card layers"/>
         <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1872456659/first-holy-communion-card-a6-and" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/1872456659/first-holy-communion-card-a6-and','_blank');return false;">View on Etsy →</a>
+          <a href="https://purpleperegrine.etsy.com/listing/1872456659/first-holy-communion-card-a6-and" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -647,7 +647,7 @@
       <div class="flip-back">
         <img src="images/barn-set-layers.JPEG" alt="3D Barn Set layers"/>
         <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4378233247/3d-barn-set-svg-cricut-digital-cut-file" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/4378233247/3d-barn-set-svg-cricut-digital-cut-file','_blank');return false;">View on Etsy →</a>
+          <a href="https://purpleperegrine.etsy.com/listing/4378233247/3d-barn-set-svg-cricut-digital-cut-file" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -661,7 +661,7 @@
       <div class="flip-back">
         <img src="images/seashell-garland-layers.JPEG" alt="Seashell Garland layers"/>
         <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1772780483/shell-banner-svg-diy-two-layered-digital" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/1772780483/shell-banner-svg-diy-two-layered-digital','_blank');return false;">View on Etsy →</a>
+          <a href="https://purpleperegrine.etsy.com/listing/1772780483/shell-banner-svg-diy-two-layered-digital" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -675,7 +675,7 @@
       <div class="flip-back">
         <img src="images/dadsailboat-card-layers.JPEG" alt="Dad Sailboat Card layers"/>
         <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4312170737/fathers-day-sailboats-dad-a6-card-and" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/4312170737/fathers-day-sailboats-dad-a6-card-and','_blank');return false;">View on Etsy →</a>
+          <a href="https://purpleperegrine.etsy.com/listing/4312170737/fathers-day-sailboats-dad-a6-card-and" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -743,7 +743,7 @@
       <span class="shop-pill">Free for Cricut Access</span>
       <span class="shop-pill">Contributing Artist since 2023</span>
     </div>
-    <a href="https://design-beta.cricut.com/landing/profile/589fdfff719e813b7e8191cc" class="btn-ghost" target="_blank" rel="noopener" onclick="window.open('https://design-beta.cricut.com/landing/profile/589fdfff719e813b7e8191cc','_blank');return false;">Browse Cricut portfolio →</a>
+    <a href="https://design-beta.cricut.com/landing/profile/589fdfff719e813b7e8191cc" class="btn-ghost" target="_blank" rel="noopener">Browse Cricut portfolio →</a>
   </div>
 </section>
 
@@ -789,6 +789,10 @@
   document.addEventListener('mousemove', function(e) {
     updateCursor(e.clientX, e.clientY);
     cursorEl.style.opacity = '1';
+    // Occasionally drop a paper snippet trail
+    if (mouseMoving && Math.random() < 0.4) {
+      spawnSnippet(e.clientX, e.clientY);
+    }
     if (!mouseMoving) {
       mouseMoving = true;
       snipInterval = setInterval(() => {
@@ -812,7 +816,23 @@
 
   document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; lastX = null; lastY = null; });
   document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
-  document.addEventListener('click', e => { if (!e.target.closest('a')) spawnConfetti(e.clientX, e.clientY); });
+  document.addEventListener('click', e => { if (!e.target.closest('a') && !e.target.closest('button')) spawnConfetti(e.clientX, e.clientY); });
+
+  // Paper snippet trail following scissors
+  let trailTimer = null;
+  const snippetShapes = ['▪','▫','◆','◇','✂','▸','▹'];
+  function spawnSnippet(x, y) {
+    const el = document.createElement('div');
+    el.style.cssText = `position:fixed;left:${x}px;top:${y}px;pointer-events:none;z-index:9998;font-size:${10+Math.random()*12}px;color:${['#62385e','#ebdb43','#9b6a96','#b06fd4','#EDE0D4'][Math.floor(Math.random()*5)]};`;
+    el.textContent = snippetShapes[Math.floor(Math.random()*snippetShapes.length)];
+    document.body.appendChild(el);
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 10 + Math.random() * 30;
+    el.animate([
+      {transform:'translate(0,0) rotate(0deg)', opacity:0.9},
+      {transform:`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist+20}px) rotate(${Math.random()*180}deg)`, opacity:0}
+    ], {duration: 900+Math.random()*600, easing:'ease-out'}).onfinish = () => el.remove();
+  }
 
   function spawnConfetti(x, y) {
     const colors = ['#62385e','#4e2c4f','#ebdb43','#9b55bb','#EDE0D4','#9b6a96','#b06fd4'];
