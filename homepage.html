@@ -14,7 +14,6 @@
       --purple-light: #8a5485;
       --purple-pale: #f2eaf1;
       --gold: #ebdb43;
-      --gold-dark: #c9b800;
       --cream: #FDF8F4;
       --paper: #EDE0D4;
       --paper-dark: #d4c4b4;
@@ -23,22 +22,21 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    body, a, button, input, select, textarea, .flip-card {
+      cursor: none !important;
+    }
     body {
       background: var(--cream);
       font-family: 'Jost', sans-serif;
       color: var(--ink);
-      cursor: none;
-    }
-    a, button, .flip-card, input, select, textarea {
-      cursor: none !important;
     }
 
-    /* CUSTOM CURSOR */
+    /* CURSOR */
     #site-cursor {
       position: fixed;
       pointer-events: none;
       z-index: 9999;
-      transform: translate(-12px, -8px);
+      transform: translate(-12px,-8px);
       transition: opacity 0.2s ease;
     }
     .confetti-piece {
@@ -63,7 +61,7 @@
       animation: ticker 32s linear infinite;
     }
     .ticker-inner span { margin: 0 36px; }
-    .ticker-dot { color: var(--gold-dark); }
+    .ticker-dot { color: #c9b800; }
     @keyframes ticker {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -75,20 +73,30 @@
       background: var(--cream);
       border-bottom: 2px solid var(--paper-dark);
       padding: 0 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100px;
     }
     .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .nav-logo {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+    }
+    .nav-brand-text {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.8rem;
       color: var(--purple);
       letter-spacing: 0.08em;
-      text-decoration: none;
       font-weight: 600;
-      display: flex;
-      align-items: center;
     }
-    .nav-links { display: flex; gap: 32px; }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-links a {
       font-size: 0.8rem;
       letter-spacing: 0.1em;
@@ -109,11 +117,10 @@
     .nav-links a:hover { color: var(--purple); }
     .nav-links a:hover::after { width: 100%; }
     .nav-shop {
-      background: var(--purple);
+      background: var(--purple) !important;
       color: #fff !important;
       padding: 8px 20px;
       border-radius: 2px;
-      letter-spacing: 0.1em;
     }
     .nav-shop::after { display: none !important; }
     .nav-shop:hover { background: var(--purple-light) !important; }
@@ -122,7 +129,7 @@
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 92vh;
+      min-height: 88vh;
       overflow: hidden;
     }
     .hero-left {
@@ -130,14 +137,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      position: relative;
-    }
-    .hero-left::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at 20% 50%, rgba(235,219,67,0.08) 0%, transparent 70%);
-      pointer-events: none;
     }
     .hero-eyebrow {
       font-size: 0.75rem;
@@ -160,14 +159,10 @@
       font-size: clamp(52px, 7vw, 96px);
       line-height: 0.95;
       color: var(--purple);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       font-weight: 600;
-      letter-spacing: -0.01em;
     }
-    .hero-title em {
-      font-style: italic;
-      color: var(--purple-light);
-    }
+    .hero-title em { font-style: italic; color: var(--purple-light); }
     .hero-body {
       font-size: 1rem;
       line-height: 1.8;
@@ -175,7 +170,7 @@
       max-width: 420px;
       margin-bottom: 40px;
     }
-    .hero-buttons { display: flex; gap: 16px; align-items: center; }
+    .hero-buttons { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
     .btn-primary {
       background: var(--purple);
       color: #fff;
@@ -187,6 +182,7 @@
       border-radius: 2px;
       transition: background 0.2s, transform 0.2s;
       font-family: 'Jost', sans-serif;
+      display: inline-block;
     }
     .btn-primary:hover { background: var(--purple-light); transform: translateY(-2px); }
     .btn-ghost {
@@ -200,7 +196,6 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .btn-ghost:hover { color: var(--purple); border-color: var(--purple); }
-
     .hero-stats {
       display: flex;
       gap: 40px;
@@ -222,8 +217,6 @@
       color: var(--muted);
       margin-top: 4px;
     }
-
-    /* Hero right — stacked photos */
     .hero-right {
       position: relative;
       overflow: hidden;
@@ -237,22 +230,6 @@
       transition: transform 8s ease;
     }
     .hero-right:hover .hero-img-main { transform: scale(1.04); }
-    .hero-img-thumb-wrap {
-      position: absolute;
-      bottom: 32px; left: -32px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .hero-thumb {
-      width: 96px; height: 96px;
-      object-fit: cover;
-      border: 3px solid var(--cream);
-      box-shadow: 4px 4px 16px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .hero-thumb:hover { transform: scale(1.08) translateX(6px); }
 
     /* SECTION HEADER */
     .section-header {
@@ -275,7 +252,7 @@
       line-height: 1.1;
     }
 
-    /* GALLERY — flip cards */
+    /* GALLERY */
     .gallery {
       padding: 0 48px 80px;
       display: grid;
@@ -285,7 +262,6 @@
     .flip-card {
       aspect-ratio: 1/1;
       perspective: 1000px;
-      cursor: pointer;
     }
     .flip-card-inner {
       position: relative;
@@ -305,9 +281,7 @@
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
     }
-    .flip-card:hover .flip-front img { transform: scale(1.04); }
     .flip-front-label {
       position: absolute;
       bottom: 0; left: 0; right: 0;
@@ -318,58 +292,33 @@
       letter-spacing: 0.08em;
     }
     .flip-back {
-      background: var(--purple);
       transform: rotateY(180deg);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 32px;
-      text-align: center;
-      gap: 16px;
+      position: relative;
     }
-    .flip-back-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      color: var(--gold);
-      font-weight: 600;
+    .flip-back img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .flip-back-desc {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.6;
+    .flip-back-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 16px;
+      background: linear-gradient(transparent, rgba(42,26,40,0.88));
     }
     .flip-back-link {
       display: inline-block;
-      margin-top: 8px;
-      padding: 10px 24px;
+      padding: 8px 20px;
       border: 1px solid var(--gold);
       color: var(--gold);
       font-size: 0.75rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       text-decoration: none;
-      transition: background 0.2s;
       border-radius: 1px;
+      transition: background 0.2s;
     }
     .flip-back-link:hover { background: var(--gold); color: var(--purple); }
-
-    /* placeholder cards */
-    .flip-placeholder {
-      aspect-ratio: 1/1;
-      background: var(--paper);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px dashed var(--paper-dark);
-    }
-    .flip-placeholder span {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--paper-dark);
-    }
 
     /* TUTORIALS */
     .tutorials {
@@ -386,9 +335,9 @@
       background: var(--cream);
       padding: 32px;
       border-radius: 2px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .tut-card:hover {
       transform: translateY(-4px);
@@ -436,19 +385,11 @@
     .shop-card {
       padding: 48px;
       border-radius: 2px;
-      position: relative;
-      overflow: hidden;
       transition: transform 0.3s ease;
     }
     .shop-card:hover { transform: translateY(-4px); }
-    .shop-card-main {
-      background: var(--purple);
-      color: #fff;
-    }
-    .shop-card-secondary {
-      background: var(--paper);
-      border: 2px solid var(--paper-dark);
-    }
+    .shop-card-main { background: var(--purple); color: #fff; }
+    .shop-card-secondary { background: var(--paper); border: 2px solid var(--paper-dark); }
     .shop-card-tag {
       font-size: 0.72rem;
       letter-spacing: 0.15em;
@@ -479,14 +420,8 @@
       font-size: 0.72rem;
       letter-spacing: 0.08em;
     }
-    .shop-card-main .shop-pill {
-      background: rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.9);
-    }
-    .shop-card-secondary .shop-pill {
-      background: var(--paper-dark);
-      color: var(--purple);
-    }
+    .shop-card-main .shop-pill { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+    .shop-card-secondary .shop-pill { background: var(--paper-dark); color: var(--purple); }
     .shop-card-main .btn-primary { background: var(--gold); color: var(--purple); }
     .shop-card-main .btn-primary:hover { background: #fff; }
 
@@ -515,7 +450,7 @@
     }
     .footer-links a:hover { color: var(--gold); }
 
-    /* SCROLL FADE IN */
+    /* FADE UP */
     .fade-up {
       opacity: 0;
       transform: translateY(30px);
@@ -526,28 +461,20 @@
       transform: translateY(0);
     }
 
-    /* ── MOBILE RESPONSIVE ── */
+    /* MOBILE */
     @media (max-width: 768px) {
-
-
-      /* Hide scissors cursor on mobile — use normal cursor instead */
       #site-cursor { display: none !important; }
       body, a, button, .flip-card { cursor: auto !important; }
       a, button { cursor: pointer !important; }
-      /* Shrink nav logo on mobile */
-      .nav-brand img { width: 56px !important; height: 56px !important; }
 
-      /* Nav — hide links, show brand only */
       nav {
         padding: 0 20px;
-        height: 80px;
-        align-items: center;
+        height: 72px;
       }
-      .nav-links {
-        display: none;
-      }
+      .nav-logo { width: 52px; height: 52px; }
+      .nav-brand-text { font-size: 1.2rem; }
+      .nav-links { display: none; }
 
-      /* Hero — stack vertically, text first */
       .hero {
         grid-template-columns: 1fr;
         min-height: auto;
@@ -560,81 +487,32 @@
         min-height: 60vw;
         order: 2;
       }
-      .hero-title {
-        font-size: clamp(36px, 10vw, 56px);
-      }
-      .hero-stats {
-        gap: 24px;
-        margin-top: 32px;
-        padding-top: 28px;
-      }
-      .hero-stat-num {
-        font-size: 1.8rem;
-      }
+      .hero-title { font-size: clamp(36px, 10vw, 56px); }
+      .hero-stats { gap: 24px; margin-top: 32px; padding-top: 28px; }
+      .hero-stat-num { font-size: 1.8rem; }
 
-      /* Section headers */
-      .section-header {
-        padding: 48px 20px 32px;
-      }
+      .section-header { padding: 48px 20px 32px; }
 
-      /* Gallery — 2 columns */
       .gallery {
         padding: 0 16px 48px;
         grid-template-columns: 1fr 1fr;
         gap: 12px;
       }
-      .flip-card {
-        aspect-ratio: 1/1;
-      }
-      .flip-front-label {
-        font-size: 0.72rem;
-        padding: 16px 10px 10px;
-      }
+      .flip-front-label { font-size: 0.72rem; padding: 16px 10px 10px; }
 
-      /* Tutorials — 1 column */
-      .tut-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-      .tutorials {
-        padding: 48px 20px;
-      }
+      .tut-grid { grid-template-columns: 1fr; gap: 12px; }
+      .tutorials { padding: 48px 20px; }
 
-      /* Shop CTA — stack vertically */
-      .shop-cta {
-        padding: 48px 20px;
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .shop-card {
-        padding: 32px 24px;
-      }
+      .shop-cta { padding: 48px 20px; grid-template-columns: 1fr; gap: 16px; }
+      .shop-card { padding: 32px 24px; }
 
-      /* Footer */
-      footer {
-        flex-direction: column;
-        gap: 20px;
-        padding: 32px 20px;
-        text-align: center;
-      }
-      .footer-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 16px;
-      }
-
-      /* Section padding */
-      .section {
-        padding: 40px 20px;
-      }
+      footer { flex-direction: column; gap: 20px; padding: 32px 20px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
     }
   </style>
 </head>
 <body>
 
-
-
-<!-- TICKER -->
 <div id="site-cursor">
   <svg id="cursor-svg" width="24" height="47" viewBox="0 0 354.14407 707.8291">
     <g id="cursor-g" transform="translate(139.03787,207.75)">
@@ -643,6 +521,7 @@
   </svg>
 </div>
 
+<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
     <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
@@ -663,27 +542,27 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-brand">
-      <img src="images/Logo2.svg" alt="Purple Peregrine logo" style="height:120px;width:120px;margin-right:16px;flex-shrink:0;">Purple Peregrine
-    </a>
+    <img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/>
+    <span class="nav-brand-text">Purple Peregrine</span>
+  </a>
   <div class="nav-links">
     <a href="#">Gallery</a>
     <a href="#">Tutorials</a>
     <a href="#">Blog</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
-    <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop">Shop on Etsy</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop" target="_blank" rel="noopener">Shop on Etsy</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left" style="opacity:1;transform:none;"">
+  <div class="hero-left">
     <div class="hero-eyebrow">Cricut Contributing Artist since 2023</div>
     <h1 class="hero-title">Paper cuts<br><em>designed and</em><br>tested with care.</h1>
     <p class="hero-body">SVG cut files for Cricut crafters who want something a little different — ready to upload to your cutting machine.</p>
     <div class="hero-buttons">
-      <a href="https://www.etsy.com/shop/PurplePeregrine" class="btn-primary">Shop on Etsy</a>
-      
+      <a href="https://www.etsy.com/shop/PurplePeregrine" class="btn-primary" target="_blank" rel="noopener">Shop on Etsy</a>
     </div>
     <div class="hero-stats">
       <div>
@@ -718,10 +597,10 @@
         <img src="images/bee-bookmark.JPEG" alt="Bumble Bee Bookmark"/>
         <div class="flip-front-label">Bumble Bee Bookmark</div>
       </div>
-      <div class="flip-back" style="padding:0;position:relative;">
-        <img src="images/bee-bookmark-layers.JPEG" alt="Bumble Bee Bookmark layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(42,26,40,0.88));">
-          <a href="https://purpleperegrine.etsy.com/listing/4319542413" class="flip-back-link" style="margin-top:0;">View on Etsy →</a>
+      <div class="flip-back">
+        <img src="images/bee-bookmark-layers.JPEG" alt="Bumble Bee Bookmark layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/4319542413" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/4319542413','_blank');return false;">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -732,10 +611,10 @@
         <img src="images/butterfly-corner.JPEG" alt="Butterfly Door Corner"/>
         <div class="flip-front-label">Butterfly Door Corner</div>
       </div>
-      <div class="flip-back" style="padding:0;position:relative;">
-        <img src="images/butterfly-corner-layers.JPEG" alt="Butterfly Door Corner layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(42,26,40,0.88));">
-          <a href="https://purpleperegrine.etsy.com/listing/4462083736/butterfly-door-corner-set-svgs-layered" class="flip-back-link" style="margin-top:0;">View on Etsy →</a>
+      <div class="flip-back">
+        <img src="images/butterfly-corner-layers.JPEG" alt="Butterfly Door Corner layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/4462083736/butterfly-door-corner-set-svgs-layered" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/4462083736/butterfly-door-corner-set-svgs-layered','_blank');return false;">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -746,10 +625,10 @@
         <img src="images/communion-card.JPEG" alt="First Communion Card"/>
         <div class="flip-front-label">First Communion Card</div>
       </div>
-      <div class="flip-back" style="padding:0;position:relative;">
-        <img src="images/communion-card-layers.JPEG" alt="First Communion Card layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(42,26,40,0.88));">
-          <a href="https://purpleperegrine.etsy.com/listing/1872456659/first-holy-communion-card-a6-and" class="flip-back-link" style="margin-top:0;">View on Etsy →</a>
+      <div class="flip-back">
+        <img src="images/communion-card-layers.JPEG" alt="First Communion Card layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/1872456659/first-holy-communion-card-a6-and" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/1872456659/first-holy-communion-card-a6-and','_blank');return false;">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -760,10 +639,10 @@
         <img src="images/barn-set.JPEG" alt="3D Barn Set"/>
         <div class="flip-front-label">3D Barn Set</div>
       </div>
-      <div class="flip-back" style="padding:0;position:relative;">
-        <img src="images/barn-set-layers.JPEG" alt="3D Barn Set layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(42,26,40,0.88));">
-          <a href="https://purpleperegrine.etsy.com/listing/4378233247/3d-barn-set-svg-cricut-digital-cut-file" class="flip-back-link" style="margin-top:0;">View on Etsy →</a>
+      <div class="flip-back">
+        <img src="images/barn-set-layers.JPEG" alt="3D Barn Set layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/4378233247/3d-barn-set-svg-cricut-digital-cut-file" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/4378233247/3d-barn-set-svg-cricut-digital-cut-file','_blank');return false;">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -774,10 +653,10 @@
         <img src="images/seashell-garland.JPEG" alt="Seashell Garland"/>
         <div class="flip-front-label">Seashell Garland</div>
       </div>
-      <div class="flip-back" style="padding:0;position:relative;">
-        <img src="images/seashell-garland-layers.JPEG" alt="Seashell Garland layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(42,26,40,0.88));">
-          <a href="https://purpleperegrine.etsy.com/listing/1772780483/shell-banner-svg-diy-two-layered-digital" class="flip-back-link" style="margin-top:0;">View on Etsy →</a>
+      <div class="flip-back">
+        <img src="images/seashell-garland-layers.JPEG" alt="Seashell Garland layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/1772780483/shell-banner-svg-diy-two-layered-digital" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/1772780483/shell-banner-svg-diy-two-layered-digital','_blank');return false;">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -788,10 +667,10 @@
         <img src="images/dadsailboat-card.JPEG" alt="Dad Sailboat Card"/>
         <div class="flip-front-label">Dad Sailboat Card</div>
       </div>
-      <div class="flip-back" style="padding:0;position:relative;">
-        <img src="images/dadsailboat-card-layers.JPEG" alt="Dad Sailboat Card layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(42,26,40,0.88));">
-          <a href="https://purpleperegrine.etsy.com/listing/4312170737/fathers-day-sailboats-dad-a6-card-and" class="flip-back-link" style="margin-top:0;">View on Etsy →</a>
+      <div class="flip-back">
+        <img src="images/dadsailboat-card-layers.JPEG" alt="Dad Sailboat Card layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/4312170737/fathers-day-sailboats-dad-a6-card-and" class="flip-back-link" target="_blank" rel="noopener" onclick="window.open('https://purpleperegrine.etsy.com/listing/4312170737/fathers-day-sailboats-dad-a6-card-and','_blank');return false;">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -800,7 +679,7 @@
 
 <!-- TUTORIALS -->
 <section class="tutorials fade-up">
-  <div class="section-header" style="padding: 0 0 0;">
+  <div class="section-header" style="padding:0 0 0;">
     <span class="section-tag">Learn</span>
     <h2 class="section-title">Tutorials & how-tos</h2>
   </div>
@@ -843,13 +722,13 @@
   <div class="shop-card shop-card-main">
     <span class="shop-card-tag">Primary shop</span>
     <div class="shop-card-title">Find my full collection on Etsy</div>
-    <div class="shop-card-body">Downloadable SVG files, ready to use in Cricut Design Space the moment you purchase.</div>
+    <div class="shop-card-body">Downloadable SVG files, ready to upload to your cutting machine the moment you purchase.</div>
     <div class="shop-pills">
       <span class="shop-pill">555+ designs</span>
       <span class="shop-pill">4.9★ rating</span>
       <span class="shop-pill">2,600+ sales</span>
     </div>
-    <a href="https://purpleperegrine.etsy.com" class="btn-primary">Visit Etsy shop →</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" class="btn-primary" target="_blank" rel="noopener">Visit Etsy shop →</a>
   </div>
   <div class="shop-card shop-card-secondary">
     <span class="shop-card-tag">For Cricut Access members</span>
@@ -871,63 +750,44 @@
     <a href="#">Tutorials</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
-    <a href="https://www.etsy.com/shop/PurplePeregrine">Etsy</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" target="_blank" rel="noopener">Etsy</a>
   </div>
 </footer>
 
 <script>
-  // Scissors cursor
   const cursorEl = document.getElementById('site-cursor');
   const cursorSvg = document.getElementById('cursor-svg');
   const cursorG = document.getElementById('cursor-g');
   const cursorPath = document.getElementById('cursor-path');
 
   const scPaths = ["M 214.8832,392.88124 C 213.6487,351.10144 192.4188,306.81849 151.2133,291.74442 124.2378,282.5742 92.4685,287.92207 90.4575,251.91109 76.6948,192.36961 65.7318,132.18954 51.8127,72.695 39.4648,46.6078 40.535,-51.7047 0.6983,-207.75 c -13.621,14.7397 -17.7326,200.0063 -14.5164,272.5398 -15.3032,28.0798 -8.258,113.55982 -23.3492,210.0048 -3.8938,32.71461 -41.7477,20.43878 -60.3525,38.15255 -44.0113,30.71139 -50.5531,94.37019 -31.2324,141.02386 15.9428,35.27857 61.4503,59.15221 97.5362,38.36748 42.9756,-20.06987 52.4825,-72.48508 48.4413,-115.16713 -6.9013,-28.59832 -13.7438,-57.36829 -2.6276,-86.26001 5.1649,-16.25131 7.8294,-48.82214 12.8467,-56.27239 9.0186,33.08779 25.5753,64.20235 30.8527,98.13343 -4.7972,28.88996 -5.2245,58.6576 4.0555,86.86484 9.033,45.57671 62.0423,81.53294 106.4604,60.54992 32.0848,-15.61392 48.4238,-52.77583 46.0702,-87.30591 z m -25.1994,-0.44041 c 4.4186,32.42715 -21.4514,71.62555 -57.0411,66.05268 -42.6586,-7.91717 -59.2413,-60.62059 -48.5494,-98.33732 6.7516,-31.15254 45.5418,-51.65329 73.1732,-32.52716 21.8624,13.61616 31.4284,40.10025 32.4173,64.8118 z m -196.3326,5.06143 c 2.3117,33.0479 -17.5032,75.09011 -55.1263,74.94116 -35.1936,-1.49618 -55.2632,-38.63037 -53.0197,-70.72062 -1.8119,-33.53315 23.1599,-73.03612 60.4974,-68.62124 29.8497,4.9459 47.8069,35.91883 47.6486,64.4007 z", "m 529.824,-194.4682 c -17.6322,49.3031 -31.3609,95.0692 -42.3559,135.3984 -12.5535,-39.8712 -28.05,-85.0692 -47.584,-133.6494 -13.059,21.6365 20.1677,233.7133 17.5599,244.3381 l -2.1688,-0.065 c -6.415,45.0751 -8.7411,130.39903 -20.0537,202.10009 -3.8938,32.71461 -41.7482,20.43955 -60.353,38.15332 -44.0113,30.71139 -50.5526,94.36977 -31.232,141.02344 15.9429,35.27857 61.4493,59.15192 97.5352,38.36719 42.9756,-20.06987 52.4836,-72.48543 48.4424,-115.16748 -6.9013,-28.59832 -13.7443,-57.36854 -2.628,-86.26026 5.1649,-16.25131 7.8294,-48.82172 12.8467,-56.27197 9.0186,33.08779 25.5751,64.2032 30.8526,98.13428 -4.7972,28.88996 -5.2254,58.65653 4.0547,86.86377 9.0329,45.57671 62.0423,81.5338 106.4604,60.55078 32.0849,-15.61392 48.4245,-52.77607 46.0708,-87.30615 C 686.0368,329.96111 664.8074,285.67777 623.6019,270.6037 596.6263,261.43348 564.857,266.78118 562.846,230.7702 550.3633,176.76565 542.0498,127.84736 524.2005,51.5539 l -2.8633,-0.092 c -3.7862,-13.1651 22.6072,-224.4661 8.4868,-245.9298 z m 77.6895,493.58934 c 7.6278,0.28091 15.2333,2.58516 22.1411,7.3667 21.8625,13.61616 31.4281,40.10046 32.417,64.81201 4.4186,32.42715 -21.4513,71.6256 -57.041,66.05273 -42.6586,-7.91717 -59.2412,-60.61969 -48.5493,-98.33642 5.0637,-23.36441 28.149,-40.73775 51.0322,-39.89502 z M 411.2376,311.6353 c 2.2335,-0.055 4.519,0.0493 6.8526,0.32519 29.8497,4.9459 47.8082,35.91852 47.6499,64.40039 2.3117,33.0479 -17.5034,75.09036 -55.1265,74.94141 -35.1937,-1.49618 -55.2635,-38.62948 -53.02,-70.71973 -1.6986,-31.43733 20.1421,-68.12228 53.644,-68.94726 z", "m 825.2696,-105.6028 c 42.5938,136.6978 109.032,240.77678 177.9844,341.95604 -7.281,11.34069 -14.7863,22.74225 -22.9454,34.41503 -15.3189,32.65217 -42.79,15.8232 -71.2382,14.25147 -43.8535,-1.41165 -80.0899,31.73348 -96.8438,70.02685 -15.0835,31.15051 -13.8105,71.72571 10.1177,98.19581 53.3309,57.63959 151.3208,3.7576 166.4619,-84.01319 17.0346,-26.47357 34.5056,-52.29964 52.0635,-77.96631 17.5578,25.66667 35.0288,51.49274 52.0635,77.96631 15.1411,87.77079 113.131,141.65278 166.4619,84.01319 23.9282,-26.4701 25.2011,-67.0453 10.1176,-98.19581 -16.7539,-38.29337 -52.9902,-71.4385 -96.8437,-70.02685 -28.4482,1.57173 -55.9194,18.4007 -71.2383,-14.25147 -8.159,-11.67278 -15.6643,-23.07434 -22.9453,-34.41503 68.9523,-101.17926 135.3891,-205.25824 177.9829,-341.95604 -101.4546,127.3477 -158.2275,200.579 -173.3584,224.56931 -16.4678,20.80195 -29.9878,40.053 -42.2402,58.56885 -12.2525,-18.51585 -25.7724,-37.7669 -42.2403,-58.56885 C 983.4985,94.9762 926.7242,21.7449 825.2696,-105.6028 Z m 76.8047,420.70018 c 27.305,1.87359 48.4015,30.96425 43.6977,58.45605 -4.1731,38.98017 -39.2445,81.67279 -81.772,73.07959 -35.0947,-8.12684 -44.4482,-54.1522 -28.2348,-82.58057 10.1494,-22.55277 28.9179,-43.54627 54.2842,-48.00878 4.097,-0.92728 8.1241,-1.21395 12.0249,-0.94629 z m 277.5908,0 c 3.9007,-0.26766 7.9279,0.019 12.0249,0.94629 25.3663,4.46251 44.1333,25.45601 54.2827,48.00878 16.2134,28.42837 6.8613,74.45373 -28.2334,82.58057 -42.5275,8.5932 -77.5989,-34.09942 -81.772,-73.07959 -4.7038,-27.4918 16.3928,-56.58246 43.6978,-58.45605 z", "m 529.824,-194.4682 c -17.6322,49.3031 -31.3609,95.0692 -42.3559,135.3984 -12.5535,-39.8712 -28.05,-85.0692 -47.584,-133.6494 -13.059,21.6365 20.1677,233.7133 17.5599,244.3381 l -2.1688,-0.065 c -6.415,45.0751 -8.7411,130.39903 -20.0537,202.10009 -3.8938,32.71461 -41.7482,20.43955 -60.353,38.15332 -44.0113,30.71139 -50.5526,94.36977 -31.232,141.02344 15.9429,35.27857 61.4493,59.15192 97.5352,38.36719 42.9756,-20.06987 52.4836,-72.48543 48.4424,-115.16748 -6.9013,-28.59832 -13.7443,-57.36854 -2.628,-86.26026 5.1649,-16.25131 7.8294,-48.82172 12.8467,-56.27197 9.0186,33.08779 25.5751,64.2032 30.8526,98.13428 -4.7972,28.88996 -5.2254,58.65653 4.0547,86.86377 9.0329,45.57671 62.0423,81.5338 106.4604,60.55078 32.0849,-15.61392 48.4245,-52.77607 46.0708,-87.30615 C 686.0368,329.96111 664.8074,285.67777 623.6019,270.6037 596.6263,261.43348 564.857,266.78118 562.846,230.7702 550.3633,176.76565 542.0498,127.84736 524.2005,51.5539 l -2.8633,-0.092 c -3.7862,-13.1651 22.6072,-224.4661 8.4868,-245.9298 z m 77.6895,493.58934 c 7.6278,0.28091 15.2333,2.58516 22.1411,7.3667 21.8625,13.61616 31.4281,40.10046 32.417,64.81201 4.4186,32.42715 -21.4513,71.6256 -57.041,66.05273 -42.6586,-7.91717 -59.2412,-60.61969 -48.5493,-98.33642 5.0637,-23.36441 28.149,-40.73775 51.0322,-39.89502 z M 411.2376,311.6353 c 2.2335,-0.055 4.519,0.0493 6.8526,0.32519 29.8497,4.9459 47.8082,35.91852 47.6499,64.40039 2.3117,33.0479 -17.5034,75.09036 -55.1265,74.94141 -35.1937,-1.49618 -55.2635,-38.62948 -53.02,-70.71973 -1.6986,-31.43733 20.1421,-68.12228 53.644,-68.94726 z"];
-  const scViewboxes = [
-    "0 0 354.14407 707.8291",
-    "0 0 354.14355 673.4068",
-    "0 0 477.05582 582.75037",
-    "0 0 354.14355 673.4068"
-  ];
-  const scTransforms = [
-    "translate(139.03787,207.75)",
-    "translate(-333.35076,194.4682)",
-    "translate(-802.34177,105.6028)",
-    "translate(-333.35076,194.4682)"
-  ];
+  const scViewboxes = ["0 0 354.14407 707.8291","0 0 354.14355 673.4068","0 0 477.05582 582.75037","0 0 354.14355 673.4068"];
+  const scTransforms = ["translate(139.03787,207.75)","translate(-333.35076,194.4682)","translate(-802.34177,105.6028)","translate(-333.35076,194.4682)"];
 
   let scIdx = 0, mouseMoving = false;
   let mouseMoveTimer = null, snipInterval = null;
   let lastX = null, lastY = null, currentAngle = 0;
 
-  function updateCursorRotation(x, y) {
-    if (lastX !== null && lastY !== null) {
-      const dx = x - lastX;
-      const dy = y - lastY;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      // Only update angle if moved enough to be meaningful
-      if (dist > 3) {
-        // atan2 gives angle of movement direction
-        // Add 90deg offset so blades point forward in direction of travel
-        currentAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+  function updateCursor(x, y) {
+    if (lastX !== null) {
+      const dx = x - lastX, dy = y - lastY;
+      if (Math.sqrt(dx*dx+dy*dy) > 3) {
+        currentAngle = Math.atan2(dy, dx) * (180/Math.PI) + 90;
       }
     }
-    lastX = x;
-    lastY = y;
-    // Apply position AND rotation together
+    lastX = x; lastY = y;
     cursorEl.style.left = x + 'px';
-    cursorEl.style.top  = y + 'px';
-    cursorEl.style.transform = `translate(-12px, -8px) rotate(${currentAngle}deg)`;
+    cursorEl.style.top = y + 'px';
+    cursorEl.style.transform = `translate(-12px,-8px) rotate(${currentAngle}deg)`;
   }
 
   document.addEventListener('mousemove', function(e) {
-    updateCursorRotation(e.clientX, e.clientY);
+    updateCursor(e.clientX, e.clientY);
     cursorEl.style.opacity = '1';
-
     if (!mouseMoving) {
       mouseMoving = true;
       snipInterval = setInterval(() => {
-        scIdx = (scIdx + 1) % scPaths.length;
+        scIdx = (scIdx+1) % scPaths.length;
         cursorSvg.setAttribute('viewBox', scViewboxes[scIdx]);
         cursorG.setAttribute('transform', scTransforms[scIdx]);
         cursorPath.setAttribute('d', scPaths[scIdx]);
@@ -945,57 +805,30 @@
     }, 150);
   });
 
-  // Hide cursor when mouse leaves window
-  document.addEventListener('mouseleave', function() {
-    cursorEl.style.opacity = '0';
-    lastX = null;
-    lastY = null;
-  });
-
-  // Show cursor when mouse enters window
-  document.addEventListener('mouseenter', function() {
-    cursorEl.style.opacity = '1';
-  });
-
-  // Confetti on click
-  document.addEventListener('click', function(e) {
-    // Don't intercept link clicks — let them navigate normally
-    if (e.target.closest('a')) return;
-    spawnConfetti(e.clientX, e.clientY);
-  });
+  document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; lastX = null; lastY = null; });
+  document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
+  document.addEventListener('click', e => { if (!e.target.closest('a')) spawnConfetti(e.clientX, e.clientY); });
 
   function spawnConfetti(x, y) {
     const colors = ['#62385e','#4e2c4f','#ebdb43','#9b55bb','#EDE0D4','#9b6a96','#b06fd4'];
     for (let i = 0; i < 22; i++) {
       const el = document.createElement('div');
       el.className = 'confetti-piece';
-      const size = 5 + Math.random() * 9;
+      const size = 5 + Math.random()*9;
       el.style.cssText = `left:${x}px;top:${y}px;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>0.5?'50%':'2px'}`;
       document.body.appendChild(el);
-      const angle = Math.random() * Math.PI * 2;
-      const dist  = 60 + Math.random() * 130;
+      const angle = Math.random()*Math.PI*2, dist = 60+Math.random()*130;
       el.animate([
-        {transform:'translate(0,0) rotate(0deg)', opacity:1},
-        {transform:`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) rotate(${Math.random()*540}deg)`, opacity:0}
-      ], {duration:700+Math.random()*500, easing:'ease-out'}).onfinish = () => el.remove();
+        {transform:'translate(0,0) rotate(0deg)',opacity:1},
+        {transform:`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) rotate(${Math.random()*540}deg)`,opacity:0}
+      ], {duration:700+Math.random()*500,easing:'ease-out'}).onfinish = () => el.remove();
     }
   }
 
-  // Scroll fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.02 });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, {threshold: 0.05});
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Hero thumbnail click — swap main image
-  document.querySelectorAll('.hero-thumb').forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      const main = document.querySelector('.hero-img-main');
-      const tempSrc = main.src;
-      main.src = thumb.src;
-      t
+</script>
+</body>
+</html>
