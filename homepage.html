@@ -75,9 +75,8 @@
       background: var(--cream);
       border-bottom: 2px solid var(--paper-dark);
       padding: 0 48px;
-      display: flex; align-items: flex-end; justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       height: 140px;
-      padding-bottom: 12px;
     }
     .nav-brand {
       font-family: 'Cormorant Garamond', serif;
@@ -540,9 +539,9 @@
 
       /* Nav — hide links, show brand only */
       nav {
-        padding: 0 20px 8px;
+        padding: 0 20px;
         height: 80px;
-        align-items: flex-end;
+        align-items: center;
       }
       .nav-links {
         display: none;
@@ -678,7 +677,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left fade-up">
+  <div class="hero-left" style="opacity:1;transform:none;"">
     <div class="hero-eyebrow">Cricut Contributing Artist since 2023</div>
     <h1 class="hero-title">Paper cuts<br><em>designed and</em><br>tested with care.</h1>
     <p class="hero-body">SVG cut files for Cricut crafters who want something a little different — ready to upload to your cutting machine.</p>
@@ -990,7 +989,7 @@
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.02 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
   // Hero thumbnail click — swap main image
@@ -998,4 +997,5 @@
     thumb.addEventListener('click', () => {
       const main = document.querySelector('.hero-img-main');
       const tempSrc = main.src;
-      main.src = thumb.src
+      main.src = thumb.src;
+      t
