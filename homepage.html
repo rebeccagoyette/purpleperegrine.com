@@ -906,6 +906,8 @@
 
   // Confetti on click
   document.addEventListener('click', function(e) {
+    // Don't intercept link clicks — let them navigate normally
+    if (e.target.closest('a')) return;
     spawnConfetti(e.clientX, e.clientY);
   });
 
