@@ -3,12 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nordic & Danish Collection | Purple Peregrine</title>
-  <link rel="icon" type="image/svg+xml" href="images/Logo2.svg">
-  <link rel="icon" type="image/png" href="images/Logo2.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Cursor Test</title>
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body, a, button, input, select, textarea, .flip-card {
+      cursor: none !important;
+    }
+    body {
+      background: #C8102E;
+      min-height: 100vh;
+      font-family: sans-serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+    /* CURSOR */
+    #site-cursor {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-12px,-8px);
+      transition: opacity 0.2s ease;
+    }
+    .confetti-piece {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+
+
+    /* NORDIC STYLES */
+
+    /* cursor:none on everything - from working test */
+    body, a, button, input, select, textarea, .flip-card {
+      cursor: none !important;
+    }
+
+    
+
+
+  
+
+    /* NORDIC STYLES */
+
+
     :root {
       --red: #9B0F23;
       --red-dark: #7a0b1b;
@@ -31,21 +72,7 @@
       color: var(--ink);
     }
 
-    /* CURSOR */
-    #site-cursor {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-12px,-8px);
-      transition: opacity 0.2s ease;
-    }
-    .confetti-piece {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-
+    
     /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
@@ -374,6 +401,9 @@
       footer { flex-direction: column; gap: 20px; padding: 32px 20px; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
     }
+  
+  
+  
   </style>
 </head>
 <body>
@@ -700,11 +730,6 @@
       ], {duration:700+Math.random()*500,easing:'ease-out'}).onfinish = () => el.remove();
     }
   }
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, {threshold: 0.05});
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
