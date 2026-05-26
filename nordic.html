@@ -22,7 +22,9 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body, a, button, input, .flip-card { cursor: none !important; }
+    body, a, button, input, select, textarea, .flip-card {
+      cursor: none !important;
+    }
     body {
       background: var(--cream);
       font-family: 'Jost', sans-serif;
@@ -36,13 +38,13 @@
       z-index: 9999;
       transform: translate(-12px,-8px);
       transition: opacity 0.2s ease;
-      opacity: 1;
     }
-    .confetti-piece, .snippet {
+    .confetti-piece {
       position: fixed;
       pointer-events: none;
-      z-index: 9998;
+      z-index: 9999;
     }
+
 
     /* NAV */
     nav {
