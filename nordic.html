@@ -75,7 +75,7 @@
       font-size: 1.8rem;
       color: var(--red);
     }
-    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links { display: flex; gap: 40px; align-items: center; }
     .nav-links a {
       font-size: 0.8rem;
       color: var(--grey);
@@ -232,6 +232,14 @@
       display: block;
     }
 
+    .nav-mobile-buttons {
+      display: none;
+      gap: 8px;
+      align-items: center;
+    }
+    .nav-etsy-main {
+      background: #6b6b6b !important;
+    }
     .nav-shop-mobile {
       display: none;
       background: #9B0F23;
@@ -263,7 +271,15 @@
       .nav-logo { width: 44px !important; height: 44px !important; margin-top: 0 !important; }
       .nav-brand-text { font-size: 1rem; }
       .nav-links { display: none !important; }
-      .nav-shop-mobile { display: inline-block; }
+      .nav-mobile-buttons {
+      display: none;
+      gap: 8px;
+      align-items: center;
+    }
+    .nav-etsy-main {
+      background: #6b6b6b !important;
+    }
+    .nav-shop-mobile { display: inline-block; }
 
       .hero {
         grid-template-columns: 1fr;
@@ -330,7 +346,10 @@
     <a href="gallery.html">Gallery</a>
     <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1794064083&from_page=listing&section_id=41841636" class="nav-shop" target="_blank" rel="noopener">Shop Nordic on Etsy</a>
   </div>
-  <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1794064083&from_page=listing&section_id=41841636" class="nav-shop-mobile" target="_blank" rel="noopener">Shop Nordic →</a>
+  <div class="nav-mobile-buttons">
+    <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop-mobile nav-etsy-main" target="_blank" rel="noopener">Etsy Shop</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1794064083&from_page=listing&section_id=41841636" class="nav-shop-mobile" target="_blank" rel="noopener">Nordic</a>
+  </div>
 </nav>
 
 <section class="hero">
