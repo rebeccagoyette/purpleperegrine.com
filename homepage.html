@@ -504,6 +504,11 @@
         gap: 12px;
       }
       .flip-front-label { font-size: 0.72rem; padding: 16px 10px 10px; }
+      /* Mobile - disable flip, show front only */
+      .flip-card { cursor: pointer !important; }
+      .flip-card-inner { transform: none !important; transition: none !important; }
+      .flip-back { display: none !important; }
+      .flip-front { position: relative !important; }
 
       .tut-grid { grid-template-columns: 1fr; gap: 12px; }
       .tutorials { padding: 48px 20px; }
@@ -816,7 +821,8 @@
 
   document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; lastX = null; lastY = null; });
   document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
-  // Make entire flip card clickable - goes to Etsy on click
+  // Desktop: click card opens Etsy. Mobile: tap goes straight to Etsy
+  const isMobile = window.innerWidth <= 768;
   document.querySelectorAll('.flip-card').forEach(card => {
     card.addEventListener('click', function(e) {
       if (!e.target.closest('.flip-back-link')) {
