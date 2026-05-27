@@ -307,6 +307,11 @@
         box-sizing: border-box;
       }
       .flip-card { min-height: 160px; }
+      /* Mobile - disable flip, show front only */
+      .flip-card { cursor: pointer !important; }
+      .flip-card-inner { transform: none !important; transition: none !important; }
+      .flip-back { display: none !important; }
+      .flip-front { position: relative !important; }
 
       footer {
         flex-direction: column;
