@@ -816,7 +816,17 @@
 
   document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; lastX = null; lastY = null; });
   document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
-  document.addEventListener('click', e => { if (!e.target.closest('a') && !e.target.closest('button')) spawnConfetti(e.clientX, e.clientY); });
+  // Make entire flip card clickable - goes to Etsy on click
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (!e.target.closest('.flip-back-link')) {
+        const link = this.querySelector('.flip-back-link');
+        if (link) window.open(link.href, '_blank');
+      }
+    });
+  });
+
+  document.addEventListener('click', e => { if (!e.target.closest('a') && !e.target.closest('button') && !e.target.closest('.flip-card')) spawnConfetti(e.clientX, e.clientY); });
 
   // Paper snippet trail following scissors
   let trailTimer = null;
