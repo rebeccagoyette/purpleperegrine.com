@@ -90,7 +90,7 @@
     }
 
     .hero {
-      background: var(--red);
+      background: #9B0F23;
       padding: 80px 48px;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -98,6 +98,19 @@
       align-items: center;
       min-height: 50vh;
     }
+    .hero-right-single {
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .hero-right-single img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .hero-right-single:hover img { transform: scale(1.04); }
     .hero-left h1 {
       font-family: serif;
       font-size: clamp(42px, 6vw, 80px);
@@ -129,17 +142,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
-    .hero-img {
-      border-radius: 2px;
-      overflow: hidden;
-      aspect-ratio: 1/1;
-    }
-    .hero-img img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .hero-img.tall { grid-row: span 2; aspect-ratio: auto; }
+
 
     .gallery {
       padding: 0 48px 80px;
@@ -197,20 +200,74 @@
       text-decoration: none;
       border-radius: 1px;
     }
+    .section-divider {
+      padding: 72px 48px 56px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      background: #9B0F23;
+    }
+    .divider-line {
+      width: 60%;
+      height: 2px;
+      background: rgba(255,255,255,0.4);
+    }
+    .divider-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
     .section-header { text-align: center; padding: 72px 48px 48px; }
     .section-title {
-      font-family: serif;
-      font-size: clamp(32px, 4vw, 52px);
-      color: var(--red);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 5vw, 72px);
+      color: #ffffff;
       font-weight: 600;
+      line-height: 1.1;
     }
     .section-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--grey);
+      color: rgba(255,255,255,0.6);
       display: block;
-      margin-bottom: 14px;
+    }
+
+    @media (max-width: 768px) {
+      /* No scissors on mobile */
+      #site-cursor { display: none !important; }
+      body, a, button, .flip-card { cursor: auto !important; }
+      a, button { cursor: pointer !important; }
+
+      html, body { overflow-x: hidden; width: 100%; }
+
+      nav { padding: 0 16px; height: 72px; overflow: hidden; }
+      .nav-logo { width: 52px !important; height: 52px !important; margin-top: 0 !important; }
+      .nav-brand-text { font-size: 1.1rem; }
+      .nav-links { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+        gap: 24px;
+        min-height: auto;
+      }
+      .hero-right-single {
+        aspect-ratio: 1/1;
+        max-width: 100%;
+      }
+      .hero-left h1 { font-size: clamp(36px, 10vw, 56px); }
+
+      .section-divider { padding: 40px 20px; }
+      .divider-line { width: 80%; }
+      .section-title { font-size: clamp(28px, 7vw, 44px); }
+
+      .gallery {
+        padding: 0 16px 48px;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      footer { flex-direction: column; gap: 16px; padding: 28px 20px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
     }
   </style>
 </head>
@@ -241,22 +298,19 @@
     <p>Authentic Danish-designed SVG cut files inspired by Scandinavian folk art.</p>
     <a href="https://www.etsy.com/shop/PurplePeregrine" class="btn-white" target="_blank">Shop all Nordic designs →</a>
   </div>
-  <div class="hero-right">
-    <div class="hero-img tall">
-      <img src="images/nordic-dala-horse.JPEG" alt="Dala Horse"/>
-    </div>
-    <div class="hero-img">
-      <img src="images/nordic-yule-goat.JPEG" alt="Yule Goat"/>
-    </div>
-    <div class="hero-img">
-      <img src="images/nordic-dala-bear.JPEG" alt="Dala Bear"/>
-    </div>
+  <div class="hero-right-single">
+    <img src="images/Nordic-Collection.JPEG" alt="Nordic Collection"/>
   </div>
 </section>
 
-<div class="section-header">
-  <span class="section-tag">SVG Cut Files</span>
-  <h2 class="section-title">Browse the Nordic collection</h2>
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-content">
+    <span class="section-tag">SVG Cut Files</span>
+    <h2 class="section-title">Browse the Nordic Collection</h2>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1794064083&from_page=listing&section_id=41841636" class="btn-white" target="_blank" rel="noopener">Shop all Nordic on Etsy →</a>
+  </div>
+  <div class="divider-line"></div>
 </div>
 
 <div class="gallery">
@@ -404,6 +458,34 @@
       </div>
     </div>
   </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/Hanging-Nisse-Banner.JPEG" alt="Hanging Nisse Banner"/>
+        <div class="flip-front-label">Hanging Nisse Banner</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/Hanging-Nisse-Banner-Layers.JPEG" alt="layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1794064083/hanging-nisse-banner-svg-diy" class="flip-back-link" target="_blank">View on Etsy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/Simple-Stars.JPEG" alt="Simple Star Set"/>
+        <div class="flip-front-label">Simple Star Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/Simple-Stars-Layers.JPEG" alt="layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/1568284018/simple-star-set-svgs-layered-digital" class="flip-back-link" target="_blank">View on Etsy</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -434,7 +516,17 @@
     cursorEl.style.transform = `translate(-12px,-8px) rotate(${currentAngle}deg)`;
   }
 
-  document.addEventListener('mousemove', function(e) {
+    // Make entire flip card clickable - goes to Etsy
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (!e.target.closest('.flip-back-link')) {
+        const link = this.querySelector('.flip-back-link');
+        if (link) window.open(link.href, '_blank');
+      }
+    });
+  });
+
+document.addEventListener('mousemove', function(e) {
     updateCursor(e.clientX, e.clientY);
     cursorEl.style.opacity = '1';
     // Occasionally drop a paper snippet trail
@@ -464,6 +556,12 @@
 
   document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; lastX = null; lastY = null; });
   document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
+  // Mobile confetti on tap
+  document.addEventListener('touchend', e => {
+    const touch = e.changedTouches[0];
+    spawnConfetti(touch.clientX, touch.clientY);
+  });
+
   document.addEventListener('click', e => { if (!e.target.closest('a') && !e.target.closest('button')) spawnConfetti(e.clientX, e.clientY); });
 
   // Paper snippet trail following scissors
