@@ -232,6 +232,17 @@
       display: block;
     }
 
+    .nav-shop-mobile {
+      display: none;
+      background: #9B0F23;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 2px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
     @media (max-width: 768px) {
       /* No scissors on mobile */
       #site-cursor { display: none !important; }
@@ -252,6 +263,7 @@
       .nav-logo { width: 44px !important; height: 44px !important; margin-top: 0 !important; }
       .nav-brand-text { font-size: 1rem; }
       .nav-links { display: none !important; }
+      .nav-shop-mobile { display: inline-block; }
 
       .hero {
         grid-template-columns: 1fr;
@@ -315,8 +327,10 @@
   </a>
   <div class="nav-links">
     <a href="homepage.html">Home</a>
-    <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop">Shop on Etsy</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1794064083&from_page=listing&section_id=41841636" class="nav-shop" target="_blank" rel="noopener">Shop Nordic on Etsy</a>
   </div>
+  <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1794064083&from_page=listing&section_id=41841636" class="nav-shop-mobile" target="_blank" rel="noopener">Shop Nordic →</a>
 </nav>
 
 <section class="hero">
