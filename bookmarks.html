@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmark Collection | Purple Peregrine</title>
+  <link rel="icon" type="image/svg+xml" href="images/Logo2.svg">
+  <link rel="icon" type="image/png" href="images/Logo2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple: #62385e;
+      --purple-light: #8a5485;
+      --purple-pale: #f2eaf1;
+      --gold: #ebdb43;
+      --cream: #FDF8F4;
+      --paper: #EDE0D4;
+      --paper-dark: #d4c4b4;
+      --ink: #2a1a28;
+      --muted: #8a6080;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body, a, button, input, select, textarea, .flip-card {
+      cursor: none !important;
+    }
+    body {
+      background: var(--cream);
+      font-family: 'Jost', sans-serif;
+      color: var(--ink);
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* CURSOR */
+    #site-cursor {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-12px,-8px);
+      transition: opacity 0.2s ease;
+    }
+    .confetti-piece {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* TICKER */
+    .ticker {
+      background: var(--purple);
+      color: var(--gold);
+      padding: 9px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 32s linear infinite;
+    }
+    .ticker-inner span { margin: 0 36px; }
+    .ticker-dot { color: #c9b800; }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream);
+      border-bottom: 2px solid var(--paper-dark);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100px;
+      overflow: visible;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .nav-logo {
+      width: 130px;
+      height: 130px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 101;
+      margin-top: 32px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+    }
+    .nav-brand-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--purple);
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--purple);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-shop {
+      background: var(--purple) !important;
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 2px;
+    }
+    .nav-shop::after { display: none !important; }
+    .nav-shop:hover { background: var(--purple-light) !important; }
+
+    /* HERO */
+    .hero {
+      background: var(--purple);
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      min-height: 50vh;
+    }
+    .hero-left {
+      padding-left: 48px;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 1px;
+      background: rgba(255,255,255,0.5);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 7vw, 96px);
+      line-height: 1.0;
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .hero-title em { font-style: italic; color: rgba(255,255,255,0.75); }
+    .hero-body {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.85);
+      max-width: 420px;
+      margin-bottom: 32px;
+    }
+    .hero-buttons { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: #fff;
+      color: var(--purple);
+      padding: 14px 32px;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+      font-family: 'Jost', sans-serif;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
+    .btn-ghost {
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: #fff; border-color: #fff; }
+    .btn-collections {
+      background: transparent;
+      color: var(--purple);
+      padding: 14px 32px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      display: inline-block;
+      border: 1px solid var(--purple);
+      letter-spacing: 0.08em;
+      transition: background 0.2s, color 0.2s;
+      font-family: 'Jost', sans-serif;
+    }
+    .btn-collections:hover {
+      background: var(--purple);
+      color: #fff;
+    }
+    .hero-right-single {
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+    .hero-right-single img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .hero-right-single:hover img { transform: scale(1.04); }
+
+    /* SECTION HEADER */
+    .section-header {
+      text-align: center;
+      padding: 80px 48px 48px;
+    }
+    .section-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 4.5vw, 60px);
+      color: var(--purple);
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    /* GALLERY */
+    .gallery {
+      padding: 0 48px 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .flip-card {
+      aspect-ratio: 1/1;
+      perspective: 1000px;
+      min-height: 200px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+    .flip-front, .flip-back {
+      position: absolute;
+      width: 100%; height: 100%;
+      backface-visibility: hidden;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .flip-front img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .flip-front-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px 16px 16px;
+      background: linear-gradient(transparent, rgba(42,26,40,0.7));
+      color: #fff;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+    }
+    .flip-back {
+      transform: rotateY(180deg);
+      position: relative;
+    }
+    .flip-back img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .flip-back-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 16px;
+      background: linear-gradient(transparent, rgba(42,26,40,0.88));
+    }
+    .flip-back-link {
+      display: inline-block;
+      padding: 8px 20px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 1px;
+      transition: background 0.2s;
+    }
+    .flip-back-link:hover { background: var(--gold); color: var(--purple); }
+
+    /* SECTION DIVIDER */
+    .section-divider {
+      padding: 72px 48px 56px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      background: var(--paper);
+    }
+    .divider-line {
+      width: 60%;
+      height: 1px;
+      background: var(--paper-dark);
+    }
+    .divider-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+    }
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a {
+      color: var(--paper);
+      text-decoration: none;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .footer-links a:hover { opacity: 1; }
+
+    /* FADE UP */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE NAV BUTTONS */
+    .nav-mobile-buttons {
+      display: none;
+      gap: 8px;
+      align-items: center;
+    }
+    .nav-shop-mobile {
+      display: none;
+      background: var(--purple);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 2px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      white-space: nowrap;
+      font-family: 'Jost', sans-serif;
+    }
+    .nav-shop-mobile-ghost {
+      display: none;
+      background: transparent;
+      color: var(--purple);
+      padding: 6px 14px;
+      border-radius: 2px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      white-space: nowrap;
+      border: 1px solid var(--purple);
+      font-family: 'Jost', sans-serif;
+    }
+
+    @media (max-width: 768px) {
+      #site-cursor { display: none !important; }
+      body, a, button, .flip-card { cursor: auto !important; }
+      a, button { cursor: pointer !important; }
+      html { overflow-x: hidden; }
+      body { overflow-x: hidden; width: 100vw; max-width: 100vw; }
+      * { max-width: 100%; }
+
+      nav {
+        padding: 0 16px;
+        height: 64px;
+        overflow: hidden;
+        width: 100vw;
+        max-width: 100vw;
+      }
+      .nav-logo { width: 44px !important; height: 44px !important; margin-top: 0 !important; }
+      .nav-brand-text { font-size: 1rem; }
+      .nav-links { display: none !important; }
+      .nav-mobile-buttons { display: flex !important; }
+      .nav-shop-mobile { display: inline-block !important; }
+      .nav-shop-mobile-ghost { display: inline-block !important; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 20px 32px;
+        gap: 24px;
+        min-height: auto;
+        width: 100vw;
+        max-width: 100vw;
+      }
+      .hero-left { padding-left: 0 !important; }
+      .hero-right-single {
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 1/1;
+      }
+      .hero-title { font-size: clamp(36px, 10vw, 52px); }
+      .hero-body { max-width: 100%; color: rgba(255,255,255,0.85); }
+
+      .section-header { padding: 48px 20px 32px; }
+      .section-title { font-size: clamp(26px, 7vw, 40px); }
+      .section-divider { padding: 40px 20px; }
+      .divider-line { width: 90%; }
+
+      .gallery {
+        padding: 0 12px 40px;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        width: 100vw;
+        max-width: 100vw;
+        box-sizing: border-box;
+      }
+      .flip-card { min-height: 160px; }
+      .flip-card { cursor: pointer !important; }
+      .flip-card-inner { transform: none !important; transition: none !important; }
+      .flip-back { display: none !important; }
+      .flip-front { position: relative !important; }
+
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        padding: 28px 16px;
+        text-align: center;
+        width: 100vw;
+      }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-cursor">
+  <svg id="cursor-svg" width="24" height="47" viewBox="0 0 354.14407 707.8291">
+    <g id="cursor-g" transform="translate(139.03787,207.75)">
+      <path id="cursor-path" fill="#62385e" d="M 214.8832,392.88124 C 213.6487,351.10144 192.4188,306.81849 151.2133,291.74442 124.2378,282.5742 92.4685,287.92207 90.4575,251.91109 76.6948,192.36961 65.7318,132.18954 51.8127,72.695 39.4648,46.6078 40.535,-51.7047 0.6983,-207.75 c -13.621,14.7397 -17.7326,200.0063 -14.5164,272.5398 -15.3032,28.0798 -8.258,113.55982 -23.3492,210.0048 -3.8938,32.71461 -41.7477,20.43878 -60.3525,38.15255 -44.0113,30.71139 -50.5531,94.37019 -31.2324,141.02386 15.9428,35.27857 61.4503,59.15221 97.5362,38.36748 42.9756,-20.06987 52.4825,-72.48508 48.4413,-115.16713 -6.9013,-28.59832 -13.7438,-57.36829 -2.6276,-86.26001 5.1649,-16.25131 7.8294,-48.82214 12.8467,-56.27239 9.0186,33.08779 25.5753,64.20235 30.8527,98.13343 -4.7972,28.88996 -5.2245,58.6576 4.0555,86.86484 9.033,45.57671 62.0423,81.53294 106.4604,60.54992 32.0848,-15.61392 48.4238,-52.77583 46.0702,-87.30591 z m -25.1994,-0.44041 c 4.4186,32.42715 -21.4514,71.62555 -57.0411,66.05268 -42.6586,-7.91717 -59.2413,-60.62059 -48.5494,-98.33732 6.7516,-31.15254 45.5418,-51.65329 73.1732,-32.52716 21.8624,13.61616 31.4284,40.10025 32.4173,64.8118 z m -196.3326,5.06143 c 2.3117,33.0479 -17.5032,75.09011 -55.1263,74.94116 -35.1936,-1.49618 -55.2632,-38.63037 -53.0197,-70.72062 -1.8119,-33.53315 23.1599,-73.03612 60.4974,-68.62124 29.8497,4.9459 47.8069,35.91883 47.6486,64.4007 z"/>
+    </g>
+  </svg>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
+    <span>Bookmark Collection</span><span class="ticker-dot">✦</span>
+    <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
+    <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
+    <span>555+ Designs</span><span class="ticker-dot">✦</span>
+    <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
+    <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
+    <span>Bookmark Collection</span><span class="ticker-dot">✦</span>
+    <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
+    <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
+    <span>555+ Designs</span><span class="ticker-dot">✦</span>
+    <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="homepage.html" class="nav-brand">
+    <img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/>
+    <span class="nav-brand-text">Purple Peregrine</span>
+  </a>
+  <div class="nav-links">
+    <a href="homepage.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="collections.html">Collections</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?section_id=41732399" class="nav-shop" target="_blank" rel="noopener">Shop Bookmarks on Etsy</a>
+  </div>
+  <div class="nav-mobile-buttons">
+    <a href="collections.html" class="nav-shop-mobile-ghost">Collections</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?section_id=41732399" class="nav-shop-mobile" target="_blank" rel="noopener">Shop Etsy</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">SVG Cut Files for Cricut</div>
+    <h1 class="hero-title">Bookmark<br><em>Collection</em></h1>
+    <p class="hero-body">Layered SVG bookmarks — from whimsical florals to charming scenery. Perfect for gifts, craft fairs, or keeping your place in style.</p>
+    <div class="hero-buttons">
+      <a href="https://www.etsy.com/shop/PurplePeregrine?section_id=41732399" class="btn-primary" target="_blank" rel="noopener">Shop Bookmarks on Etsy →</a>
+      <a href="collections.html" class="btn-ghost">← All Collections</a>
+    </div>
+  </div>
+  <div class="hero-right-single">
+    <img src="images/bookmark-collection.JPEG" alt="Purple Peregrine Bookmark Collection"/>
+  </div>
+</section>
+
+<!-- SECTION DIVIDER -->
+<div class="section-divider fade-up">
+  <div class="divider-line"></div>
+  <div class="divider-content">
+    <span class="section-tag">SVG Cut Files</span>
+    <h2 class="section-title">Browse the Bookmark Collection</h2>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?section_id=41732399" class="btn-primary" target="_blank" rel="noopener">Shop all Bookmarks on Etsy →</a>
+    <a href="collections.html" class="btn-collections">← All Collections</a>
+  </div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery fade-up">
+
+  <!-- 1. Chinoiserie Letter Bookmark Set -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/chin-bookmarks.JPEG" alt="Chinoiserie Letter Bookmark Set"/>
+        <div class="flip-front-label">Chinoiserie Letter Bookmark Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/chin-bookmarks-layers.JPEG" alt="Chinoiserie Letter Bookmark Set" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/4505145321" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Daisy Letter Bookmark Set -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/daisy-letter-bookmarks.JPEG" alt="Daisy Letter Bookmark Set"/>
+        <div class="flip-front-label">Daisy Letter Bookmark Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/daisy-letter-bookmarks-layers.JPEG" alt="Daisy Letter Bookmark Set" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/4507323340" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Sailboat Bookmark Set -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/sailboat-bookmarks.JPEG" alt="Sailboat Bookmark Set"/>
+        <div class="flip-front-label">Sailboat Bookmark Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/sailboat-bookmarks-layers.JPEG" alt="Sailboat Bookmark Set" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/4495787829" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Citrus Bookmark Set -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/citrus-bookmarks.JPEG" alt="Citrus Bookmark Set"/>
+        <div class="flip-front-label">Citrus Bookmark Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/citrus-bookmarks-layers.JPEG" alt="Citrus Bookmark Set" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/4493657505" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Butterfly Bookmark -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/butterfly-bookmark.JPEG" alt="Butterfly Bookmark"/>
+        <div class="flip-front-label">Butterfly Bookmark</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/butterfly-bookmark-layers.JPEG" alt="Butterfly Bookmark" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1886526424/butterfly-bookmark-svg-layered-digital" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Simple Daisy Bookmark Set -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/daisy-bookmarks.JPEG" alt="Simple Daisy Bookmark Set"/>
+        <div class="flip-front-label">Simple Daisy Bookmark Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/daisy-bookmarks-layers.JPEG" alt="Simple Daisy Bookmark Set" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/4469429702/simple-daisy-bookmark-set-svgs-digital" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Birdhouse Bookmark Set -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/birdhouse-bookmarks.JPEG" alt="Birdhouse Bookmark Set"/>
+        <div class="flip-front-label">Birdhouse Bookmark Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/birdhouse-bookmarks-layers.JPEG" alt="Birdhouse Bookmark Set" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/4438556897/birdhouse-bookmark-set-svgs-digital-five" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Strawberry Bookmark Set -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/strawberry-bookmarks.JPEG" alt="Strawberry Bookmark Set"/>
+        <div class="flip-front-label">Strawberry Bookmark Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/strawberry-bookmarks-layers.JPEG" alt="Strawberry Bookmark Set" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://purpleperegrine.etsy.com/listing/4493065198" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Flower Bookmark Set -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/flower-bookmarks.JPEG" alt="Flower Bookmark Set"/>
+        <div class="flip-front-label">Flower Bookmark Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/flower-bookmarks-layers.JPEG" alt="Flower Bookmark Set" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1712921292/flower-bookmark-set-svgs-digital-three" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Goose Family Bookmark Set -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/goose-bookmarks.JPEG" alt="Goose Family Bookmark Set"/>
+        <div class="flip-front-label">Goose Family Bookmark Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/goose-bookmarks-layers.JPEG" alt="Goose Family Bookmark Set" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/4501125982/goose-family-bookmark-set-svgs-layered" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. Farm Bookmark Set -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/farm-bookmarks.JPEG" alt="Farm Bookmark Set"/>
+        <div class="flip-front-label">Farm Bookmark Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/farm-bookmarks-layers.JPEG" alt="Farm Bookmark Set" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/4501192719/farm-bookmark-set-svgs-layered-digital" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Landscape Bookmark Set -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/landscape-bookmarks.JPEG" alt="Landscape Bookmark Set"/>
+        <div class="flip-front-label">Landscape Bookmark Set</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/landscape-bookmarks-layers.JPEG" alt="Landscape Bookmark Set" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/4468836463/landscape-bookmark-set-svgs-layered" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM CTA -->
+<div style="text-align:center; padding: 56px 48px 72px; background: var(--paper);">
+  <a href="collections.html" class="btn-collections" style="font-size:0.9rem; padding:16px 40px;">← Back to All Collections</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Purple Peregrine</div>
+  <div class="footer-links">
+    <a href="gallery.html">Gallery</a>
+    <a href="collections.html">Collections</a>
+    <a href="homepage.html">Home</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" target="_blank" rel="noopener">Etsy</a>
+  </div>
+</footer>
+
+<script>
+  const cursorEl = document.getElementById('site-cursor');
+  const cursorSvg = document.getElementById('cursor-svg');
+  const cursorG = document.getElementById('cursor-g');
+  const cursorPath = document.getElementById('cursor-path');
+
+  const scPaths = ["M 214.8832,392.88124 C 213.6487,351.10144 192.4188,306.81849 151.2133,291.74442 124.2378,282.5742 92.4685,287.92207 90.4575,251.91109 76.6948,192.36961 65.7318,132.18954 51.8127,72.695 39.4648,46.6078 40.535,-51.7047 0.6983,-207.75 c -13.621,14.7397 -17.7326,200.0063 -14.5164,272.5398 -15.3032,28.0798 -8.258,113.55982 -23.3492,210.0048 -3.8938,32.71461 -41.7477,20.43878 -60.3525,38.15255 -44.0113,30.71139 -50.5531,94.37019 -31.2324,141.02386 15.9428,35.27857 61.4503,59.15221 97.5362,38.36748 42.9756,-20.06987 52.4825,-72.48508 48.4413,-115.16713 -6.9013,-28.59832 -13.7438,-57.36829 -2.6276,-86.26001 5.1649,-16.25131 7.8294,-48.82214 12.8467,-56.27239 9.0186,33.08779 25.5753,64.20235 30.8527,98.13343 -4.7972,28.88996 -5.2245,58.6576 4.0555,86.86484 9.033,45.57671 62.0423,81.53294 106.4604,60.54992 32.0848,-15.61392 48.4238,-52.77583 46.0702,-87.30591 z m -25.1994,-0.44041 c 4.4186,32.42715 -21.4514,71.62555 -57.0411,66.05268 -42.6586,-7.91717 -59.2413,-60.62059 -48.5494,-98.33732 6.7516,-31.15254 45.5418,-51.65329 73.1732,-32.52716 21.8624,13.61616 31.4284,40.10025 32.4173,64.8118 z m -196.3326,5.06143 c 2.3117,33.0479 -17.5032,75.09011 -55.1263,74.94116 -35.1936,-1.49618 -55.2632,-38.63037 -53.0197,-70.72062 -1.8119,-33.53315 23.1599,-73.03612 60.4974,-68.62124 29.8497,4.9459 47.8069,35.91883 47.6486,64.4007 z", "m 529.824,-194.4682 c -17.6322,49.3031 -31.3609,95.0692 -42.3559,135.3984 -12.5535,-39.8712 -28.05,-85.0692 -47.584,-133.6494 -13.059,21.6365 20.1677,233.7133 17.5599,244.3381 l -2.1688,-0.065 c -6.415,45.0751 -8.7411,130.39903 -20.0537,202.10009 -3.8938,32.71461 -41.7482,20.43955 -60.353,38.15332 -44.0113,30.71139 -50.5526,94.36977 -31.232,141.02344 15.9429,35.27857 61.4493,59.15192 97.5352,38.36719 42.9756,-20.06987 52.4836,-72.48543 48.4424,-115.16748 -6.9013,-28.59832 -13.7443,-57.36854 -2.628,-86.26026 5.1649,-16.25131 7.8294,-48.82172 12.8467,-56.27197 9.0186,33.08779 25.5751,64.2032 30.8526,98.13428 -4.7972,28.88996 -5.2254,58.65653 4.0547,86.86377 9.0329,45.57671 62.0423,81.5338 106.4604,60.55078 32.0849,-15.61392 48.4245,-52.77607 46.0708,-87.30615 C 686.0368,329.96111 664.8074,285.67777 623.6019,270.6037 596.6263,261.43348 564.857,266.78118 562.846,230.7702 550.3633,176.76565 542.0498,127.84736 524.2005,51.5539 l -2.8633,-0.092 c -3.7862,-13.1651 22.6072,-224.4661 8.4868,-245.9298 z m 77.6895,493.58934 c 7.6278,0.28091 15.2333,2.58516 22.1411,7.3667 21.8625,13.61616 31.4281,40.10046 32.417,64.81201 4.4186,32.42715 -21.4513,71.6256 -57.041,66.05273 -42.6586,-7.91717 -59.2412,-60.61969 -48.5493,-98.33642 5.0637,-23.36441 28.149,-40.73775 51.0322,-39.89502 z M 411.2376,311.6353 c 2.2335,-0.055 4.519,0.0493 6.8526,0.32519 29.8497,4.9459 47.8082,35.91852 47.6499,64.40039 2.3117,33.0479 -17.5034,75.09036 -55.1265,74.94141 -35.1937,-1.49618 -55.2635,-38.62948 -53.02,-70.71973 -1.6986,-31.43733 20.1421,-68.12228 53.644,-68.94726 z", "m 825.2696,-105.6028 c 42.5938,136.6978 109.032,240.77678 177.9844,341.95604 -7.281,11.34069 -14.7863,22.74225 -22.9454,34.41503 -15.3189,32.65217 -42.79,15.8232 -71.2382,14.25147 -43.8535,-1.41165 -80.0899,31.73348 -96.8438,70.02685 -15.0835,31.15051 -13.8105,71.72571 10.1177,98.19581 53.3309,57.63959 151.3208,3.7576 166.4619,-84.01319 17.0346,-26.47357 34.5056,-52.29964 52.0635,-77.96631 17.5578,25.66667 35.0288,51.49274 52.0635,77.96631 15.1411,87.77079 113.131,141.65278 166.4619,84.01319 23.9282,-26.4701 25.2011,-67.0453 10.1176,-98.19581 -16.7539,-38.29337 -52.9902,-71.4385 -96.8437,-70.02685 -28.4482,1.57173 -55.9194,18.4007 -71.2383,-14.25147 -8.159,-11.67278 -15.6643,-23.07434 -22.9453,-34.41503 68.9523,-101.17926 135.3891,-205.25824 177.9829,-341.95604 -101.4546,127.3477 -158.2275,200.579 -173.3584,224.56931 -16.4678,20.80195 -29.9878,40.053 -42.2402,58.56885 -12.2525,-18.51585 -25.7724,-37.7669 -42.2403,-58.56885 C 983.4985,94.9762 926.7242,21.7449 825.2696,-105.6028 Z m 76.8047,420.70018 c 27.305,1.87359 48.4015,30.96425 43.6977,58.45605 -4.1731,38.98017 -39.2445,81.67279 -81.772,73.07959 -35.0947,-8.12684 -44.4482,-54.1522 -28.2348,-82.58057 10.1494,-22.55277 28.9179,-43.54627 54.2842,-48.00878 4.097,-0.92728 8.1241,-1.21395 12.0249,-0.94629 z m 277.5908,0 c 3.9007,-0.26766 7.9279,0.019 12.0249,0.94629 25.3663,4.46251 44.1333,25.45601 54.2827,48.00878 16.2134,28.42837 6.8613,74.45373 -28.2334,82.58057 -42.5275,8.5932 -77.5989,-34.09942 -81.772,-73.07959 -4.7038,-27.4918 16.3928,-56.58246 43.6978,-58.45605 z", "m 529.824,-194.4682 c -17.6322,49.3031 -31.3609,95.0692 -42.3559,135.3984 -12.5535,-39.8712 -28.05,-85.0692 -47.584,-133.6494 -13.059,21.6365 20.1677,233.7133 17.5599,244.3381 l -2.1688,-0.065 c -6.415,45.0751 -8.7411,130.39903 -20.0537,202.10009 -3.8938,32.71461 -41.7482,20.43955 -60.353,38.15332 -44.0113,30.71139 -50.5526,94.36977 -31.232,141.02344 15.9429,35.27857 61.4493,59.15192 97.5352,38.36719 42.9756,-20.06987 52.4836,-72.48543 48.4424,-115.16748 -6.9013,-28.59832 -13.7443,-57.36854 -2.628,-86.26026 5.1649,-16.25131 7.8294,-48.82172 12.8467,-56.27197 9.0186,33.08779 25.5751,64.2032 30.8526,98.13428 -4.7972,28.88996 -5.2254,58.65653 4.0547,86.86377 9.0329,45.57671 62.0423,81.5338 106.4604,60.55078 32.0849,-15.61392 48.4245,-52.77607 46.0708,-87.30615 C 686.0368,329.96111 664.8074,285.67777 623.6019,270.6037 596.6263,261.43348 564.857,266.78118 562.846,230.7702 550.3633,176.76565 542.0498,127.84736 524.2005,51.5539 l -2.8633,-0.092 c -3.7862,-13.1651 22.6072,-224.4661 8.4868,-245.9298 z m 77.6895,493.58934 c 7.6278,0.28091 15.2333,2.58516 22.1411,7.3667 21.8625,13.61616 31.4281,40.10046 32.417,64.81201 4.4186,32.42715 -21.4513,71.6256 -57.041,66.05273 -42.6586,-7.91717 -59.2412,-60.61969 -48.5493,-98.33642 5.0637,-23.36441 28.149,-40.73775 51.0322,-39.89502 z M 411.2376,311.6353 c 2.2335,-0.055 4.519,0.0493 6.8526,0.32519 29.8497,4.9459 47.8082,35.91852 47.6499,64.40039 2.3117,33.0479 -17.5034,75.09036 -55.1265,74.94141 -35.1937,-1.49618 -55.2635,-38.62948 -53.02,-70.71973 -1.6986,-31.43733 20.1421,-68.12228 53.644,-68.94726 z"];
+  const scViewboxes = ["0 0 354.14407 707.8291","0 0 354.14355 673.4068","0 0 477.05582 582.75037","0 0 354.14355 673.4068"];
+  const scTransforms = ["translate(139.03787,207.75)","translate(-333.35076,194.4682)","translate(-802.34177,105.6028)","translate(-333.35076,194.4682)"];
+
+  let scIdx = 0, mouseMoving = false;
+  let mouseMoveTimer = null, snipInterval = null;
+  let lastX = null, lastY = null, currentAngle = 0;
+
+  function updateCursor(x, y) {
+    if (lastX !== null) {
+      const dx = x - lastX, dy = y - lastY;
+      if (Math.sqrt(dx*dx+dy*dy) > 3) {
+        currentAngle = Math.atan2(dy, dx) * (180/Math.PI) + 90;
+      }
+    }
+    lastX = x; lastY = y;
+    cursorEl.style.left = x + 'px';
+    cursorEl.style.top = y + 'px';
+    cursorEl.style.transform = `translate(-12px,-8px) rotate(${currentAngle}deg)`;
+  }
+
+  document.addEventListener('mousemove', function(e) {
+    updateCursor(e.clientX, e.clientY);
+    cursorEl.style.opacity = '1';
+    if (mouseMoving && Math.random() < 0.4) {
+      spawnSnippet(e.clientX, e.clientY);
+    }
+    if (!mouseMoving) {
+      mouseMoving = true;
+      snipInterval = setInterval(() => {
+        scIdx = (scIdx+1) % scPaths.length;
+        cursorSvg.setAttribute('viewBox', scViewboxes[scIdx]);
+        cursorG.setAttribute('transform', scTransforms[scIdx]);
+        cursorPath.setAttribute('d', scPaths[scIdx]);
+      }, 200);
+    }
+    clearTimeout(mouseMoveTimer);
+    mouseMoveTimer = setTimeout(() => {
+      mouseMoving = false;
+      clearInterval(snipInterval);
+      snipInterval = null;
+      scIdx = 0;
+      cursorSvg.setAttribute('viewBox', scViewboxes[0]);
+      cursorG.setAttribute('transform', scTransforms[0]);
+      cursorPath.setAttribute('d', scPaths[0]);
+    }, 150);
+  });
+
+  document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; lastX = null; lastY = null; });
+  document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
+
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (!e.target.closest('.flip-back-link')) {
+        const link = this.querySelector('.flip-back-link');
+        if (link) window.open(link.href, '_blank');
+      }
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('a') && !e.target.closest('button') && !e.target.closest('.flip-card'))
+      spawnConfetti(e.clientX, e.clientY);
+  });
+
+  document.addEventListener('touchend', e => {
+    const touch = e.changedTouches[0];
+    spawnConfetti(touch.clientX, touch.clientY);
+  });
+
+  const snippetShapes = ['▪','▫','◆','◇','✂','▸','▹'];
+  function spawnSnippet(x, y) {
+    const el = document.createElement('div');
+    el.style.cssText = `position:fixed;left:${x}px;top:${y}px;pointer-events:none;z-index:9998;font-size:${10+Math.random()*12}px;color:${['#62385e','#ebdb43','#9b6a96','#b06fd4','#EDE0D4'][Math.floor(Math.random()*5)]};`;
+    el.textContent = snippetShapes[Math.floor(Math.random()*snippetShapes.length)];
+    document.body.appendChild(el);
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 10 + Math.random() * 30;
+    el.animate([
+      {transform:'translate(0,0) rotate(0deg)', opacity:0.9},
+      {transform:`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist+20}px) rotate(${Math.random()*180}deg)`, opacity:0}
+    ], {duration: 900+Math.random()*600, easing:'ease-out'}).onfinish = () => el.remove();
+  }
+
+  function spawnConfetti(x, y) {
+    const colors = ['#62385e','#4e2c4f','#ebdb43','#9b55bb','#EDE0D4','#9b6a96','#b06fd4'];
+    for (let i = 0; i < 22; i++) {
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      const size = 5 + Math.random()*9;
+      el.style.cssText = `left:${x}px;top:${y}px;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>0.5?'50%':'2px'}`;
+      document.body.appendChild(el);
+      const angle = Math.random()*Math.PI*2, dist = 60+Math.random()*130;
+      el.animate([
+        {transform:'translate(0,0) rotate(0deg)',opacity:1},
+        {transform:`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) rotate(${Math.random()*540}deg)`,opacity:0}
+      ], {duration:700+Math.random()*500,easing:'ease-out'}).onfinish = () => el.remove();
+    }
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, {threshold: 0.05});
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
