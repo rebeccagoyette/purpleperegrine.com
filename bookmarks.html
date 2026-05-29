@@ -81,21 +81,13 @@
       height: 100px;
       overflow: visible;
     }
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-    }
+    .nav-brand-wrap { display: flex; align-items: center; gap: 14px; }
     .nav-logo {
-      width: 130px;
-      height: 130px;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 101;
-      margin-top: 32px;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+      width: 130px; height: 130px;
+      flex-shrink: 0; position: relative; z-index: 101;
+      margin-top: 32px; pointer-events: none;
     }
+    .nav-brand-text-link { text-decoration: none; }
     .nav-brand-text {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.8rem;
@@ -112,6 +104,8 @@
       text-transform: uppercase;
       transition: color 0.2s;
       position: relative;
+      padding: 20px 12px;
+      margin: -20px -12px;
     }
     .nav-links a::after {
       content: '';
@@ -427,8 +421,13 @@
         width: 100vw;
         max-width: 100vw;
       }
-      .nav-logo { width: 44px !important; height: 44px !important; margin-top: 0 !important; }
-      .nav-brand-text { font-size: 1rem; }
+      .nav-logo {
+      width: 130px; height: 130px;
+      flex-shrink: 0; position: relative; z-index: 101;
+      margin-top: 32px; pointer-events: none;
+    }
+      .nav-brand-text-link { text-decoration: none; }
+    .nav-brand-text { font-size: 1rem; }
       .nav-links { display: none !important; }
       .nav-mobile-buttons { display: flex !important; }
       .nav-shop-mobile { display: inline-block !important; }
@@ -511,10 +510,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="homepage.html" class="nav-brand">
-    <img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/>
-    <span class="nav-brand-text">Purple Peregrine</span>
-  </a>
+  <div class="nav-brand-wrap"><img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/><a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a></div>
   <div class="nav-links">
     <a href="homepage.html">Home</a>
     <a href="gallery.html">Gallery</a>
@@ -831,14 +827,16 @@
     });
   });
 
-  document.addEventListener('click', e => {
+  document.addEventListener('mousedown', e => {
     if (!e.target.closest('a') && !e.target.closest('button') && !e.target.closest('.flip-card'))
       spawnConfetti(e.clientX, e.clientY);
   });
 
   document.addEventListener('touchend', e => {
-    const touch = e.changedTouches[0];
-    spawnConfetti(touch.clientX, touch.clientY);
+    if (!e.target.closest('a') && !e.target.closest('button')) {
+      const touch = e.changedTouches[0];
+      spawnConfetti(touch.clientX, touch.clientY);
+    }
   });
 
   const snippetShapes = ['▪','▫','◆','◇','✂','▸','▹'];
