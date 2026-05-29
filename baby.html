@@ -3,460 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Baby & Baby Shower Collection | Purple Peregrine</title>
+  <title>New Baby &amp; Baby Shower Collection | Purple Peregrine</title>
   <link rel="icon" type="image/svg+xml" href="images/Logo2.svg">
   <link rel="icon" type="image/png" href="images/Logo2.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
   <style>
+    /* ── PAGE THEME: Baby ── */
     :root {
-      --blue: #a8cfe0;
-      --blue-dark: #7aafc8;
-      --blue-deep: #4a8fad;
-      --cream: #FDF8F4;
-      --paper: #EDE0D4;
-      --paper-dark: #d4c4b4;
-      --ink: #2a3a4a;
-      --muted: #5a7a8a;
+      --primary:       #a8cfe0;
+      --primary-dark:  #7aafc8;
+      --primary-light: #a8cfe0;
+      --accent:        #ffd6e8;
+      --divider-bg:    #d6eaf5;
+      --nav-bg:        #FDF8F4;
+      --nav-border:    #d4c4b4;
+      --cream:  #FDF8F4;
+      --paper:  #EDE0D4;
+      --ink:    #2a3a4a;
+      --muted:  #5a7a8a;
+      --ticker-dot: #ffd6e8;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body, a, button, input, select, textarea, .flip-card {
-      cursor: none !important;
-    }
-    body {
-      background: var(--cream);
-      font-family: 'Jost', sans-serif;
-      color: var(--ink);
-      overflow-x: hidden;
-      width: 100%;
-    }
-
-    /* CURSOR */
-    #site-cursor {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-12px,-8px);
-      transition: opacity 0.2s ease;
-    }
-    .confetti-piece {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-    /* TICKER */
-    .ticker {
-      background: var(--blue-dark);
-      color: #fff;
-      padding: 9px 0;
-      overflow: hidden;
-      white-space: nowrap;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      font-weight: 500;
-    }
-    .ticker-inner {
-      display: inline-block;
-      animation: ticker 32s linear infinite;
-    }
-    .ticker-inner span { margin: 0 36px; }
-    .ticker-dot { color: #ffd6e8; }
-    @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* NAV */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--cream);
-      border-bottom: 2px solid var(--paper-dark);
-      padding: 0 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100px;
-      overflow: visible;
-    }
-    .nav-brand-wrap { display: flex; align-items: center; gap: 14px; }
-    .nav-logo {
-      width: 130px; height: 130px;
-      flex-shrink: 0; position: relative; z-index: 101;
-      margin-top: 32px; pointer-events: none;
-    }
-    .nav-brand-text-link { text-decoration: none; }
-    .nav-brand-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      color: var(--blue-deep);
-      letter-spacing: 0.08em;
-      font-weight: 600;
-    }
-    .nav-links { display: flex; gap: 32px; align-items: center; }
-    .nav-links a {
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.2s;
-      position: relative;
-      padding: 20px 12px;
-      margin: -20px -12px;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px; left: 0;
-      width: 0; height: 1px;
-      background: var(--blue-deep);
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover { color: var(--blue-deep); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-shop {
-      background: var(--blue-dark) !important;
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 2px;
-    }
-    .nav-shop::after { display: none !important; }
-    .nav-shop:hover { background: var(--blue-deep) !important; }
-
-    /* HERO — Nordic style with baby blue */
-    .hero {
-      background: var(--blue);
-      padding: 80px 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      min-height: 50vh;
-    }
-    .hero-left { padding-left: 48px; }
-    .hero-eyebrow {
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 28px; height: 1px;
-      background: rgba(255,255,255,0.6);
-    }
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(48px, 6.5vw, 90px);
-      line-height: 1.0;
-      color: #fff;
-      margin-bottom: 20px;
-      font-weight: 600;
-    }
-    .hero-title em { font-style: italic; color: rgba(255,255,255,0.8); }
-    .hero-body {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.88);
-      max-width: 420px;
-      margin-bottom: 32px;
-    }
-    .hero-buttons { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: #fff;
-      color: var(--blue-deep);
-      padding: 14px 32px;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: background 0.2s, transform 0.2s;
-      font-family: 'Jost', sans-serif;
-      display: inline-block;
-    }
-    .btn-primary:hover { background: #ffd6e8; color: var(--ink); transform: translateY(-2px); }
-    .btn-ghost {
-      font-size: 0.82rem;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(255,255,255,0.45);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .btn-ghost:hover { color: #fff; border-color: #fff; }
-    .hero-right-single {
-      aspect-ratio: 1/1;
-      overflow: hidden;
-      border-radius: 4px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    }
-    .hero-right-single img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-    .hero-right-single:hover img { transform: scale(1.04); }
-
-    /* SECTION HEADER */
-    .section-header {
-      text-align: center;
-      padding: 80px 48px 48px;
-    }
-    .section-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      display: block;
-      margin-bottom: 14px;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(34px, 4.5vw, 60px);
-      color: var(--blue-deep);
-      font-weight: 600;
-      line-height: 1.1;
-    }
-
-    /* GALLERY */
-    .gallery {
-      padding: 0 48px 80px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .flip-card {
-      aspect-ratio: 1/1;
-      perspective: 1000px;
-      min-height: 200px;
-    }
-    .flip-card-inner {
-      position: relative;
-      width: 100%; height: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
-    }
-    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-    .flip-front, .flip-back {
-      position: absolute;
-      width: 100%; height: 100%;
-      backface-visibility: hidden;
-      overflow: hidden;
-      border-radius: 2px;
-    }
-    .flip-front img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .flip-front-label {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 24px 16px 16px;
-      background: linear-gradient(transparent, rgba(42,58,74,0.72));
-      color: #fff;
-      font-size: 0.9rem;
-      letter-spacing: 0.06em;
-    }
-    .flip-back { transform: rotateY(180deg); }
-    .flip-back img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .flip-back-overlay {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 16px;
-      background: linear-gradient(transparent, rgba(42,58,74,0.88));
-    }
-    .flip-back-link {
-      display: inline-block;
-      padding: 8px 20px;
-      border: 1px solid #ffd6e8;
-      color: #ffd6e8;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 1px;
-      transition: background 0.2s;
-    }
-    .flip-back-link:hover { background: #ffd6e8; color: var(--ink); }
-
-    /* SECTION DIVIDER */
-    .section-divider {
-      padding: 72px 48px 56px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-      background: #d6eaf5;
-    }
-    .divider-line {
-      width: 60%;
-      height: 1px;
-      background: var(--blue-dark);
-      opacity: 0.4;
-    }
-    .divider-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-    .btn-collections {
-      background: transparent;
-      color: var(--blue-deep);
-      padding: 14px 32px;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      display: inline-block;
-      border: 1px solid var(--blue-deep);
-      letter-spacing: 0.08em;
-      transition: background 0.2s, color 0.2s;
-      font-family: 'Jost', sans-serif;
-    }
-    .btn-collections:hover { background: var(--blue-deep); color: #fff; }
-
-    /* FOOTER */
-    footer {
-      background: var(--ink);
-      color: var(--paper);
-      padding: 40px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-    }
-    .footer-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      color: var(--blue);
-      letter-spacing: 0.08em;
-    }
-    .footer-links { display: flex; gap: 28px; }
-    .footer-links a {
-      color: var(--paper);
-      text-decoration: none;
-      text-transform: uppercase;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-    }
-    .footer-links a:hover { opacity: 1; }
-
-    /* FADE UP */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    /* MOBILE NAV BUTTONS */
-    .nav-mobile-buttons { display: none; gap: 8px; align-items: center; }
-    .nav-shop-mobile {
-      display: none;
-      background: var(--blue-dark);
-      color: #fff;
-      padding: 6px 14px;
-      border-radius: 2px;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      white-space: nowrap;
-      font-family: 'Jost', sans-serif;
-    }
-    .nav-shop-mobile-ghost {
-      display: none;
-      background: transparent;
-      color: var(--blue-deep);
-      padding: 6px 14px;
-      border-radius: 2px;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      white-space: nowrap;
-      border: 1px solid var(--blue-deep);
-      font-family: 'Jost', sans-serif;
-    }
-
-    @media (max-width: 768px) {
-      #site-cursor { display: none !important; }
-      body, a, button, .flip-card { cursor: auto !important; }
-      a, button { cursor: pointer !important; }
-      html { overflow-x: hidden; }
-      body { overflow-x: hidden; width: 100vw; max-width: 100vw; }
-      * { max-width: 100%; }
-      nav {
-        padding: 0 16px;
-        height: 64px;
-        overflow: hidden;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      .nav-logo {
-      width: 130px; height: 130px;
-      flex-shrink: 0; position: relative; z-index: 101;
-      margin-top: 32px; pointer-events: none;
-    }
-      .nav-brand-text-link { text-decoration: none; }
-    .nav-brand-text { font-size: 1rem; }
-      .nav-links { display: none !important; }
-      .nav-mobile-buttons { display: flex !important; }
-      .nav-shop-mobile { display: inline-block !important; }
-      .nav-shop-mobile-ghost { display: inline-block !important; }
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 40px 20px 32px;
-        gap: 24px;
-        min-height: auto;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      .hero-left { padding-left: 0 !important; }
-      .hero-right-single { width: 100%; max-width: 100%; aspect-ratio: 1/1; }
-      .hero-title { font-size: clamp(36px, 10vw, 52px); }
-      .hero-body { max-width: 100%; }
-      .section-header { padding: 48px 20px 32px; }
-      .section-title { font-size: clamp(26px, 7vw, 40px); }
-      .section-divider { padding: 40px 20px; }
-      .divider-line { width: 90%; }
-      .gallery {
-        padding: 0 12px 40px;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        width: 100vw;
-        max-width: 100vw;
-        box-sizing: border-box;
-      }
-      .flip-card { min-height: 160px; cursor: pointer !important; }
-      .flip-card-inner { transform: none !important; transition: none !important; }
-      .flip-back { display: none !important; }
-      .flip-front { position: relative !important; }
-      footer {
-        flex-direction: column;
-        gap: 16px;
-        padding: 28px 16px;
-        text-align: center;
-        width: 100vw;
-      }
-      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
-    }
+    body { background: var(--cream); }
   </style>
 </head>
 <body>
 
+<!-- CURSOR -->
 <div id="site-cursor">
   <svg id="cursor-svg" width="24" height="47" viewBox="0 0 354.14407 707.8291">
     <g id="cursor-g" transform="translate(139.03787,207.75)">
@@ -469,13 +41,13 @@
 <div class="ticker">
   <div class="ticker-inner">
     <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
-    <span>New Baby & Baby Shower</span><span class="ticker-dot">✦</span>
+    <span>New Baby &amp; Baby Shower</span><span class="ticker-dot">✦</span>
     <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
     <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
     <span>555+ Designs</span><span class="ticker-dot">✦</span>
     <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
     <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
-    <span>New Baby & Baby Shower</span><span class="ticker-dot">✦</span>
+    <span>New Baby &amp; Baby Shower</span><span class="ticker-dot">✦</span>
     <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
     <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
     <span>555+ Designs</span><span class="ticker-dot">✦</span>
@@ -485,7 +57,10 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-brand-wrap"><img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/><a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a></div>
+  <div class="nav-brand-wrap">
+    <img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/>
+    <a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a>
+  </div>
   <div class="nav-links">
     <a href="homepage.html">Home</a>
     <a href="gallery.html">Gallery</a>
@@ -527,7 +102,6 @@
 <!-- GALLERY -->
 <div class="gallery fade-up">
 
-  <!-- 1. Baby Boy Cupcake Toppers -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -535,7 +109,7 @@
         <div class="flip-front-label">Baby Boy Cupcake Toppers</div>
       </div>
       <div class="flip-back">
-        <img src="images/baby-boy-cupcake-toppers-layers.JPEG" alt="Baby Boy Cupcake Toppers layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/baby-boy-cupcake-toppers-layers.JPEG" alt="Baby Boy Cupcake Toppers layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/1445918023/baby-boy-clothing-shower-cupcake-toppers" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -543,7 +117,6 @@
     </div>
   </div>
 
-  <!-- 2. Baby Girl Cupcake Toppers -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -551,7 +124,7 @@
         <div class="flip-front-label">Baby Girl Cupcake Toppers</div>
       </div>
       <div class="flip-back">
-        <img src="images/baby-girl-cupcake-toppers-layers.JPEG" alt="Baby Girl Cupcake Toppers layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/baby-girl-cupcake-toppers-layers.JPEG" alt="Baby Girl Cupcake Toppers layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/1430738190/baby-girl-clothing-shower-cupcake" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -559,7 +132,6 @@
     </div>
   </div>
 
-  <!-- 3. Stork and Flamingo Cupcake Toppers -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -567,7 +139,7 @@
         <div class="flip-front-label">Stork &amp; Flamingo Cupcake Toppers</div>
       </div>
       <div class="flip-back">
-        <img src="images/stork-cupcake-topper-layers.JPEG" alt="Stork and Flamingo Cupcake Toppers layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/stork-cupcake-topper-layers.JPEG" alt="Stork and Flamingo Cupcake Toppers layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/1464255677/stork-and-flamingo-baby-shower-cupcake" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -575,7 +147,6 @@
     </div>
   </div>
 
-  <!-- 4. Baby Boy Onesie Cupcake Toppers -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -583,7 +154,7 @@
         <div class="flip-front-label">Baby Boy Onesie Cupcake Toppers</div>
       </div>
       <div class="flip-back">
-        <img src="images/baby-boy-onesie-cupcake-toppers-layers.JPEG" alt="Baby Boy Onesie Cupcake Toppers layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/baby-boy-onesie-cupcake-toppers-layers.JPEG" alt="Baby Boy Onesie Cupcake Toppers layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/1445922571/baby-boy-onesies-shower-cupcake-toppers" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -591,7 +162,6 @@
     </div>
   </div>
 
-  <!-- 5. Baby Girl Onesie Cupcake Toppers -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -599,7 +169,7 @@
         <div class="flip-front-label">Baby Girl Onesie Cupcake Toppers</div>
       </div>
       <div class="flip-back">
-        <img src="images/baby-girl-onesie-cupcake-toppers-layers.JPEG" alt="Baby Girl Onesie Cupcake Toppers layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/baby-girl-onesie-cupcake-toppers-layers.JPEG" alt="Baby Girl Onesie Cupcake Toppers layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/1445921347/baby-girl-onesies-shower-cupcake-toppers" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -607,7 +177,6 @@
     </div>
   </div>
 
-  <!-- 6. Baby Onesie Wine Glass Charms -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -615,7 +184,7 @@
         <div class="flip-front-label">Baby Onesie Wine Glass Charms</div>
       </div>
       <div class="flip-back">
-        <img src="images/baby-onesie-wineglass-charms-layers.JPEG" alt="Baby Onesie Wine Glass Charms layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/baby-onesie-wineglass-charms-layers.JPEG" alt="Baby Onesie Wine Glass Charms layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/1462263497/baby-onesie-wine-glass-charm-svg-diy" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -623,7 +192,6 @@
     </div>
   </div>
 
-  <!-- 7. Baby Girl Card -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -631,7 +199,7 @@
         <div class="flip-front-label">Baby Girl Card</div>
       </div>
       <div class="flip-back">
-        <img src="images/baby-girl-card-layers.JPEG" alt="Baby Girl Card layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/baby-girl-card-layers.JPEG" alt="Baby Girl Card layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/4306313183/new-baby-girl-card-and-envelope-svg" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -639,7 +207,6 @@
     </div>
   </div>
 
-  <!-- 8. Baby Boy Card -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -647,7 +214,7 @@
         <div class="flip-front-label">Baby Boy Card</div>
       </div>
       <div class="flip-back">
-        <img src="images/baby-boy-card-layers.JPEG" alt="Baby Boy Card layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/baby-boy-card-layers.JPEG" alt="Baby Boy Card layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/4306318202/new-baby-boy-a6-card-and-envelope-svg" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -655,7 +222,6 @@
     </div>
   </div>
 
-  <!-- 9. New Baby Shower Card -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -663,7 +229,7 @@
         <div class="flip-front-label">New Baby Shower Card</div>
       </div>
       <div class="flip-back">
-        <img src="images/baby-shower-card-layers.JPEG" alt="New Baby Shower Card layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/baby-shower-card-layers.JPEG" alt="New Baby Shower Card layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/1845180858/new-baby-shower-card-layered-svg-card" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -671,7 +237,6 @@
     </div>
   </div>
 
-  <!-- 10. Baby Alphabet Shower Banner -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -679,7 +244,7 @@
         <div class="flip-front-label">Baby Alphabet Shower Banner</div>
       </div>
       <div class="flip-back">
-        <img src="images/baby-alphabet-banner-layers.JPEG" alt="Baby Alphabet Shower Banner layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/baby-alphabet-banner-layers.JPEG" alt="Baby Alphabet Shower Banner layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/4486040170/baby-bodysuit-alphabet-shower-banner-svg" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -687,7 +252,6 @@
     </div>
   </div>
 
-  <!-- 11. Rubber Duckies -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -695,7 +259,7 @@
         <div class="flip-front-label">Rubber Duckies</div>
       </div>
       <div class="flip-back">
-        <img src="images/rubber-duckies-layers.JPEG" alt="Rubber Duckies layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/rubber-duckies-layers.JPEG" alt="Rubber Duckies layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/1769450336/rubber-duckies-svgs-layered-digital" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -703,7 +267,6 @@
     </div>
   </div>
 
-  <!-- 12. Dancing Baby Cupcake Toppers -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-front">
@@ -711,7 +274,7 @@
         <div class="flip-front-label">Dancing Baby Cupcake Toppers</div>
       </div>
       <div class="flip-back">
-        <img src="images/dancing-baby-cupcake-toppers-layers.JPEG" alt="Dancing Baby Cupcake Toppers layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+        <img src="images/dancing-baby-cupcake-toppers-layers.JPEG" alt="Dancing Baby Cupcake Toppers layers"/>
         <div class="flip-back-overlay">
           <a href="https://www.etsy.com/listing/4375077930/dancing-baby-shower-cupcake-toppers-and" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -721,9 +284,9 @@
 
 </div>
 
-<!-- BOTTOM CTA -->
-<div style="text-align:center; padding: 56px 48px 72px; background: #d6eaf5;">
-  <a href="gallery.html" class="btn-collections" style="font-size:0.9rem; padding:16px 40px;">← Back to All Collections</a>
+<!-- BACK BAR -->
+<div class="back-bar">
+  <a href="gallery.html">← Back to All Collections</a>
 </div>
 
 <!-- FOOTER -->
@@ -860,4 +423,4 @@
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
-</html>
+</html>.
