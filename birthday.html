@@ -6,324 +6,23 @@
   <title>Birthday Collection | Purple Peregrine</title>
   <link rel="icon" type="image/svg+xml" href="images/Logo2.svg">
   <link rel="icon" type="image/png" href="images/Logo2.png">
+  <link rel="stylesheet" href="shared.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body, a, button, input, select, textarea, .flip-card {
-      cursor: none !important;
-    }
-    body {
-      background: #E8517A;
-      font-family: 'Jost', sans-serif;
-      color: var(--ink);
-      overflow-x: hidden;
-      width: 100%;
-    }
-    /* CURSOR */
-    #site-cursor {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-12px,-8px);
-      transition: opacity 0.2s ease;
-    }
-    .confetti-piece {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-
-
+    /* ── PAGE THEME: Birthday ── */
     :root {
-      --red: #E8517A;
-      --red-dark: #c93d64;
-      --grey: #6b6b6b;
-      --grey-light: #e8e8e8;
-      --grey-pale: #f5f5f5;
-      --cream: #fdfcfc;
-      --ink: #1a1a1a;
-      --white: #ffffff;
+      --primary:       #E8517A;
+      --primary-dark:  #c93d64;
+      --primary-light: #E8517A;
+      --accent:        #ffe066;
+      --divider-bg:    #E8517A;
+      --nav-bg:        #e8e8e8;
+      --nav-border:    #E8517A;
+      --cream:  #fdfcfc;
+      --ink:    #1a1a1a;
+      --muted:  #6b6b6b;
+      --ticker-dot: #ffe066;
     }
-
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: #e8e8e8;
-      border-bottom: 3px solid var(--red);
-      padding: 0 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100px;
-      overflow: visible;
-    }
-    .nav-brand-wrap { display: flex; align-items: center; gap: 14px; }
-    .nav-logo {
-      width: 130px; height: 130px;
-      flex-shrink: 0; position: relative; z-index: 101;
-      margin-top: 32px; pointer-events: none;
-    }
-    .nav-brand-text-link { text-decoration: none; }
-    .nav-brand-text {
-      font-family: serif;
-      font-size: 1.8rem;
-      color: var(--red);
-    }
-    .nav-links { display: flex; gap: 40px; align-items: center; }
-    .nav-links a {
-      font-size: 0.8rem;
-      color: var(--grey);
-      text-decoration: none;
-      text-transform: uppercase;
-      padding: 20px 12px;
-      margin: -20px -12px;
-    }
-    .nav-shop {
-      background: var(--red) !important;
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 2px;
-    }
-
-    .hero {
-      background: #E8517A;
-      padding: 80px 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      min-height: 50vh;
-    }
-    .hero-right-single {
-      aspect-ratio: 1/1;
-      overflow: hidden;
-      border-radius: 4px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-    .hero-right-single img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-    .hero-right-single:hover img { transform: scale(1.04); }
-    .hero-left h1 {
-      font-family: serif;
-      font-size: clamp(52px, 7vw, 96px);
-      color: #fff;
-      font-weight: 600;
-      line-height: 1.0;
-      margin-bottom: 20px;
-    }
-    .hero-left { padding-left: 48px; }
-    .hero-left h1 em { font-style: italic; color: rgba(255,255,255,0.75); }
-    .hero-left p {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.8;
-      max-width: 420px;
-      margin-bottom: 32px;
-    }
-    .btn-white {
-      background: #fff;
-      color: var(--red);
-      padding: 14px 32px;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      display: inline-block;
-    }
-    .hero-right {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-
-    .gallery {
-      padding: 0 48px 80px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .flip-card {
-      aspect-ratio: 1/1;
-      perspective: 1000px;
-      min-height: 200px;
-      background: rgba(255,255,255,0.1);
-    }
-    .flip-card-inner {
-      position: relative;
-      width: 100%; height: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
-    }
-    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-    .flip-front, .flip-back {
-      position: absolute;
-      width: 100%; height: 100%;
-      backface-visibility: hidden;
-      overflow: hidden;
-      border-radius: 2px;
-    }
-    .flip-front img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .flip-front-label {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 24px 16px 16px;
-      background: linear-gradient(transparent, rgba(26,26,26,0.75));
-      color: #fff;
-      font-size: 0.9rem;
-    }
-    .flip-back { transform: rotateY(180deg); }
-    .flip-back-overlay {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 16px;
-      background: linear-gradient(transparent, rgba(26,26,26,0.88));
-    }
-    .flip-back-link {
-      display: inline-block;
-      padding: 8px 20px;
-      border: 1px solid #fff;
-      color: #fff;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 1px;
-    }
-    .section-divider {
-      padding: 72px 48px 56px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-      background: #E8517A;
-    }
-    .divider-line {
-      width: 60%;
-      height: 2px;
-      background: rgba(255,255,255,0.4);
-    }
-    .divider-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-    .section-header { text-align: center; padding: 72px 48px 48px; }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(40px, 5vw, 72px);
-      color: #ffffff;
-      font-weight: 600;
-      line-height: 1.1;
-    }
-    .section-tag {
-      font-size: 0.8rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      display: block;
-    }
-
-    .nav-mobile-buttons {
-      display: none;
-      gap: 8px;
-      align-items: center;
-    }
-    .nav-etsy-main {
-      background: #6b6b6b !important;
-    }
-    .nav-shop-mobile {
-      display: none;
-      background: #E8517A;
-      color: #fff;
-      padding: 6px 14px;
-      border-radius: 2px;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    @media (max-width: 768px) {
-      /* No scissors on mobile */
-      #site-cursor { display: none !important; }
-      body, a, button, .flip-card { cursor: auto !important; }
-      a, button { cursor: pointer !important; }
-
-      html { overflow-x: hidden; }
-      body { overflow-x: hidden; width: 100vw; max-width: 100vw; }
-      * { max-width: 100%; }
-
-      nav {
-        padding: 0 16px;
-        height: 64px;
-        overflow: hidden;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      .nav-logo {
-      width: 130px; height: 130px;
-      flex-shrink: 0; position: relative; z-index: 101;
-      margin-top: 32px; pointer-events: none;
-    }
-      .nav-brand-text-link { text-decoration: none; }
-    .nav-brand-text { font-size: 1rem; }
-      .nav-links { display: none !important; }
-      .nav-mobile-buttons { display: flex !important; gap: 8px; align-items: center; }
-      .nav-shop-mobile { display: inline-block !important; }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 32px 16px;
-        gap: 20px;
-        min-height: auto;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      .hero-left { padding-left: 0 !important; }
-      .hero-right-single {
-        width: 100%;
-        max-width: 100%;
-        aspect-ratio: 1/1;
-      }
-      .hero-left h1 { font-size: clamp(32px, 9vw, 48px); }
-
-      .section-divider {
-        padding: 32px 16px;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      .divider-line { width: 90%; }
-      .section-title { font-size: clamp(24px, 6vw, 36px); }
-
-      .gallery {
-        padding: 0 12px 40px;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        width: 100vw;
-        max-width: 100vw;
-        box-sizing: border-box;
-      }
-      .flip-card { min-height: 160px; }
-      /* Mobile - disable flip, show front only */
-      .flip-card { cursor: pointer !important; }
-      .flip-card-inner { transform: none !important; transition: none !important; }
-      .flip-back { display: none !important; }
-      .flip-front { position: relative !important; }
-
-      footer {
-        flex-direction: column;
-        gap: 16px;
-        padding: 28px 16px;
-        text-align: center;
-        width: 100vw;
-      }
-      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
-    }
+    body { background: var(--cream); }
   </style>
 </head>
 <body>
@@ -336,211 +35,89 @@
   </svg>
 </div>
 
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
+    <span>Birthday &amp; Celebration</span><span class="ticker-dot">✦</span>
+    <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
+    <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
+    <span>555+ Designs</span><span class="ticker-dot">✦</span>
+    <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
+    <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
+    <span>Birthday &amp; Celebration</span><span class="ticker-dot">✦</span>
+    <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
+    <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
+    <span>555+ Designs</span><span class="ticker-dot">✦</span>
+    <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
+  </div>
+</div>
+
 <nav>
-  <div class="nav-brand-wrap"><img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/><a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a></div>
+  <div class="nav-brand-wrap">
+    <img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/>
+    <a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a>
+  </div>
   <div class="nav-links">
     <a href="homepage.html">Home</a>
     <a href="gallery.html">Gallery</a>
     <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1795809726&from_page=listing&section_id=42023228" class="nav-shop" target="_blank" rel="noopener">Shop Birthday on Etsy</a>
   </div>
   <div class="nav-mobile-buttons">
-    <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop-mobile nav-etsy-main" target="_blank" rel="noopener">Etsy Shop</a>
-    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1795809726&from_page=listing&section_id=42023228" class="nav-shop-mobile" target="_blank" rel="noopener">Birthday</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1795809726&from_page=listing&section_id=42023228" class="nav-shop-mobile" target="_blank" rel="noopener">Shop Etsy</a>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-left">
-    <h1>Birthday<br><em>&amp; Celebration</em><br>Collection</h1>
-    <p>Birthday cards, banners, cake toppers and other birthday decor SVGs.</p>
-    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1795809726&from_page=listing&section_id=42023228" class="btn-white" target="_blank" rel="noopener">Shop Birthday collection →</a>
+    <div class="hero-eyebrow">SVG Cut Files for Cricut</div>
+    <h1 class="hero-title">Birthday<br><em>&amp; Celebration</em><br>Collection</h1>
+    <p class="hero-body">Birthday cards, banners, cake toppers and other birthday decor SVGs.</p>
+    <div class="hero-buttons">
+      <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1795809726&from_page=listing&section_id=42023228" class="btn-primary" target="_blank" rel="noopener">Shop Birthday collection →</a>
+      <a href="gallery.html" class="btn-ghost">← All Collections</a>
+    </div>
   </div>
   <div class="hero-right-single">
-    <img src="images/birthday-collection.JPEG" alt="Nordic Collection"/>
+    <img src="images/birthday-collection.JPEG" alt="Birthday Collection"/>
   </div>
 </section>
 
-<div class="section-divider">
+<div class="section-divider fade-up">
   <div class="divider-line"></div>
   <div class="divider-content">
     <span class="section-tag">SVG Cut Files</span>
     <h2 class="section-title">Browse the Birthday Collection</h2>
-    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1795809726&from_page=listing&section_id=42023228" class="btn-white" target="_blank" rel="noopener">Shop all Birthday on Etsy →</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1795809726&from_page=listing&section_id=42023228" class="btn-primary" target="_blank" rel="noopener">Shop all Birthday on Etsy →</a>
+    <a href="gallery.html" class="btn-collections">← All Collections</a>
   </div>
   <div class="divider-line"></div>
 </div>
 
-<div class="gallery">
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/balloon-banner.JPEG" alt="Balloon Banner"/>
-        <div class="flip-front-label">Balloon Banner</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/balloon-banner-layers.JPEG" alt="Balloon Banner layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4445592854" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/animal-banner.JPEG" alt="Animal Banner"/>
-        <div class="flip-front-label">Animal Banner</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/animal-banner-layers.JPEG" alt="Animal Banner layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1740373411" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/basket-ball-cupcake-toppers.JPEG" alt="Basketball Cupcake Toppers"/>
-        <div class="flip-front-label">Basketball Cupcake Toppers</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/basket-ball-cupcake-toppers-layers.JPEG" alt="Basketball Cupcake Toppers layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1423793838" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/sailboats-birthday-card.JPEG" alt="Sailboats Birthday Card"/>
-        <div class="flip-front-label">Sailboats Birthday Card</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/sailboats-birthday-card-layers.JPEG" alt="Sailboats Birthday Card layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1877085019" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/princess-letters-banner.JPEG" alt="Princess Letters Banner"/>
-        <div class="flip-front-label">Princess Letters Banner</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/princess-letters-banner-layers.JPEG" alt="Princess Letters Banner layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4437320345" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/princess-cupcake-toppers.JPEG" alt="Princess Cupcake Toppers"/>
-        <div class="flip-front-label">Princess Cupcake Toppers</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/princess-cupcake-toppers-layers.JPEG" alt="Princess Cupcake Toppers layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1540426128" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/knights-letters-banner.JPEG" alt="Knights Letters Banner"/>
-        <div class="flip-front-label">Knights Letters Banner</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/knights-letters-banner-layers.JPEG" alt="Knights Letters Banner layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4485614969" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/dragon-paperchain.JPEG" alt="Dragon Paperchain"/>
-        <div class="flip-front-label">Dragon Paperchain</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/dragon-paperchain-layers.JPEG" alt="Dragon Paperchain layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4390398895" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/seagull-birthday-card.JPEG" alt="Seagull Birthday Card"/>
-        <div class="flip-front-label">Seagull Birthday Card</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/seagull-birthday-card-layers.JPEG" alt="Seagull Birthday Card layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4322198849" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/sunflower-birthday-card.JPEG" alt="Sunflower Birthday Card"/>
-        <div class="flip-front-label">Sunflower Birthday Card</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/sunflower-birthday-card-layers.JPEG" alt="Sunflower Birthday Card layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4366031214" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/tutu-banner.JPEG" alt="Tutu Banner"/>
-        <div class="flip-front-label">Tutu Banner</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/tutu-banner-layers.JPEG" alt="Tutu Banner layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1436654959" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/tutu-cupcake-topper.JPEG" alt="Tutu Cupcake Topper"/>
-        <div class="flip-front-label">Tutu Cupcake Topper</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/tutu-cupcake-topper-layers.JPEG" alt="Tutu Cupcake Topper layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1435986873" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="gallery fade-up">
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/balloon-banner.JPEG" alt="Balloon Banner"/><div class="flip-front-label">Balloon Banner</div></div><div class="flip-back"><img src="images/balloon-banner-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/4445592854" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/animal-banner.JPEG" alt="Animal Banner"/><div class="flip-front-label">Animal Banner</div></div><div class="flip-back"><img src="images/animal-banner-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1740373411" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/basket-ball-cupcake-toppers.JPEG" alt="Basketball Cupcake Toppers"/><div class="flip-front-label">Basketball Cupcake Toppers</div></div><div class="flip-back"><img src="images/basket-ball-cupcake-toppers-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1423793838" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/sailboats-birthday-card.JPEG" alt="Sailboats Birthday Card"/><div class="flip-front-label">Sailboats Birthday Card</div></div><div class="flip-back"><img src="images/sailboats-birthday-card-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1877085019" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/princess-letters-banner.JPEG" alt="Princess Letters Banner"/><div class="flip-front-label">Princess Letters Banner</div></div><div class="flip-back"><img src="images/princess-letters-banner-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/4437320345" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/princess-cupcake-toppers.JPEG" alt="Princess Cupcake Toppers"/><div class="flip-front-label">Princess Cupcake Toppers</div></div><div class="flip-back"><img src="images/princess-cupcake-toppers-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1540426128" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/knights-letters-banner.JPEG" alt="Knights Letters Banner"/><div class="flip-front-label">Knights Letters Banner</div></div><div class="flip-back"><img src="images/knights-letters-banner-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/4485614969" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/dragon-paperchain.JPEG" alt="Dragon Paperchain"/><div class="flip-front-label">Dragon Paperchain</div></div><div class="flip-back"><img src="images/dragon-paperchain-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/4390398895" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/seagull-birthday-card.JPEG" alt="Seagull Birthday Card"/><div class="flip-front-label">Seagull Birthday Card</div></div><div class="flip-back"><img src="images/seagull-birthday-card-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/4322198849" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/sunflower-birthday-card.JPEG" alt="Sunflower Birthday Card"/><div class="flip-front-label">Sunflower Birthday Card</div></div><div class="flip-back"><img src="images/sunflower-birthday-card-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/4366031214" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/tutu-banner.JPEG" alt="Tutu Banner"/><div class="flip-front-label">Tutu Banner</div></div><div class="flip-back"><img src="images/tutu-banner-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1436654959" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/tutu-cupcake-topper.JPEG" alt="Tutu Cupcake Topper"/><div class="flip-front-label">Tutu Cupcake Topper</div></div><div class="flip-back"><img src="images/tutu-cupcake-topper-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1435986873" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
 </div>
 
+<div class="back-bar"><a href="gallery.html">← Back to All Collections</a></div>
+
+<footer>
+  <div class="footer-brand">Purple Peregrine</div>
+  <div class="footer-links">
+    <a href="gallery.html">Gallery</a>
+    <a href="homepage.html">Home</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" target="_blank" rel="noopener">Etsy</a>
+  </div>
+</footer>
 
 <script>
   const cursorEl = document.getElementById('site-cursor');
@@ -686,18 +263,5 @@ document.addEventListener('mousemove', function(e) {
     });
   });
 </script>
-
-<div style="text-align:center;padding:56px 48px 72px;background:linear-gradient(135deg,#f5f0e8 0%,#ede4d4 100%);">
-  <a href="gallery.html" style="background:transparent;color:#8a7560;padding:16px 40px;font-size:0.9rem;text-transform:uppercase;text-decoration:none;border-radius:2px;display:inline-block;border:1px solid #8a7560;letter-spacing:0.08em;font-family:sans-serif;">← Back to All Collections</a>
-</div>
-
-<footer style="background:#1a1a1a;color:#e8e8e8;padding:32px 48px;display:flex;align-items:center;justify-content:space-between;font-size:0.78rem;letter-spacing:0.08em;flex-wrap:wrap;gap:16px;">
-  <div style="font-family:serif;font-size:1.4rem;color:#D4AF37;letter-spacing:0.08em;">Purple Peregrine</div>
-  <div style="display:flex;gap:28px;flex-wrap:wrap;">
-    <a href="gallery.html" style="color:#e8e8e8;text-decoration:none;text-transform:uppercase;padding:16px 8px;margin:-16px -8px;display:inline-block;">Gallery</a>
-    <a href="homepage.html" style="color:#e8e8e8;text-decoration:none;text-transform:uppercase;padding:16px 8px;margin:-16px -8px;display:inline-block;">Home</a>
-    <a href="https://www.etsy.com/shop/PurplePeregrine" target="_blank" rel="noopener" style="color:#e8e8e8;text-decoration:none;text-transform:uppercase;padding:16px 8px;margin:-16px -8px;display:inline-block;">Etsy</a>
-  </div>
-</footer>
 </body>
 </html>
