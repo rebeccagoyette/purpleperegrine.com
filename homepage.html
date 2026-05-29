@@ -41,12 +41,13 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      background: var(--primary);
     }
     .hero-eyebrow {
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: rgba(255,255,255,0.7);
       margin-bottom: 20px;
       display: flex;
       align-items: center;
@@ -56,28 +57,28 @@
       content: '';
       display: inline-block;
       width: 28px; height: 1px;
-      background: var(--muted);
+      background: rgba(255,255,255,0.5);
     }
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(52px, 7vw, 96px);
-      line-height: 0.95;
-      color: var(--primary);
+      line-height: 1.1;
+      color: var(--cream);
       margin-bottom: 24px;
       font-weight: 600;
     }
-    .hero-title em { font-style: italic; color: var(--primary-light); }
+    .hero-title em { font-style: italic; color: var(--accent); }
     .hero-body {
       font-size: 1rem;
       line-height: 1.8;
-      color: var(--muted);
+      color: rgba(255,255,255,0.85);
       max-width: 420px;
       margin-bottom: 40px;
     }
     .hero-buttons { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
     .btn-primary-hero {
-      background: var(--primary);
-      color: #fff;
+      background: var(--accent);
+      color: var(--primary);
       padding: 14px 32px;
       font-size: 0.82rem;
       letter-spacing: 0.12em;
@@ -88,7 +89,7 @@
       font-family: 'Jost', sans-serif;
       display: inline-block;
     }
-    .btn-primary-hero:hover { background: var(--primary-light); transform: translateY(-2px); }
+    .btn-primary-hero:hover { background: #fff; transform: translateY(-2px); }
     .btn-ghost {
       font-size: 0.82rem;
       letter-spacing: 0.1em;
@@ -105,12 +106,12 @@
       gap: 40px;
       margin-top: 56px;
       padding-top: 40px;
-      border-top: 1px solid var(--paper-dark);
+      border-top: 1px solid rgba(255,255,255,0.25);
     }
     .hero-stat-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem;
-      color: var(--primary);
+      color: var(--accent);
       font-weight: 600;
       line-height: 1;
     }
@@ -118,7 +119,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: rgba(255,255,255,0.6);
       margin-top: 4px;
     }
     .hero-right {
@@ -133,6 +134,10 @@
       transition: transform 8s ease;
     }
     .hero-right:hover .hero-img-main { transform: scale(1.04); }
+
+    .hero-mobile-brand {
+      display: none;
+    }
 
     /* ── FEATURED COLLECTIONS TILES ── */
     .tile-grid-home {
@@ -267,6 +272,17 @@
       /* Image first on mobile */
       .hero-right { order: 1; min-height: 60vw; }
       .hero-left { order: 2; padding: 40px 24px 32px; }
+      .hero-mobile-brand {
+        display: block;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.6rem;
+        color: var(--primary);
+        letter-spacing: 0.08em;
+        font-weight: 600;
+        text-align: center;
+        padding: 16px 24px 12px;
+        background: var(--cream);
+      }
       .hero-title { font-size: clamp(36px, 10vw, 56px); }
       .hero-stats { gap: 24px; margin-top: 32px; padding-top: 28px; }
       .hero-stat-num { font-size: 1.8rem; }
@@ -326,7 +342,7 @@
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Cricut Contributing Artist since 2023</div>
-    <h1 class="hero-title">Paper cuts<br><em>designed and</em><br>tested with care.</h1>
+    <h1 class="hero-title">Paper designs<br><em style="margin-left:0.6em;">created and</em><br>tested with care.</h1>
     <p class="hero-body">SVG cut files for Cricut crafters who want something a little different — ready to upload to your cutting machine.</p>
     <div class="hero-buttons">
       <a href="https://www.etsy.com/shop/PurplePeregrine" class="btn-primary-hero" target="_blank" rel="noopener">Shop on Etsy</a>
@@ -347,6 +363,7 @@
     </div>
   </div>
   <div class="hero-right">
+    <div class="hero-mobile-brand">Purple Peregrine</div>
     <img class="hero-img-main" src="images/bee-bookmark.JPEG" alt="Bumble Bee Bookmark"/>
   </div>
 </section>
