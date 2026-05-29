@@ -6,99 +6,37 @@
   <title>Collections Gallery | Purple Peregrine</title>
   <link rel="icon" type="image/svg+xml" href="images/Logo2.svg">
   <link rel="icon" type="image/png" href="images/Logo2.png">
+  <link rel="stylesheet" href="shared.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body, a, button, input, select, textarea, .flip-card {
-      cursor: none !important;
-    }
-    /* CURSOR */
-    #site-cursor {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-12px,-8px);
-      transition: opacity 0.2s ease;
-    }
-    .confetti-piece {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-
-
+    /* ── PAGE THEME: Gallery (Bookmark colours) ── */
     :root {
-      --purple: #62385e;
-      --purple-light: #8a5485;
-      --gold: #ebdb43;
-      --cream: #FDF8F4;
-      --paper: #EDE0D4;
-      --paper-dark: #d4c4b4;
-      --ink: #2a1a28;
-      --muted: #8a6080;
+      --primary:       #7d4878;
+      --primary-dark:  #8a5485;
+      --primary-light: #7d4878;
+      --accent:        #ebdb43;
+      --divider-bg:    #7d4878;
+      --nav-bg:        #FDF8F4;
+      --nav-border:    #d4c4b4;
+      --cream:  #FDF8F4;
+      --paper:  #EDE0D4;
+      --ink:    #2a1a28;
+      --muted:  #8a6080;
+      --btn-text: #7d4878;
+      --ticker-dot: #c9b800;
     }
-    body {
-      background: var(--cream);
-      font-family: sans-serif;
-      color: var(--ink);
-      overflow-x: hidden;
-    }
+    body { background: var(--cream); }
+    .ticker { background: var(--primary); color: var(--accent); }
 
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--cream);
-      border-bottom: 2px solid var(--paper-dark);
-      padding: 0 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100px;
-      overflow: visible;
-    }
-    .nav-brand-wrap { display: flex; align-items: center; gap: 14px; }
-    .nav-logo {
-      width: 130px; height: 130px;
-      flex-shrink: 0; position: relative; z-index: 101;
-      margin-top: 32px; pointer-events: none;
-    }
-    .nav-brand-text-link { text-decoration: none; }
-    .nav-brand-text {
-      font-family: serif;
-      font-size: 1.8rem;
-      color: var(--purple);
-      letter-spacing: 0.08em;
-      font-weight: 600;
-    }
-    .nav-links { display: flex; gap: 40px; align-items: center; }
-    .nav-links a {
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.2s;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 2px;
-    }
-    .nav-links a:hover { color: var(--purple); border-bottom-color: var(--purple); }
-    .nav-shop {
-      background: var(--purple) !important;
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 2px;
-      border-bottom: none !important;
-    }
-    .nav-shop:hover { background: var(--purple-light) !important; }
-
+    /* ── GALLERY PAGE HERO ── */
     .page-hero {
       background: #8a5485;
       padding: 72px 48px;
       text-align: center;
     }
     .page-hero h1 {
-      font-family: serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(48px, 6vw, 88px);
-      color: var(--gold);
+      color: var(--accent);
       font-weight: 600;
       margin-bottom: 16px;
     }
@@ -109,23 +47,10 @@
       margin: 0 auto;
       line-height: 1.8;
     }
-    .section-header { padding: 64px 48px 32px; }
-    .section-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      display: block;
-      margin-bottom: 10px;
-    }
-    .section-title {
-      font-family: serif;
-      font-size: clamp(28px, 3.5vw, 44px);
-      color: var(--purple);
-      font-weight: 600;
-    }
+
+    /* ── TILE GRID ── */
     .tile-grid {
-      padding: 0 48px 64px;
+      padding: 48px 48px 64px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
@@ -154,8 +79,8 @@
     .tile-badge {
       position: absolute;
       top: 12px; left: 12px;
-      background: var(--gold);
-      color: var(--purple);
+      background: var(--accent);
+      color: var(--primary);
       font-size: 0.68rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -199,66 +124,18 @@
       color: var(--muted);
       letter-spacing: 0.04em;
     }
-    .divider {
-      height: 1px;
-      background: var(--paper-dark);
-      margin: 0 48px;
-    }
-    footer {
-      background: var(--ink);
-      padding: 40px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 48px;
-    }
-    .footer-brand {
-      font-family: serif;
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #888;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--gold); }
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
     @media (max-width: 768px) {
-      #site-cursor { display: none !important; }
-      body, a, button { cursor: auto !important; }
-      a, button { cursor: pointer !important; }
-      nav { padding: 0 16px; height: 64px; overflow: hidden; }
-      .nav-logo {
-      width: 130px; height: 130px;
-      flex-shrink: 0; position: relative; z-index: 101;
-      margin-top: 32px; pointer-events: none;
-    }
-      .nav-brand-text-link { text-decoration: none; }
-    .nav-brand-text { font-size: 1rem; }
-      .nav-links { display: none; }
       .page-hero { padding: 48px 20px; }
-      .section-header { padding: 40px 16px 24px; }
-      .tile-grid { padding: 0 16px 40px; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .tile-grid { padding: 24px 16px 40px; grid-template-columns: 1fr 1fr; gap: 12px; }
       .tile-label { font-size: 0.8rem; }
       .tile-hover-overlay { display: none !important; }
-      .divider { margin: 0 16px; }
-      footer { flex-direction: column; gap: 16px; padding: 28px 16px; text-align: center; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
     }
   </style>
 </head>
 <body>
 
+<!-- CURSOR -->
 <div id="site-cursor">
   <svg id="cursor-svg" width="24" height="47" viewBox="0 0 354.14407 707.8291">
     <g id="cursor-g" transform="translate(139.03787,207.75)">
@@ -267,111 +144,142 @@
   </svg>
 </div>
 
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
+    <span>Collections Gallery</span><span class="ticker-dot">✦</span>
+    <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
+    <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
+    <span>555+ Designs</span><span class="ticker-dot">✦</span>
+    <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
+    <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
+    <span>Collections Gallery</span><span class="ticker-dot">✦</span>
+    <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
+    <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
+    <span>555+ Designs</span><span class="ticker-dot">✦</span>
+    <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
+  </div>
+</div>
+
+<!-- NAV -->
 <nav>
-  <div class="nav-brand-wrap"><img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/><a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a></div>
+  <div class="nav-brand-wrap">
+    <img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/>
+    <a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a>
+  </div>
   <div class="nav-links">
     <a href="homepage.html">Home</a>
     <a href="gallery.html">Gallery</a>
-    <a href="#">Tutorials</a>
-    <a href="#">About</a>
     <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop" target="_blank" rel="noopener">Shop on Etsy</a>
+  </div>
+  <div class="nav-mobile-buttons">
+    <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop-mobile" target="_blank" rel="noopener">Shop Etsy</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="page-hero">
   <h1>Collections</h1>
   <p>Browse SVG cut files by collection — from seasonal favourites to year-round designs. Every file is designed and tested personally.</p>
 </div>
 
-
+<!-- TILE GRID -->
 <div class="tile-grid fade-up">
 
   <a href="summer.html" class="tile">
-    <div class="tile-img"><img src="images/seashell-garland.JPEG" alt="Summer"/><span class="tile-badge">Featured Now</span>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Summer</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
+    <div class="tile-img"><img src="images/seashell-garland.JPEG" alt="Summer"/>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Summer</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
     <div class="tile-label">Summer</div>
   </a>
+
   <a href="graduation.html" class="tile">
     <div class="tile-img"><img src="images/grad-robe-banner.JPEG" alt="Graduation"/><span class="tile-badge">Featured Now</span>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Graduation</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Graduation</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
     <div class="tile-label">Graduation</div>
+  </a>
+
+  <a href="religious.html" class="tile">
+    <div class="tile-img"><img src="images/communion-card.JPEG" alt="Religious"/>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Religious</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
+    <div class="tile-label">Religious</div>
+  </a>
+
+  <a href="wedding.html" class="tile">
+    <div class="tile-img"><img src="images/bride-groom-banner.JPEG" alt="Wedding"/>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Wedding</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
+    <div class="tile-label">Wedding</div>
+  </a>
+
+  <a href="baby.html" class="tile">
+    <div class="tile-img"><img src="images/baby-boy-cupcake-toppers.JPEG" alt="Baby"/>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Baby</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
+    <div class="tile-label">Baby</div>
+  </a>
+
+  <a href="birthday.html" class="tile">
+    <div class="tile-img"><img src="images/balloon-banner.JPEG" alt="Birthday"/>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Birthday</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
+    <div class="tile-label">Birthday</div>
+  </a>
+
+  <a href="cards.html" class="tile">
+    <div class="tile-img"><img src="images/poppy-card.JPEG" alt="Cards"/>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Cards</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
+    <div class="tile-label">Cards</div>
+  </a>
+
+  <a href="bookmarks.html" class="tile">
+    <div class="tile-img"><img src="images/butterfly-bookmark.JPEG" alt="Bookmarks"/>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Bookmarks</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
+    <div class="tile-label">Bookmarks</div>
+  </a>
+
+  <a href="paperfun.html" class="tile">
+    <div class="tile-img"><img src="images/puppets.JPEG" alt="Paper Fun"/>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Paper Fun</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
+    <div class="tile-label">Paper Fun</div>
+  </a>
+
+  <a href="animals.html" class="tile">
+    <div class="tile-img"><img src="images/bluejay.JPEG" alt="Animals &amp; Birds"/>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Animals &amp; Birds</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
+    <div class="tile-label">Animals &amp; Birds</div>
+  </a>
+
+  <a href="nordic.html" class="tile">
+    <div class="tile-img"><img src="images/nordic-dala-horse.JPEG" alt="Nordic &amp; Danish"/>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Nordic &amp; Danish</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
+    <div class="tile-label">Nordic &amp; Danish</div>
   </a>
 
   <a href="christmas.html" class="tile">
     <div class="tile-img"><img src="images/holly-door-corner.JPEG" alt="Christmas"/>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Christmas</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
+      <div class="tile-hover-overlay"><div class="tile-hover-name">Christmas</div><div class="tile-hover-cta">View collection →</div></div>
+    </div>
     <div class="tile-label">Christmas</div>
   </a>
-  <a href="nordic.html" class="tile">
-    <div class="tile-img"><img src="images/nordic-dala-horse.JPEG" alt="Nordic &amp; Danish"/>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Nordic &amp; Danish</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
-    <div class="tile-label">Nordic &amp; Danish</div>
-  </a>
-  <a href="bookmarks.html" class="tile">
-    <div class="tile-img"><img src="images/butterfly-bookmark.JPEG" alt="Bookmarks"/>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Bookmarks</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
-    <div class="tile-label">Bookmarks</div>
-  </a>
-  <a href="cards.html" class="tile">
-    <div class="tile-img"><img src="images/poppy-card.JPEG" alt="Cards"/>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Cards</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
-    <div class="tile-label">Cards</div>
-  </a>
-  <a href="religious.html" class="tile">
-    <div class="tile-img"><img src="images/communion-card.JPEG" alt="Religious"/>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Religious</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
-    <div class="tile-label">Religious</div>
-  </a>
-  <a href="animals.html" class="tile">
-    <div class="tile-img"><img src="images/bluejay.JPEG" alt="Animals &amp; Birds"/>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Animals &amp; Birds</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
-    <div class="tile-label">Animals &amp; Birds</div>
-  </a>
-  <a href="paperfun.html" class="tile">
-    <div class="tile-img"><img src="images/puppets.JPEG" alt="Paper Fun"/>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Paper Fun</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
-    <div class="tile-label">Paper Fun</div>
-  </a>
-  <a href="wedding.html" class="tile">
-    <div class="tile-img"><img src="images/bride-groom-banner.JPEG" alt="Wedding"/>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Wedding</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
-    <div class="tile-label">Wedding</div>
-  </a>
-  <a href="baby.html" class="tile">
-    <div class="tile-img"><img src="images/baby-boy-cupcake-toppers.JPEG" alt="Baby"/>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Baby</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
-    <div class="tile-label">Baby</div>
-  </a>
-  <a href="birthday.html" class="tile">
-    <div class="tile-img"><img src="images/balloon-banner.JPEG" alt="Birthday"/>
-        <div class="tile-hover-overlay"><div class="tile-hover-name">Birthday</div><div class="tile-hover-cta">View collection →</div></div>
-      </div>
-    <div class="tile-label">Birthday</div>
-  </a>
-
-
-
-
 
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-brand">Purple Peregrine</div>
   <div class="footer-links">
     <a href="homepage.html">Home</a>
     <a href="gallery.html">Gallery</a>
-    <a href="https://www.etsy.com/shop/PurplePeregrine" target="_blank" rel="noopener">Etsy Shop</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" target="_blank" rel="noopener">Etsy</a>
   </div>
 </footer>
 
@@ -392,9 +300,7 @@
   function updateCursor(x, y) {
     if (lastX !== null) {
       const dx = x - lastX, dy = y - lastY;
-      if (Math.sqrt(dx*dx+dy*dy) > 3) {
-        currentAngle = Math.atan2(dy, dx) * (180/Math.PI) + 90;
-      }
+      if (Math.sqrt(dx*dx+dy*dy) > 3) currentAngle = Math.atan2(dy, dx) * (180/Math.PI) + 90;
     }
     lastX = x; lastY = y;
     cursorEl.style.left = x + 'px';
@@ -405,10 +311,7 @@
   document.addEventListener('mousemove', function(e) {
     updateCursor(e.clientX, e.clientY);
     cursorEl.style.opacity = '1';
-    // Occasionally drop a paper snippet trail
-    if (mouseMoving && Math.random() < 0.4) {
-      spawnSnippet(e.clientX, e.clientY);
-    }
+    if (mouseMoving && Math.random() < 0.4) spawnSnippet(e.clientX, e.clientY);
     if (!mouseMoving) {
       mouseMoving = true;
       snipInterval = setInterval(() => {
@@ -434,8 +337,6 @@
   document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
   document.addEventListener('mousedown', e => { if (!e.target.closest('a') && !e.target.closest('button')) spawnConfetti(e.clientX, e.clientY); });
 
-  // Paper snippet trail following scissors
-  let trailTimer = null;
   const snippetShapes = ['▪','▫','◆','◇','✂','▸','▹'];
   function spawnSnippet(x, y) {
     const el = document.createElement('div');
