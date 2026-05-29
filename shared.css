@@ -90,8 +90,7 @@ nav {
   text-transform: uppercase;
   transition: color 0.2s;
   position: relative;
-  padding: 20px 12px;
-  margin: -20px -12px;
+  padding: 8px 12px;
 }
 .nav-links a::after {
   content: '';
