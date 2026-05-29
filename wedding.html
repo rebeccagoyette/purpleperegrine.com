@@ -3,343 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nordic & Danish Collection | Purple Peregrine</title>
+  <title>Wedding &amp; Bridal Collection | Purple Peregrine</title>
   <link rel="icon" type="image/svg+xml" href="images/Logo2.svg">
   <link rel="icon" type="image/png" href="images/Logo2.png">
+  <link rel="stylesheet" href="shared.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body, a, button, input, select, textarea, .flip-card {
-      cursor: none !important;
-    }
-    body {
-      background: linear-gradient(135deg, #f5f0e8 0%, #ede4d4 100%);
-      font-family: 'Jost', sans-serif;
-      color: var(--ink);
-      overflow-x: hidden;
-      width: 100%;
-    }
-    /* CURSOR */
-    #site-cursor {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-12px,-8px);
-      transition: opacity 0.2s ease;
-    }
-    .confetti-piece {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-
-
+    /* ── PAGE THEME: Wedding ── */
     :root {
-      --red: #8a7560;
-      --red-dark: #6b5c4a;
-      --grey: #6b6b6b;
-      --grey-light: #e8e8e8;
-      --grey-pale: #f5f5f5;
-      --cream: #fdfcfc;
-      --ink: #1a1a1a;
-      --white: #ffffff;
+      --primary:       #8a7560;
+      --primary-dark:  #6b5c4a;
+      --primary-light: #D4AF37;
+      --accent:        #D4AF37;
+      --divider-bg:    #f5f0e8;
+      --nav-bg:        #e8e8e8;
+      --nav-border:    #8a7560;
+      --cream:  #fdfcfc;
+      --ink:    #1a1a1a;
+      --muted:  #6b6b6b;
+      --ticker-dot: #D4AF37;
     }
-
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: #e8e8e8;
-      border-bottom: 2px solid #D4AF37;
-      padding: 0 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100px;
-      overflow: visible;
-    }
-    .nav-brand-wrap { display: flex; align-items: center; gap: 14px; }
-    .nav-logo {
-      width: 130px; height: 130px;
-      flex-shrink: 0; position: relative; z-index: 101;
-      margin-top: 32px; pointer-events: none;
-    }
-    .nav-brand-text-link { text-decoration: none; }
-    .nav-brand-text {
-      font-family: serif;
-      font-size: 1.8rem;
-      color: #D4AF37;
-    }
-    .nav-links { display: flex; gap: 40px; align-items: center; }
-    .nav-links a {
-      font-size: 0.8rem;
-      color: var(--grey);
-      text-decoration: none;
-      text-transform: uppercase;
-      padding: 20px 12px;
-      margin: -20px -12px;
-    }
-    .nav-shop {
-      background: #D4AF37 !important; color: #2a1a28 !important;
-      padding: 8px 20px;
-      border-radius: 2px;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #f5f0e8 0%, #ede4d4 100%);
-      padding: 80px 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      min-height: 50vh;
-    }
-    .hero-right-single {
-      aspect-ratio: 1/1;
-      overflow: hidden;
-      border-radius: 4px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-    .hero-right-single img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-    .hero-right-single:hover img { transform: scale(1.04); }
-    .hero-left h1 {
-      font-family: serif;
-      font-size: clamp(52px, 7vw, 96px);
-      color: #D4AF37;
-      font-weight: 600;
-      line-height: 1.0;
-      margin-bottom: 20px;
-    }
-    .hero-left { padding-left: 48px; }
-    .hero-left h1 em { font-style: italic; color: #D4AF37; }
-    .hero-left p {
-      font-size: 1rem;
-      color: #5a4a3a;
-      line-height: 1.8;
-      max-width: 420px;
-      margin-bottom: 32px;
-    }
-    .btn-collections {
-      background: transparent;
-      color: #8a7560;
-      padding: 14px 32px;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      display: inline-block;
-      border: 1px solid #8a7560;
-      letter-spacing: 0.08em;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-collections:hover {
-      background: #8a7560;
-      color: #fff;
-    }
-    .btn-white {
-      background: #D4AF37;
-      color: #2a1a28;
-      padding: 14px 32px;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      display: inline-block;
-    }
-    .hero-right {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-
-    .gallery {
-      padding: 0 48px 80px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .flip-card {
-      aspect-ratio: 1/1;
-      perspective: 1000px;
-      min-height: 200px;
-      background: rgba(255,255,255,0.1);
-    }
-    .flip-card-inner {
-      position: relative;
-      width: 100%; height: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
-    }
-    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-    .flip-front, .flip-back {
-      position: absolute;
-      width: 100%; height: 100%;
-      backface-visibility: hidden;
-      overflow: hidden;
-      border-radius: 2px;
-    }
-    .flip-front img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .flip-front-label {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 24px 16px 16px;
-      background: linear-gradient(transparent, rgba(26,26,26,0.75));
-      color: #D4AF37;
-      font-size: 0.9rem;
-    }
-    .flip-back { transform: rotateY(180deg); }
-    .flip-back-overlay {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 16px;
-      background: linear-gradient(transparent, rgba(26,26,26,0.88));
-    }
-    .flip-back-link {
-      display: inline-block;
-      padding: 8px 20px;
-      border: 1px solid #D4AF37;
-      color: #D4AF37;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 1px;
-    }
-    .section-divider {
-      padding: 72px 48px 56px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-      background: linear-gradient(135deg, #f5f0e8 0%, #ede4d4 100%);
-    }
-    .divider-line {
-      width: 60%;
-      height: 2px;
-      background: rgba(255,255,255,0.4);
-    }
-    .divider-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-    .section-header { text-align: center; padding: 72px 48px 48px; }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(40px, 5vw, 72px);
-      color: #D4AF37;
-      font-weight: 600;
-      line-height: 1.1;
-    }
-    .section-tag {
-      font-size: 0.8rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #D4AF37;
-      display: block;
-    }
-
-    .nav-mobile-buttons {
-      display: none;
-      gap: 8px;
-      align-items: center;
-    }
-    .nav-etsy-main {
-      background: #8a7560 !important;
-    }
-    .nav-shop-mobile {
-      display: none;
-      background: #D4AF37;
-      color: #2a1a28;
-      padding: 6px 14px;
-      border-radius: 2px;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    @media (max-width: 768px) {
-      /* No scissors on mobile */
-      #site-cursor { display: none !important; }
-      body, a, button, .flip-card { cursor: auto !important; }
-      a, button { cursor: pointer !important; }
-
-      html { overflow-x: hidden; }
-      body { overflow-x: hidden; width: 100vw; max-width: 100vw; }
-      * { max-width: 100%; }
-
-      nav {
-        padding: 0 16px;
-        height: 64px;
-        overflow: hidden;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      .nav-logo {
-      width: 130px; height: 130px;
-      flex-shrink: 0; position: relative; z-index: 101;
-      margin-top: 32px; pointer-events: none;
-    }
-      .nav-brand-text-link { text-decoration: none; }
-    .nav-brand-text { font-size: 1rem; }
-      .nav-links { display: none !important; }
-      .nav-mobile-buttons { display: flex !important; gap: 8px; align-items: center; }
-      .nav-shop-mobile { display: inline-block !important; }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 32px 16px;
-        gap: 20px;
-        min-height: auto;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      .hero-left { padding-left: 0 !important; }
-      .hero-right-single {
-        width: 100%;
-        max-width: 100%;
-        aspect-ratio: 1/1;
-      }
-      .hero-left h1 { font-size: clamp(32px, 9vw, 48px); }
-
-      .section-divider {
-        padding: 32px 16px;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      .divider-line { width: 90%; }
-      .section-title { font-size: clamp(24px, 6vw, 36px); }
-
-      .gallery {
-        padding: 0 12px 40px;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        width: 100vw;
-        max-width: 100vw;
-        box-sizing: border-box;
-      }
-      .flip-card { min-height: 160px; }
-      /* Mobile - disable flip, show front only */
-      .flip-card { cursor: pointer !important; }
-      .flip-card-inner { transform: none !important; transition: none !important; }
-      .flip-back { display: none !important; }
-      .flip-front { position: relative !important; }
-
-      footer {
-        flex-direction: column;
-        gap: 16px;
-        padding: 28px 16px;
-        text-align: center;
-        width: 100vw;
-      }
-      .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
-    }
+    body { background: linear-gradient(135deg, #f5f0e8 0%, #ede4d4 100%); }
+    .section-divider { background: linear-gradient(135deg, #f5f0e8 0%, #ede4d4 100%); }
+    .section-title { color: var(--primary); }
   </style>
 </head>
 <body>
@@ -352,217 +37,89 @@
   </svg>
 </div>
 
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
+    <span>Wedding &amp; Bridal</span><span class="ticker-dot">✦</span>
+    <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
+    <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
+    <span>555+ Designs</span><span class="ticker-dot">✦</span>
+    <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
+    <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
+    <span>Wedding &amp; Bridal</span><span class="ticker-dot">✦</span>
+    <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
+    <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
+    <span>555+ Designs</span><span class="ticker-dot">✦</span>
+    <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
+  </div>
+</div>
+
 <nav>
-  <div class="nav-brand-wrap"><img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/><a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a></div>
+  <div class="nav-brand-wrap">
+    <img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/>
+    <a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a>
+  </div>
   <div class="nav-links">
     <a href="homepage.html">Home</a>
     <a href="gallery.html">Gallery</a>
     <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1782019454&from_page=listing&section_id=41732399" class="nav-shop" target="_blank" rel="noopener">Shop Wedding on Etsy</a>
   </div>
   <div class="nav-mobile-buttons">
-    <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop-mobile nav-etsy-main" target="_blank" rel="noopener">Etsy Shop</a>
-    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1782019454&from_page=listing&section_id=41732399" class="nav-shop-mobile" target="_blank" rel="noopener">Wedding</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1782019454&from_page=listing&section_id=41732399" class="nav-shop-mobile" target="_blank" rel="noopener">Shop Etsy</a>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-left">
-    <h1>Wedding<br><em>&amp; Bridal</em><br>Collection</h1>
-    <p>Banners, cards, and other wedding and bridal shower decor SVGs.</p>
-    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1782019454&from_page=listing&section_id=41732399" class="btn-white" target="_blank" rel="noopener">Shop Wedding collection →</a>
+    <div class="hero-eyebrow">SVG Cut Files for Cricut</div>
+    <h1 class="hero-title">Wedding<br><em>&amp; Bridal</em><br>Collection</h1>
+    <p class="hero-body">Banners, cards, and other wedding and bridal shower decor SVGs.</p>
+    <div class="hero-buttons">
+      <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1782019454&from_page=listing&section_id=41732399" class="btn-primary" target="_blank" rel="noopener">Shop Wedding collection →</a>
+      <a href="gallery.html" class="btn-ghost">← All Collections</a>
+    </div>
   </div>
   <div class="hero-right-single">
-    <img src="images/Wedding-Collection.JPEG" alt="Nordic Collection"/>
+    <img src="images/Wedding-Collection.JPEG" alt="Wedding Collection"/>
   </div>
 </section>
 
-<div class="section-divider">
+<div class="section-divider fade-up">
   <div class="divider-line"></div>
   <div class="divider-content">
     <span class="section-tag">SVG Cut Files</span>
     <h2 class="section-title">Browse the Wedding Collection</h2>
-    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1782019454&from_page=listing&section_id=41732399" class="btn-white" target="_blank" rel="noopener">Shop all Wedding on Etsy →</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=1782019454&from_page=listing&section_id=41732399" class="btn-primary" target="_blank" rel="noopener">Shop all Wedding on Etsy →</a>
     <a href="gallery.html" class="btn-collections">← All Collections</a>
   </div>
   <div class="divider-line"></div>
 </div>
 
-<div class="gallery">
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/bride-groom-banner.JPEG" alt="Lace Bride & Tuxedo Banner"/>
-        <div class="flip-front-label">Lace Bride & Tuxedo Banner</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/bride-groom-banner-layers.JPEG" alt="Lace Bride & Tuxedo Banner layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1427949957" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/tiered-dress-tuxedo.JPEG" alt="Tiered Bride & Tuxedo Banner"/>
-        <div class="flip-front-label">Tiered Bride & Tuxedo Banner</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/tiered-dress-tuxedo-layers.JPEG" alt="Tiered Bride & Tuxedo Banner layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1483792523" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/wedding-party-banner.JPEG" alt="Wedding Party Banner"/>
-        <div class="flip-front-label">Wedding Party Banner</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/wedding-party-banner-layers.JPEG" alt="Wedding Party Banner layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1652983440" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/bride-groom-card.JPEG" alt="Bride & Groom Wedding Card"/>
-        <div class="flip-front-label">Bride & Groom Wedding Card</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/bride-groom-card-layers.JPEG" alt="Bride & Groom Wedding Card layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1879523584" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/dogwood-card.JPEG" alt="Dogwood Card"/>
-        <div class="flip-front-label">Dogwood Card</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/dogwood-card-layers.JPEG" alt="Dogwood Card layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1456682328" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/hydrangea-card.JPEG" alt="Hydrangea Card"/>
-        <div class="flip-front-label">Hydrangea Card</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/hydrangea-card-layers.JPEG" alt="Hydrangea Card layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1468466697" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/martini-cocktails.JPEG" alt="Martini Cocktails"/>
-        <div class="flip-front-label">Martini Cocktails</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/martini-cocktails-layers.JPEG" alt="Martini Cocktails layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1657392049" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/margarita-cocktails.JPEG" alt="Margarita Cocktails"/>
-        <div class="flip-front-label">Margarita Cocktails</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/margarita-cocktails-layers.JPEG" alt="Margarita Cocktails layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1770452744" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/beer-wine.JPEG" alt="Beer & Wine Glasses"/>
-        <div class="flip-front-label">Beer & Wine Glasses</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/beer-wine-layers.JPEG" alt="Beer & Wine Glasses layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4511822914" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/wedding-leaves-place-card.JPEG" alt="Wedding Leaves Place Cards"/>
-        <div class="flip-front-label">Wedding Leaves Place Cards</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/wedding-leaves-place-card-layers.JPEG" alt="Wedding Leaves Place Cards layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1871054685" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/bride-groom-place-card.JPEG" alt="Bride & Groom Place Cards"/>
-        <div class="flip-front-label">Bride & Groom Place Cards</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/bride-groom-place-card-layers.JPEG" alt="Bride & Groom Place Cards layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1796207314" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-front">
-        <img src="images/wedding-confetti.JPEG" alt="Wedding Confetti"/>
-        <div class="flip-front-label">Wedding Confetti</div>
-      </div>
-      <div class="flip-back">
-        <img src="images/wedding-confetti-layers.JPEG" alt="Wedding Confetti layers" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1807927613" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="gallery fade-up">
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/bride-groom-banner.JPEG" alt="Lace Bride &amp; Tuxedo Banner"/><div class="flip-front-label">Lace Bride &amp; Tuxedo Banner</div></div><div class="flip-back"><img src="images/bride-groom-banner-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1427949957" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/tiered-dress-tuxedo.JPEG" alt="Tiered Bride &amp; Tuxedo Banner"/><div class="flip-front-label">Tiered Bride &amp; Tuxedo Banner</div></div><div class="flip-back"><img src="images/tiered-dress-tuxedo-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1483792523" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/wedding-party-banner.JPEG" alt="Wedding Party Banner"/><div class="flip-front-label">Wedding Party Banner</div></div><div class="flip-back"><img src="images/wedding-party-banner-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1652983440" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/bride-groom-card.JPEG" alt="Bride &amp; Groom Wedding Card"/><div class="flip-front-label">Bride &amp; Groom Wedding Card</div></div><div class="flip-back"><img src="images/bride-groom-card-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1879523584" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/dogwood-card.JPEG" alt="Dogwood Card"/><div class="flip-front-label">Dogwood Card</div></div><div class="flip-back"><img src="images/dogwood-card-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1456682328" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/hydrangea-card.JPEG" alt="Hydrangea Card"/><div class="flip-front-label">Hydrangea Card</div></div><div class="flip-back"><img src="images/hydrangea-card-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1468466697" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/martini-cocktails.JPEG" alt="Martini Cocktails"/><div class="flip-front-label">Martini Cocktails</div></div><div class="flip-back"><img src="images/martini-cocktails-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1657392049" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/margarita-cocktails.JPEG" alt="Margarita Cocktails"/><div class="flip-front-label">Margarita Cocktails</div></div><div class="flip-back"><img src="images/margarita-cocktails-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1770452744" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/beer-wine.JPEG" alt="Beer &amp; Wine Glasses"/><div class="flip-front-label">Beer &amp; Wine Glasses</div></div><div class="flip-back"><img src="images/beer-wine-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/4511822914" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/wedding-leaves-place-card.JPEG" alt="Wedding Leaves Place Cards"/><div class="flip-front-label">Wedding Leaves Place Cards</div></div><div class="flip-back"><img src="images/wedding-leaves-place-card-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1871054685" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/bride-groom-place-card.JPEG" alt="Bride &amp; Groom Place Cards"/><div class="flip-front-label">Bride &amp; Groom Place Cards</div></div><div class="flip-back"><img src="images/bride-groom-place-card-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1796207314" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
+  <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/wedding-confetti.JPEG" alt="Wedding Confetti"/><div class="flip-front-label">Wedding Confetti</div></div><div class="flip-back"><img src="images/wedding-confetti-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1807927613" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
 </div>
 
+<div class="back-bar"><a href="gallery.html">← Back to All Collections</a></div>
 
-<div style="text-align:center; padding: 56px 48px 72px; background: linear-gradient(135deg, #f5f0e8 0%, #ede4d4 100%);">
-  <a href="gallery.html" class="btn-collections" style="font-size:0.9rem; padding:16px 40px;">← Back to All Collections</a>
-</div>
-
+<footer>
+  <div class="footer-brand">Purple Peregrine</div>
+  <div class="footer-links">
+    <a href="gallery.html">Gallery</a>
+    <a href="homepage.html">Home</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" target="_blank" rel="noopener">Etsy</a>
+  </div>
+</footer>
 
 <script>
   const cursorEl = document.getElementById('site-cursor');
@@ -702,14 +259,5 @@ document.addEventListener('mousemove', function(e) {
     });
   });
 </script>
-
-<footer style="background:#1a1a1a;color:#e8e8e8;padding:32px 48px;display:flex;align-items:center;justify-content:space-between;font-size:0.78rem;letter-spacing:0.08em;flex-wrap:wrap;gap:16px;">
-  <div style="font-family:serif;font-size:1.4rem;color:#D4AF37;letter-spacing:0.08em;">Purple Peregrine</div>
-  <div style="display:flex;gap:28px;flex-wrap:wrap;">
-    <a href="gallery.html" style="color:#e8e8e8;text-decoration:none;text-transform:uppercase;padding:16px 8px;margin:-16px -8px;display:inline-block;">Gallery</a>
-    <a href="homepage.html" style="color:#e8e8e8;text-decoration:none;text-transform:uppercase;padding:16px 8px;margin:-16px -8px;display:inline-block;">Home</a>
-    <a href="https://www.etsy.com/shop/PurplePeregrine" target="_blank" rel="noopener" style="color:#e8e8e8;text-decoration:none;text-transform:uppercase;padding:16px 8px;margin:-16px -8px;display:inline-block;">Etsy</a>
-  </div>
-</footer>
 </body>
 </html>
