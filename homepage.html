@@ -210,7 +210,7 @@
       gap: 20px;
     }
     .shop-card {
-      padding: 48px;
+      padding: 96px 64px;
       border-radius: 2px;
       transition: transform 0.3s ease;
     }
@@ -299,7 +299,7 @@
 
 <!-- CURSOR -->
 <div id="site-cursor">
-  <svg id="cursor-svg" width="34" height="66" viewBox="0 0 354.14407 707.8291">
+  <svg id="cursor-svg" width="44" height="86" viewBox="0 0 354.14407 707.8291">
     <g id="cursor-g" transform="translate(139.03787,207.75)">
       <path id="cursor-path" fill="#ebdb43" d="M 214.8832,392.88124 C 213.6487,351.10144 192.4188,306.81849 151.2133,291.74442 124.2378,282.5742 92.4685,287.92207 90.4575,251.91109 76.6948,192.36961 65.7318,132.18954 51.8127,72.695 39.4648,46.6078 40.535,-51.7047 0.6983,-207.75 c -13.621,14.7397 -17.7326,200.0063 -14.5164,272.5398 -15.3032,28.0798 -8.258,113.55982 -23.3492,210.0048 -3.8938,32.71461 -41.7477,20.43878 -60.3525,38.15255 -44.0113,30.71139 -50.5531,94.37019 -31.2324,141.02386 15.9428,35.27857 61.4503,59.15221 97.5362,38.36748 42.9756,-20.06987 52.4825,-72.48508 48.4413,-115.16713 -6.9013,-28.59832 -13.7438,-57.36829 -2.6276,-86.26001 5.1649,-16.25131 7.8294,-48.82214 12.8467,-56.27239 9.0186,33.08779 25.5753,64.20235 30.8527,98.13343 -4.7972,28.88996 -5.2245,58.6576 4.0555,86.86484 9.033,45.57671 62.0423,81.53294 106.4604,60.54992 32.0848,-15.61392 48.4238,-52.77583 46.0702,-87.30591 z m -25.1994,-0.44041 c 4.4186,32.42715 -21.4514,71.62555 -57.0411,66.05268 -42.6586,-7.91717 -59.2413,-60.62059 -48.5494,-98.33732 6.7516,-31.15254 45.5418,-51.65329 73.1732,-32.52716 21.8624,13.61616 31.4284,40.10025 32.4173,64.8118 z m -196.3326,5.06143 c 2.3117,33.0479 -17.5032,75.09011 -55.1263,74.94116 -35.1936,-1.49618 -55.2632,-38.63037 -53.0197,-70.72062 -1.8119,-33.53315 23.1599,-73.03612 60.4974,-68.62124 29.8497,4.9459 47.8069,35.91883 47.6486,64.4007 z"/>
     </g>
@@ -463,12 +463,12 @@
 </div>
 
 <!-- FEATURED COLLECTIONS -->
-<div class="section-header-home fade-up">
+<div class="section-header-home">
   <span class="section-tag">Browse collections</span>
   <h2 class="section-title-home">Shop by collection</h2>
 </div>
 
-<div class="tile-grid-home fade-up">
+<div class="tile-grid-home">
 
   <a href="summer.html" class="tile-home">
     <div class="tile-home-img">
@@ -497,7 +497,7 @@
 </div>
 
 <!-- SHOP CTA -->
-<section class="shop-cta fade-up">
+<section class="shop-cta">
   <div class="shop-card shop-card-main">
     <span class="shop-card-tag">Primary shop</span>
     <div class="shop-card-title">Find my full collection on Etsy</div>
@@ -613,7 +613,7 @@
     for (let i = 0; i < 22; i++) {
       const el = document.createElement('div');
       el.className = 'confetti-piece';
-      const size = 9 + Math.random()*14;
+      const size = 13 + Math.random()*18;
       el.style.cssText = `position:fixed;left:${x}px;top:${y}px;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>0.5?'50%':'2px'};pointer-events:none;`;
       document.body.appendChild(el);
       const angle = Math.random()*Math.PI*2, dist = 60+Math.random()*130;
@@ -628,6 +628,18 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, {threshold: 0.05});
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Mobile: burst of confetti on page load
+  if (window.innerWidth <= 768) {
+    setTimeout(() => {
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 3;
+      for (let b = 0; b < 3; b++) {
+        setTimeout(() => spawnConfetti(cx + (Math.random()-0.5)*100, cy + (Math.random()-0.5)*60), b * 300);
+      }
+    }, 600);
+  }
 </script>
 </body>
 </html>
+
