@@ -11,7 +11,7 @@
     a, button { cursor: none !important; }
     body {
       background: #FDF8F4;
-      font-family: Georgia, serif;
+      font-family: 'Georgia', serif;
       cursor: none;
       overflow: hidden;
       height: 100vh;
@@ -52,68 +52,39 @@
       width: 70px;
       height: 130px;
     }
+
+    /* Brand block — logo + text stacked, centered */
     #brand {
       position: absolute;
-      top: 44%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
       z-index: 5;
       opacity: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
       width: 90%;
     }
+    #brand img {
+      width: min(220px, 40vw);
+      height: auto;
+    }
     #brand h1 {
-      font-size: clamp(32px, 6vw, 62px);
+      font-size: clamp(28px, 5vw, 56px);
       color: #62385e;
       font-weight: normal;
       letter-spacing: 0.15em;
       line-height: 1.2;
-      margin-bottom: 16px;
     }
     #brand p {
       font-size: 14px;
       color: #8a6080;
       letter-spacing: 0.1em;
-      margin-bottom: 24px;
     }
-    #enter-btn {
-      display: none;
-      background: #62385e;
-      color: #fff;
-      border: none;
-      padding: 14px 36px;
-      font-size: 15px;
-      font-family: Georgia, serif;
-      letter-spacing: 0.08em;
-      cursor: none;
-      border-radius: 4px;
-    }
-    #enter-btn:hover { background: #4a2a46; }
-    #logo-wrap {
-      display: none;
-    }
-    #logo-wrap img {
-      width: 100%;
-      height: auto;
-    }
-    #bg-logo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: min(70vw, 70vh);
-      height: min(70vw, 70vh);
-      opacity: 0;
-      z-index: 3;
-      pointer-events: none;
-      transition: opacity 1.2s ease 0.6s;
-    }
-    #bg-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: opacity(0.35);
-    }
+
     #progress {
       position: absolute;
       bottom: 32px;
@@ -150,13 +121,12 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-W0YPYMQTKW');
-</script></head>
+</script>
+</head>
 <body>
 <div id="stage">
   <div id="paper"></div>
-  <div id="bg-logo"><img src="images/Logo2.svg" alt=""/></div>
   <div id="cut-line"></div>
   <div id="scissors-wrap">
     <svg id="sc-closed" viewBox="0 0 354.14407 707.8291" style="position:absolute;top:0;left:0;width:70px;height:130px;">
@@ -169,14 +139,14 @@
       <g transform="translate(-802.34177,105.6028)"><path fill="#62385e" d="m 825.2696,-105.6028 c 42.5938,136.6978 109.032,240.77678 177.9844,341.95604 -7.281,11.34069 -14.7863,22.74225 -22.9454,34.41503 -15.3189,32.65217 -42.79,15.8232 -71.2382,14.25147 -43.8535,-1.41165 -80.0899,31.73348 -96.8438,70.02685 -15.0835,31.15051 -13.8105,71.72571 10.1177,98.19581 53.3309,57.63959 151.3208,3.7576 166.4619,-84.01319 17.0346,-26.47357 34.5056,-52.29964 52.0635,-77.96631 17.5578,25.66667 35.0288,51.49274 52.0635,77.96631 15.1411,87.77079 113.131,141.65278 166.4619,84.01319 23.9282,-26.4701 25.2011,-67.0453 10.1176,-98.19581 -16.7539,-38.29337 -52.9902,-71.4385 -96.8437,-70.02685 -28.4482,1.57173 -55.9194,18.4007 -71.2383,-14.25147 -8.159,-11.67278 -15.6643,-23.07434 -22.9453,-34.41503 68.9523,-101.17926 135.3891,-205.25824 177.9829,-341.95604 -101.4546,127.3477 -158.2275,200.579 -173.3584,224.56931 -16.4678,20.80195 -29.9878,40.053 -42.2402,58.56885 -12.2525,-18.51585 -25.7724,-37.7669 -42.2403,-58.56885 C 983.4985,94.9762 926.7242,21.7449 825.2696,-105.6028 Z m 76.8047,420.70018 c 27.305,1.87359 48.4015,30.96425 43.6977,58.45605 -4.1731,38.98017 -39.2445,81.67279 -81.772,73.07959 -35.0947,-8.12684 -44.4482,-54.1522 -28.2348,-82.58057 10.1494,-22.55277 28.9179,-43.54627 54.2842,-48.00878 4.097,-0.92728 8.1241,-1.21395 12.0249,-0.94629 z m 277.5908,0 c 3.9007,-0.26766 7.9279,0.019 12.0249,0.94629 25.3663,4.46251 44.1333,25.45601 54.2827,48.00878 16.2134,28.42837 6.8613,74.45373 -28.2334,82.58057 -42.5275,8.5932 -77.5989,-34.09942 -81.772,-73.07959 -4.7038,-27.4918 16.3928,-56.58246 43.6978,-58.45605 z"/></g>
     </svg>
   </div>
+
+  <!-- Brand: logo symbol + text stacked -->
   <div id="brand">
-    <div id="logo-wrap">
-      <img src="images/Logo2.svg" alt="Purple Peregrine logo" onerror="this.style.display='none'"/>
-    </div>
+    <img src="images/Logo2.svg" alt="Purple Peregrine logo"/>
     <h1>PURPLE<br>PEREGRINE</h1>
-    <p>SVG Cut Files for Paper Crafters & Cricut Enthusiasts</p>
-    <button id="enter-btn" onclick="enterSite()">Enter the studio →</button>
+    <p>SVG Cut Files for Paper Crafters &amp; Cricut Enthusiasts</p>
   </div>
+
   <div id="progress"></div>
 </div>
 
@@ -194,7 +164,6 @@
   const scissorsWrap = document.getElementById('scissors-wrap');
   const brand = document.getElementById('brand');
   const progress = document.getElementById('progress');
-  const enterBtn = document.getElementById('enter-btn');
   const cursor = document.getElementById('cursor');
   const cursorSvg = document.getElementById('cursor-svg');
   const cursorG = document.getElementById('cursor-g');
@@ -208,23 +177,18 @@
   const viewboxes = ["0 0 354.14407 707.8291","0 0 354.14355 673.4068","0 0 477.05582 582.75037","0 0 354.14355 673.4068"];
   const transforms = ["translate(139.03787,207.75)","translate(-333.35076,194.4682)","translate(-802.34177,105.6028)","translate(-333.35076,194.4682)"];
 
-  let stateIdx = 0, animDone = false, mouseMoving = false;
+  let stateIdx = 0, mouseMoving = false;
   let mouseMoveTimer = null, cursorSnipInterval = null;
   let lastX = null, lastY = null, currentAngle = 0;
 
   function updateCursorRotation(x, y) {
     if (lastX !== null && lastY !== null) {
-      const dx = x - lastX;
-      const dy = y - lastY;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist > 3) {
-        currentAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
-      }
+      const dx = x - lastX, dy = y - lastY;
+      if (Math.sqrt(dx*dx+dy*dy) > 3) currentAngle = Math.atan2(dy, dx) * (180/Math.PI) + 90;
     }
-    lastX = x;
-    lastY = y;
+    lastX = x; lastY = y;
     cursor.style.left = x + 'px';
-    cursor.style.top  = y + 'px';
+    cursor.style.top = y + 'px';
     cursor.style.transform = `translate(-12px, -8px) rotate(${currentAngle}deg)`;
   }
 
@@ -234,7 +198,7 @@
     if (!mouseMoving) {
       mouseMoving = true;
       cursorSnipInterval = setInterval(() => {
-        stateIdx = (stateIdx + 1) % states.length;
+        stateIdx = (stateIdx+1) % states.length;
         cursorSvg.setAttribute('viewBox', viewboxes[stateIdx]);
         cursorG.setAttribute('transform', transforms[stateIdx]);
         cursorPath.setAttribute('d', paths[stateIdx]);
@@ -252,17 +216,9 @@
     }, 150);
   });
 
-  document.addEventListener('mouseleave', function() {
-    cursor.style.opacity = '0';
-    lastX = null;
-    lastY = null;
-  });
-
-  document.addEventListener('mouseenter', function() {
-    cursor.style.opacity = '1';
-  });
-
-  document.addEventListener('click', e => { if (animDone && !e.target.closest('a')) spawnConfetti(e.clientX, e.clientY); });
+  document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; lastX = null; lastY = null; });
+  document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
+  document.addEventListener('click', e => { if (!e.target.closest('a')) spawnConfetti(e.clientX, e.clientY); });
 
   function spawnConfetti(x, y) {
     const colors = ['#62385e','#4e2c4f','#ebdb43','#9b55bb','#EDE0D4','#9b6a96','#b06fd4'];
@@ -283,7 +239,7 @@
 
   let scissorIdx = 0;
   setInterval(() => {
-    scissorIdx = (scissorIdx + 1) % states.length;
+    scissorIdx = (scissorIdx+1) % states.length;
     states.forEach((s,i) => s.style.opacity = i === scissorIdx ? '1' : '0');
   }, 220);
 
@@ -298,35 +254,36 @@
     stage.appendChild(left);
     stage.appendChild(right);
     requestAnimationFrame(() => requestAnimationFrame(() => {
-      left.style.transition = 'transform 1.1s cubic-bezier(0.7,0,0.2,1)';
-      right.style.transition = 'transform 1.1s cubic-bezier(0.7,0,0.2,1)';
+      left.style.transition = 'transform 0.9s cubic-bezier(0.7,0,0.2,1)';
+      right.style.transition = 'transform 0.9s cubic-bezier(0.7,0,0.2,1)';
       left.style.transform = 'translateX(-110vw)';
       right.style.transform = 'translateX(110vw)';
       progress.style.opacity = '0';
-      brand.style.transition = 'opacity 0.9s ease 0.5s';
+      brand.style.transition = 'opacity 0.7s ease 0.3s';
       brand.style.opacity = '1';
-      document.getElementById('bg-logo').style.opacity = '1';
-      animDone = true;
-      // Burst confetti from center then auto-navigate
+
+      // Confetti burst when logo appears
       setTimeout(() => {
         const cx = window.innerWidth / 2;
         const cy = window.innerHeight / 2;
         spawnConfetti(cx, cy);
         spawnConfetti(cx - 120, cy + 40);
         spawnConfetti(cx + 120, cy + 40);
-      }, 800);
+      }, 500);
+
+      // Fast fade to homepage
       setTimeout(() => {
-        document.body.style.transition = 'opacity 0.7s';
+        document.body.style.transition = 'opacity 0.5s';
         document.body.style.opacity = '0';
-      }, 3600);
+      }, 2200);
       setTimeout(() => {
         window.location.href = 'homepage.html';
-      }, 5000);
+      }, 2700);
     }));
   }
 
   function runAnimation() {
-    const totalDuration = 4500;
+    const totalDuration = 3500;
     const startTime = performance.now();
     const screenH = window.innerHeight;
     function step(now) {
@@ -343,17 +300,6 @@
       }
     }
     requestAnimationFrame(step);
-  }
-
-  function enterSite() {
-    spawnConfetti(window.innerWidth/2, window.innerHeight/2);
-    setTimeout(() => {
-      document.body.style.transition = 'opacity 0.6s';
-      document.body.style.opacity = '0';
-    }, 300);
-    setTimeout(() => {
-      window.location.href = 'homepage.html';
-    }, 900);
   }
 
   document.addEventListener('DOMContentLoaded', runAnimation);
