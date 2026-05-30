@@ -8,7 +8,6 @@
   <link rel="icon" type="image/png" href="images/Logo2.png">
   <link rel="stylesheet" href="shared.css">
   <style>
-    /* ── PAGE THEME: Homepage (bookmark colours) ── */
     :root {
       --primary:       #62385e;
       --primary-dark:  #4e2c4a;
@@ -24,17 +23,15 @@
       --btn-text: #62385e;
       --ticker-dot: #c9b800;
       --paper-dark: #d4c4b4;
-      --purple-pale: #f2eaf1;
     }
     body { background: var(--cream); }
     .ticker { background: var(--primary); color: var(--accent); }
 
-    /* ── HERO ── */
+    /* ── HOME HERO ── */
     .home-hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: 88vh;
-      overflow: hidden;
     }
     .home-hero-left {
       padding: 80px 64px;
@@ -67,7 +64,7 @@
       margin-bottom: 24px;
       font-weight: 600;
     }
-    .home-hero-title em { font-style: italic; color: var(--accent); }
+    .home-hero-title em { font-style: italic; color: var(--accent); margin-left: 0.6em; }
     .home-hero-body {
       font-size: 1rem;
       line-height: 1.8;
@@ -75,8 +72,7 @@
       max-width: 420px;
       margin-bottom: 40px;
     }
-    .home-hero-buttons { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .btn-primary-hero {
+    .home-hero-btn {
       background: var(--accent);
       color: var(--primary);
       padding: 14px 32px;
@@ -88,19 +84,9 @@
       transition: background 0.2s, transform 0.2s;
       font-family: 'Jost', sans-serif;
       display: inline-block;
+      align-self: flex-start;
     }
-    .btn-primary-hero:hover { background: #fff; transform: translateY(-2px); }
-    .btn-ghost {
-      font-size: 0.82rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-decoration: none;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--paper-dark);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .btn-ghost:hover { color: var(--primary); border-color: var(--primary); }
+    .home-hero-btn:hover { background: #fff; transform: translateY(-2px); }
     .home-hero-stats {
       display: flex;
       gap: 40px;
@@ -127,47 +113,63 @@
       overflow: hidden;
       background: var(--paper);
     }
-    .home-hero-img-main {
+    .home-hero-mobile-brand { display: none; }
+    .home-hero-img {
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 8s ease;
-    }
-    .home-hero-right:hover .home-hero-img-main { transform: scale(1.04); }
-
-    .home-hero-mobile-brand {
-      display: none;
     }
 
-    /* ── FEATURED COLLECTIONS TILES ── */
-    .tile-grid-home {
+    /* ── SECTION HEADERS ── */
+    .home-section-header {
+      text-align: center;
+      padding: 80px 48px 48px;
+    }
+    .home-section-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .home-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 4.5vw, 60px);
+      color: var(--primary);
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    /* ── COLLECTION TILES ── */
+    .home-tile-grid {
       padding: 0 48px 64px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
-    .tile-home {
+    .home-tile {
       text-decoration: none;
       color: var(--ink);
       display: block;
       transition: transform 0.3s ease;
     }
-    .tile-home:hover { transform: translateY(-4px); }
-    .tile-home-img {
+    .home-tile:hover { transform: translateY(-4px); }
+    .home-tile-img {
       position: relative;
       aspect-ratio: 1/1;
       overflow: hidden;
       border-radius: 2px;
       background: var(--paper);
     }
-    .tile-home-img img {
+    .home-tile-img img {
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
       transition: transform 0.5s ease;
     }
-    .tile-home:hover .tile-home-img img { transform: scale(1.05); }
-    .tile-home-overlay {
+    .home-tile:hover .home-tile-img img { transform: scale(1.05); }
+    .home-tile-overlay {
       position: absolute;
       inset: 0;
       background: rgba(98,56,94,0.65);
@@ -180,21 +182,21 @@
       text-align: center;
       padding: 16px;
     }
-    .tile-home:hover .tile-home-overlay { opacity: 1; }
-    .tile-home-name {
+    .home-tile:hover .home-tile-overlay { opacity: 1; }
+    .home-tile-overlay-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.4rem;
       font-weight: 600;
       color: #fff;
       margin-bottom: 8px;
     }
-    .tile-home-cta {
+    .home-tile-overlay-cta {
       font-size: 0.72rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.7);
     }
-    .tile-home-label {
+    .home-tile-label {
       padding: 10px 4px 4px;
       font-size: 0.82rem;
       font-weight: 500;
@@ -203,21 +205,21 @@
     }
 
     /* ── SHOP CTA ── */
-    .shop-cta {
+    .home-shop-cta {
       padding: 80px 48px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
-    .shop-card {
+    .home-shop-card {
       padding: 96px 64px;
       border-radius: 2px;
       transition: transform 0.3s ease;
     }
-    .shop-card:hover { transform: translateY(-4px); }
-    .shop-card-main { background: var(--primary); color: #fff; }
-    .shop-card-secondary { background: var(--paper); border: 2px solid var(--paper-dark); }
-    .shop-card-tag {
+    .home-shop-card:hover { transform: translateY(-4px); }
+    .home-shop-card-main { background: var(--primary); color: #fff; }
+    .home-shop-card-secondary { background: var(--paper); border: 2px solid var(--paper-dark); }
+    .home-shop-card-tag {
       font-size: 0.72rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -225,51 +227,49 @@
       margin-bottom: 16px;
       display: block;
     }
-    .shop-card-title {
+    .home-shop-card-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2rem;
       font-weight: 600;
       margin-bottom: 12px;
       line-height: 1.2;
     }
-    .shop-card-main .shop-card-title { color: var(--accent); }
-    .shop-card-secondary .shop-card-title { color: var(--primary); }
-    .shop-card-body { font-size: 0.88rem; line-height: 1.7; opacity: 0.85; margin-bottom: 28px; }
-    .shop-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
-    .shop-pill { padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; letter-spacing: 0.08em; }
-    .shop-card-main .shop-pill { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
-    .shop-card-secondary .shop-pill { background: var(--paper-dark); color: var(--primary); }
-    .shop-card-main .btn-primary-hero { background: var(--accent); color: var(--primary); }
-    .shop-card-main .btn-primary-hero:hover { background: #fff; }
-
-    /* ── SECTION HEADER (homepage version) ── */
-    .section-header-home {
-      text-align: center;
-      padding: 80px 48px 48px;
-    }
-    .section-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      display: block;
-      margin-bottom: 14px;
-    }
-    .section-title-home {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(34px, 4.5vw, 60px);
+    .home-shop-card-main .home-shop-card-title { color: var(--accent); }
+    .home-shop-card-secondary .home-shop-card-title { color: var(--primary); }
+    .home-shop-card-body { font-size: 0.88rem; line-height: 1.7; opacity: 0.85; margin-bottom: 28px; }
+    .home-shop-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+    .home-shop-pill { padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; letter-spacing: 0.08em; }
+    .home-shop-card-main .home-shop-pill { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+    .home-shop-card-secondary .home-shop-pill { background: var(--paper-dark); color: var(--primary); }
+    .home-shop-btn {
+      background: var(--accent);
       color: var(--primary);
-      font-weight: 600;
-      line-height: 1.1;
+      padding: 14px 32px;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+      font-family: 'Jost', sans-serif;
+      display: inline-block;
     }
+    .home-shop-btn:hover { background: #fff; }
+    .home-shop-btn-ghost {
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--paper-dark);
+      padding-bottom: 2px;
+      display: inline-block;
+    }
+    .home-shop-btn-ghost:hover { color: var(--primary); border-color: var(--primary); }
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
-      .home-hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-      /* Image first on mobile */
+      .home-hero { grid-template-columns: 1fr; min-height: auto; }
       .home-hero-right { order: 1; min-height: 60vw; }
       .home-hero-left { order: 2; padding: 40px 24px 32px; }
       .home-hero-mobile-brand {
@@ -286,12 +286,12 @@
       .home-hero-title { font-size: clamp(36px, 10vw, 56px); }
       .home-hero-stats { gap: 24px; margin-top: 32px; padding-top: 28px; }
       .home-hero-stat-num { font-size: 1.8rem; }
-      .section-header-home { padding: 48px 20px 32px; }
-      .tile-grid-home { padding: 0 16px 40px; grid-template-columns: 1fr 1fr; gap: 12px; }
-      .tile-grid-home .tile-home:last-child { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
-      .tile-home-overlay { display: none !important; }
-      .shop-cta { padding: 48px 20px; grid-template-columns: 1fr; gap: 16px; }
-      .shop-card { padding: 32px 24px; }
+      .home-section-header { padding: 48px 20px 32px; }
+      .home-tile-grid { padding: 0 16px 40px; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .home-tile-grid .home-tile:last-child { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
+      .home-tile-overlay { display: none !important; }
+      .home-shop-cta { padding: 48px 20px; grid-template-columns: 1fr; gap: 16px; }
+      .home-shop-card { padding: 32px 24px; }
     }
   </style>
 </head>
@@ -340,14 +340,12 @@
 </nav>
 
 <!-- HERO -->
-<section class="home-hero">
+<div class="home-hero">
   <div class="home-hero-left">
     <div class="home-hero-eyebrow">Cricut Contributing Artist since 2023</div>
-    <h1 class="home-hero-title">Paper designs<br><em style="margin-left:0.6em;">created and</em><br>tested with care.</h1>
+    <h1 class="home-hero-title">Paper designs<br><em>created and</em><br>tested with care.</h1>
     <p class="home-hero-body">SVG cut files for Cricut crafters who want something a little different — ready to upload to your cutting machine.</p>
-    <div class="home-hero-buttons">
-      <a href="https://www.etsy.com/shop/PurplePeregrine" class="btn-primary-hero" target="_blank" rel="noopener">Shop on Etsy</a>
-    </div>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" class="home-hero-btn" target="_blank" rel="noopener">Shop on Etsy</a>
     <div class="home-hero-stats">
       <div>
         <div class="home-hero-stat-num">2,600+</div>
@@ -365,14 +363,14 @@
   </div>
   <div class="home-hero-right">
     <div class="home-hero-mobile-brand">Purple Peregrine</div>
-    <img class="home-hero-img-main" src="images/bee-bookmark.JPEG" alt="Bumble Bee Bookmark"/>
+    <img class="home-hero-img" src="images/bee-bookmark.JPEG" alt="Purple Peregrine designs"/>
   </div>
-</section>
+</div>
 
 <!-- FEATURED GALLERY -->
-<div class="section-header-home">
-  <span class="section-tag">Featured projects</span>
-  <h2 class="section-title-home">Made with Purple Peregrine files</h2>
+<div class="home-section-header">
+  <span class="home-section-tag">Featured projects</span>
+  <h2 class="home-section-title">Made with Purple Peregrine files</h2>
 </div>
 
 <div class="gallery">
@@ -383,7 +381,7 @@
         <div class="flip-front-label">Bumble Bee Bookmark</div>
       </div>
       <div class="flip-back">
-        <img src="images/bee-bookmark-layers.JPEG" alt="Bumble Bee Bookmark layers"/>
+        <img src="images/bee-bookmark-layers.JPEG" alt="layers"/>
         <div class="flip-back-overlay">
           <a href="https://purpleperegrine.etsy.com/listing/4319542413" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
@@ -397,9 +395,9 @@
         <div class="flip-front-label">Butterfly Door Corner</div>
       </div>
       <div class="flip-back">
-        <img src="images/butterfly-corner-layers.JPEG" alt="Butterfly Door Corner layers"/>
+        <img src="images/butterfly-corner-layers.JPEG" alt="layers"/>
         <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4462083736/butterfly-door-corner-set-svgs-layered" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+          <a href="https://purpleperegrine.etsy.com/listing/4462083736" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -411,9 +409,9 @@
         <div class="flip-front-label">First Communion Card</div>
       </div>
       <div class="flip-back">
-        <img src="images/communion-card-layers.JPEG" alt="First Communion Card layers"/>
+        <img src="images/communion-card-layers.JPEG" alt="layers"/>
         <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1872456659/first-holy-communion-card-a6-and" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+          <a href="https://purpleperegrine.etsy.com/listing/1872456659" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -425,9 +423,9 @@
         <div class="flip-front-label">3D Barn Set</div>
       </div>
       <div class="flip-back">
-        <img src="images/barn-set-layers.JPEG" alt="3D Barn Set layers"/>
+        <img src="images/barn-set-layers.JPEG" alt="layers"/>
         <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4378233247/3d-barn-set-svg-cricut-digital-cut-file" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+          <a href="https://purpleperegrine.etsy.com/listing/4378233247" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -439,9 +437,9 @@
         <div class="flip-front-label">Seashell Garland</div>
       </div>
       <div class="flip-back">
-        <img src="images/seashell-garland-layers.JPEG" alt="Seashell Garland layers"/>
+        <img src="images/seashell-garland-layers.JPEG" alt="layers"/>
         <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/1772780483/shell-banner-svg-diy-two-layered-digital" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+          <a href="https://purpleperegrine.etsy.com/listing/1772780483" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
       </div>
     </div>
@@ -453,73 +451,69 @@
         <div class="flip-front-label">Dad Sailboat Card</div>
       </div>
       <div class="flip-back">
-        <img src="images/dadsailboat-card-layers.JPEG" alt="Dad Sailboat Card layers"/>
+        <img src="images/dadsailboat-card-layers.JPEG" alt="layers"/>
         <div class="flip-back-overlay">
-          <a href="https://purpleperegrine.etsy.com/listing/4312170737/fathers-day-sailboats-dad-a6-card-and" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+          <a href="https://purpleperegrine.etsy.com/listing/4312170737" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FEATURED COLLECTIONS -->
-<div class="section-header-home">
-  <span class="section-tag">Browse collections</span>
-  <h2 class="section-title-home">Shop by collection</h2>
+<!-- COLLECTION TILES -->
+<div class="home-section-header">
+  <span class="home-section-tag">Browse collections</span>
+  <h2 class="home-section-title">Shop by collection</h2>
 </div>
 
-<div class="tile-grid-home">
-
-  <a href="summer.html" class="tile-home">
-    <div class="tile-home-img">
+<div class="home-tile-grid">
+  <a href="summer.html" class="home-tile">
+    <div class="home-tile-img">
       <img src="images/seashell-garland.JPEG" alt="Summer"/>
-      <div class="tile-home-overlay"><div class="tile-home-name">Summer</div><div class="tile-home-cta">View collection →</div></div>
+      <div class="home-tile-overlay"><div class="home-tile-overlay-name">Summer</div><div class="home-tile-overlay-cta">View collection →</div></div>
     </div>
-    <div class="tile-home-label">Summer</div>
+    <div class="home-tile-label">Summer</div>
   </a>
-
-  <a href="graduation.html" class="tile-home">
-    <div class="tile-home-img">
+  <a href="graduation.html" class="home-tile">
+    <div class="home-tile-img">
       <img src="images/grad-robe-banner.JPEG" alt="Graduation"/>
-      <div class="tile-home-overlay"><div class="tile-home-name">Graduation</div><div class="tile-home-cta">View collection →</div></div>
+      <div class="home-tile-overlay"><div class="home-tile-overlay-name">Graduation</div><div class="home-tile-overlay-cta">View collection →</div></div>
     </div>
-    <div class="tile-home-label">Graduation</div>
+    <div class="home-tile-label">Graduation</div>
   </a>
-
-  <a href="religious.html" class="tile-home">
-    <div class="tile-home-img">
+  <a href="religious.html" class="home-tile">
+    <div class="home-tile-img">
       <img src="images/communion-card.JPEG" alt="Religious"/>
-      <div class="tile-home-overlay"><div class="tile-home-name">Religious</div><div class="tile-home-cta">View collection →</div></div>
+      <div class="home-tile-overlay"><div class="home-tile-overlay-name">Religious</div><div class="home-tile-overlay-cta">View collection →</div></div>
     </div>
-    <div class="tile-home-label">Religious</div>
+    <div class="home-tile-label">Religious</div>
   </a>
-
 </div>
 
 <!-- SHOP CTA -->
-<section class="shop-cta">
-  <div class="shop-card shop-card-main">
-    <span class="shop-card-tag">Primary shop</span>
-    <div class="shop-card-title">Find my full collection on Etsy</div>
-    <div class="shop-card-body">Downloadable SVG files, ready to upload to your cutting machine the moment you purchase.</div>
-    <div class="shop-pills">
-      <span class="shop-pill">555+ designs</span>
-      <span class="shop-pill">4.9★ rating</span>
-      <span class="shop-pill">2,600+ sales</span>
+<div class="home-shop-cta">
+  <div class="home-shop-card home-shop-card-main">
+    <span class="home-shop-card-tag">Primary shop</span>
+    <div class="home-shop-card-title">Find my full collection on Etsy</div>
+    <div class="home-shop-card-body">Downloadable SVG files, ready to upload to your cutting machine the moment you purchase.</div>
+    <div class="home-shop-pills">
+      <span class="home-shop-pill">555+ designs</span>
+      <span class="home-shop-pill">4.9★ rating</span>
+      <span class="home-shop-pill">2,600+ sales</span>
     </div>
-    <a href="https://www.etsy.com/shop/PurplePeregrine" class="btn-primary-hero" target="_blank" rel="noopener">Visit Etsy shop →</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" class="home-shop-btn" target="_blank" rel="noopener">Visit Etsy shop →</a>
   </div>
-  <div class="shop-card shop-card-secondary">
-    <span class="shop-card-tag">For Cricut Access members</span>
-    <div class="shop-card-title">Cricut Design Space portfolio</div>
-    <div class="shop-card-body">Many of my designs are free for Cricut Access members — browse and cut directly inside Design Space. Requires a Cricut account to view.</div>
-    <div class="shop-pills">
-      <span class="shop-pill">Free for Cricut Access</span>
-      <span class="shop-pill">Contributing Artist since 2023</span>
+  <div class="home-shop-card home-shop-card-secondary">
+    <span class="home-shop-card-tag">For Cricut Access members</span>
+    <div class="home-shop-card-title">Cricut Design Space portfolio</div>
+    <div class="home-shop-card-body">Many of my designs are free for Cricut Access members — browse and cut directly inside Design Space. Requires a Cricut account to view.</div>
+    <div class="home-shop-pills">
+      <span class="home-shop-pill">Free for Cricut Access</span>
+      <span class="home-shop-pill">Contributing Artist since 2023</span>
     </div>
-    <a href="https://design-beta.cricut.com/landing/profile/589fdfff719e813b7e8191cc" class="btn-ghost" target="_blank" rel="noopener">Browse Cricut portfolio →</a>
+    <a href="https://design-beta.cricut.com/landing/profile/589fdfff719e813b7e8191cc" class="home-shop-btn-ghost" target="_blank" rel="noopener">Browse Cricut portfolio →</a>
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -592,7 +586,17 @@
     });
   });
 
-  document.addEventListener('mousedown', e => { if (!e.target.closest('a') && !e.target.closest('button') && !e.target.closest('.flip-card')) spawnConfetti(e.clientX, e.clientY); });
+  document.addEventListener('mousedown', e => {
+    if (!e.target.closest('a') && !e.target.closest('button') && !e.target.closest('.flip-card'))
+      spawnConfetti(e.clientX, e.clientY);
+  });
+
+  document.addEventListener('touchend', e => {
+    if (!e.target.closest('a') && !e.target.closest('button')) {
+      const t = e.changedTouches[0];
+      spawnConfetti(t.clientX, t.clientY);
+    }
+  });
 
   const snippetShapes = ['▪','▫','◆','◇','✂','▸','▹'];
   function spawnSnippet(x, y) {
@@ -612,9 +616,8 @@
     const colors = ['#62385e','#4e2c4f','#ebdb43','#9b55bb','#EDE0D4','#9b6a96','#b06fd4'];
     for (let i = 0; i < 22; i++) {
       const el = document.createElement('div');
-      el.className = 'confetti-piece';
       const size = 13 + Math.random()*18;
-      el.style.cssText = `position:fixed;left:${x}px;top:${y}px;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>0.5?'50%':'2px'};pointer-events:none;`;
+      el.style.cssText = `position:fixed;left:${x}px;top:${y}px;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>0.5?'50%':'2px'};pointer-events:none;z-index:9998;`;
       document.body.appendChild(el);
       const angle = Math.random()*Math.PI*2, dist = 60+Math.random()*130;
       el.animate([
@@ -624,12 +627,7 @@
     }
   }
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, {threshold: 0.05});
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Mobile: burst of confetti on page load
+  // Mobile confetti burst on load
   if (window.innerWidth <= 768) {
     setTimeout(() => {
       const cx = window.innerWidth / 2;
