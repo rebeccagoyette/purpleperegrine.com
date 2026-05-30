@@ -67,7 +67,8 @@ nav {
   height: 100px;
   overflow: visible;
 }
-.nav-brand-wrap { display: flex; align-items: center; gap: 14px; }
+.nav-brand-wrap { display: flex; align-items: center; gap: 14px; pointer-events: none; }
+.nav-brand-wrap a { pointer-events: auto; }
 .nav-logo {
   width: 130px; height: 130px;
   flex-shrink: 0; position: relative; z-index: 101;
