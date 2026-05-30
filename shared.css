@@ -66,7 +66,9 @@ nav {
   justify-content: space-between;
   height: 100px;
   overflow: visible;
+  pointer-events: none;
 }
+nav * { pointer-events: auto; }
 .nav-brand-wrap { display: flex; align-items: center; gap: 14px; pointer-events: none; }
 .nav-brand-wrap a { pointer-events: auto; }
 .nav-logo {
