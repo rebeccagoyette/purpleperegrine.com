@@ -30,20 +30,20 @@
     .ticker { background: var(--primary); color: var(--accent); }
 
     /* ── HERO ── */
-    .hero {
+    .home-hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: 88vh;
       overflow: hidden;
     }
-    .hero-left {
+    .home-hero-left {
       padding: 80px 64px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       background: var(--primary);
     }
-    .hero-eyebrow {
+    .home-hero-eyebrow {
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -53,13 +53,13 @@
       align-items: center;
       gap: 12px;
     }
-    .hero-eyebrow::before {
+    .home-hero-eyebrow::before {
       content: '';
       display: inline-block;
       width: 28px; height: 1px;
       background: rgba(255,255,255,0.5);
     }
-    .hero-title {
+    .home-hero-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(52px, 7vw, 96px);
       line-height: 1.1;
@@ -67,15 +67,15 @@
       margin-bottom: 24px;
       font-weight: 600;
     }
-    .hero-title em { font-style: italic; color: var(--accent); }
-    .hero-body {
+    .home-hero-title em { font-style: italic; color: var(--accent); }
+    .home-hero-body {
       font-size: 1rem;
       line-height: 1.8;
       color: rgba(255,255,255,0.85);
       max-width: 420px;
       margin-bottom: 40px;
     }
-    .hero-buttons { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .home-hero-buttons { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
     .btn-primary-hero {
       background: var(--accent);
       color: var(--primary);
@@ -101,41 +101,41 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .btn-ghost:hover { color: var(--primary); border-color: var(--primary); }
-    .hero-stats {
+    .home-hero-stats {
       display: flex;
       gap: 40px;
       margin-top: 56px;
       padding-top: 40px;
       border-top: 1px solid rgba(255,255,255,0.25);
     }
-    .hero-stat-num {
+    .home-hero-stat-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem;
       color: var(--accent);
       font-weight: 600;
       line-height: 1;
     }
-    .hero-stat-label {
+    .home-hero-stat-label {
       font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.6);
       margin-top: 4px;
     }
-    .hero-right {
+    .home-hero-right {
       position: relative;
       overflow: hidden;
       background: var(--paper);
     }
-    .hero-img-main {
+    .home-hero-img-main {
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
       transition: transform 8s ease;
     }
-    .hero-right:hover .hero-img-main { transform: scale(1.04); }
+    .home-hero-right:hover .home-hero-img-main { transform: scale(1.04); }
 
-    .hero-mobile-brand {
+    .home-hero-mobile-brand {
       display: none;
     }
 
@@ -265,14 +265,14 @@
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
-      .hero {
+      .home-hero {
         grid-template-columns: 1fr;
         min-height: auto;
       }
       /* Image first on mobile */
-      .hero-right { order: 1; min-height: 60vw; }
-      .hero-left { order: 2; padding: 40px 24px 32px; }
-      .hero-mobile-brand {
+      .home-hero-right { order: 1; min-height: 60vw; }
+      .home-hero-left { order: 2; padding: 40px 24px 32px; }
+      .home-hero-mobile-brand {
         display: block;
         font-family: 'Cormorant Garamond', serif;
         font-size: 1.6rem;
@@ -283,9 +283,9 @@
         padding: 16px 24px 12px;
         background: var(--cream);
       }
-      .hero-title { font-size: clamp(36px, 10vw, 56px); }
-      .hero-stats { gap: 24px; margin-top: 32px; padding-top: 28px; }
-      .hero-stat-num { font-size: 1.8rem; }
+      .home-hero-title { font-size: clamp(36px, 10vw, 56px); }
+      .home-hero-stats { gap: 24px; margin-top: 32px; padding-top: 28px; }
+      .home-hero-stat-num { font-size: 1.8rem; }
       .section-header-home { padding: 48px 20px 32px; }
       .tile-grid-home { padding: 0 16px 40px; grid-template-columns: 1fr 1fr; gap: 12px; }
       .tile-grid-home .tile-home:last-child { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
@@ -340,32 +340,32 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Cricut Contributing Artist since 2023</div>
-    <h1 class="hero-title">Paper designs<br><em style="margin-left:0.6em;">created and</em><br>tested with care.</h1>
-    <p class="hero-body">SVG cut files for Cricut crafters who want something a little different — ready to upload to your cutting machine.</p>
-    <div class="hero-buttons">
+<section class="home-hero">
+  <div class="home-hero-left">
+    <div class="home-hero-eyebrow">Cricut Contributing Artist since 2023</div>
+    <h1 class="home-hero-title">Paper designs<br><em style="margin-left:0.6em;">created and</em><br>tested with care.</h1>
+    <p class="home-hero-body">SVG cut files for Cricut crafters who want something a little different — ready to upload to your cutting machine.</p>
+    <div class="home-hero-buttons">
       <a href="https://www.etsy.com/shop/PurplePeregrine" class="btn-primary-hero" target="_blank" rel="noopener">Shop on Etsy</a>
     </div>
-    <div class="hero-stats">
+    <div class="home-hero-stats">
       <div>
-        <div class="hero-stat-num">2,600+</div>
-        <div class="hero-stat-label">Happy customers</div>
+        <div class="home-hero-stat-num">2,600+</div>
+        <div class="home-hero-stat-label">Happy customers</div>
       </div>
       <div>
-        <div class="hero-stat-num">4.9★</div>
-        <div class="hero-stat-label">Etsy rating</div>
+        <div class="home-hero-stat-num">4.9★</div>
+        <div class="home-hero-stat-label">Etsy rating</div>
       </div>
       <div>
-        <div class="hero-stat-num">555+</div>
-        <div class="hero-stat-label">Designs available</div>
+        <div class="home-hero-stat-num">555+</div>
+        <div class="home-hero-stat-label">Designs available</div>
       </div>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="hero-mobile-brand">Purple Peregrine</div>
-    <img class="hero-img-main" src="images/bee-bookmark.JPEG" alt="Bumble Bee Bookmark"/>
+  <div class="home-hero-right">
+    <div class="home-hero-mobile-brand">Purple Peregrine</div>
+    <img class="home-hero-img-main" src="images/bee-bookmark.JPEG" alt="Bumble Bee Bookmark"/>
   </div>
 </section>
 
