@@ -142,4 +142,18 @@
   }, {threshold: 0.05});
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+  // Auto-wrap logo with home link on all pages except homepage
+  const path = window.location.pathname;
+  const isHome = path.endsWith('homepage.html') || path.endsWith('/') || path === '';
+  if (!isHome) {
+    const logo = document.querySelector('.nav-logo');
+    if (logo && !logo.parentElement.closest('a')) {
+      const a = document.createElement('a');
+      a.href = 'homepage.html';
+      a.title = 'Home';
+      logo.parentNode.insertBefore(a, logo);
+      a.appendChild(logo);
+    }
+  }
+
 })();
