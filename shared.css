@@ -336,6 +336,8 @@ nav * { pointer-events: auto; }
   gap: 24px;
   background: var(--divider-bg, var(--primary));
 }
+.section-divider .section-tag { color: rgba(255,255,255,0.75); }
+.section-divider .section-title { color: #fff; }
 .divider-line {
   width: 60%;
   height: 1px;
