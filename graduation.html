@@ -189,7 +189,7 @@ document.addEventListener('mousemove', function(e) {
   // Paper snippet trail following scissors
   let trailTimer = null;
   function spawnSnippet(x, y) {
-    const size = 40 + Math.random() * 20;
+    const size = 60 + Math.random() * 30;
     const el = document.createElement('div');
     el.style.cssText = 'position:fixed;left:' + x + 'px;top:' + y + 'px;pointer-events:none;z-index:9998;';
     el.innerHTML = '<svg width="' + size + '" height="' + size + '" viewBox="120 55 220 75" xmlns="http://www.w3.org/2000/svg"><path fill="#1a1a1a" d="m 172.27595,71.791978 c -8.91015,2.080018 -61.4071,24.992573 -59.99544,25.519886 5.52541,2.063999 21.97628,3.720826 25.51748,4.913406 3.85184,1.29719 -0.10189,14.52386 1.32841,14.53814 34.42288,5.15706 50.79159,2.97961 66.29909,0.45229 1.43033,-0.0135 -2.52343,-13.69324 1.32841,-14.99043 3.5412,-1.19258 19.99209,-2.849407 25.5175,-4.913406 1.41166,-0.527313 -51.08531,-23.439868 -59.99545,-25.519886 z"/></svg>';
@@ -203,7 +203,7 @@ document.addEventListener('mousemove', function(e) {
   }
   function spawnConfetti(x, y) {
     for (let i = 0; i < 8; i++) {
-      const size = 38 + Math.random() * 20;
+      const size = 57 + Math.random() * 30;
       const el = document.createElement('div');
       el.style.cssText = 'position:fixed;left:' + x + 'px;top:' + y + 'px;pointer-events:none;z-index:9999;';
       el.innerHTML = '<svg width="' + size + '" height="' + size + '" viewBox="120 55 220 75" xmlns="http://www.w3.org/2000/svg"><path fill="#1a1a1a" d="m 172.27595,71.791978 c -8.91015,2.080018 -61.4071,24.992573 -59.99544,25.519886 5.52541,2.063999 21.97628,3.720826 25.51748,4.913406 3.85184,1.29719 -0.10189,14.52386 1.32841,14.53814 34.42288,5.15706 50.79159,2.97961 66.29909,0.45229 1.43033,-0.0135 -2.52343,-13.69324 1.32841,-14.99043 3.5412,-1.19258 19.99209,-2.849407 25.5175,-4.913406 1.41166,-0.527313 -51.08531,-23.439868 -59.99545,-25.519886 z"/></svg>';

@@ -90,7 +90,7 @@
 </section>
 
 <!-- SECTION DIVIDER -->
-<div class="section-divider fade-up">
+<div class="section-divider">
   <div class="divider-line"></div>
   <div class="divider-content">
     <span class="section-tag">SVG Cut Files</span>
@@ -102,7 +102,7 @@
 </div>
 
 <!-- GALLERY -->
-<div class="gallery fade-up">
+<div class="gallery">
 
   <div class="flip-card">
     <div class="flip-card-inner">
@@ -385,7 +385,7 @@
   }
 
   function spawnSnippet(x, y) {
-    const size = 28 + Math.random() * 18;
+    const size = 42 + Math.random() * 27;
     const color = pastelColors[Math.floor(Math.random() * pastelColors.length)];
     const el = document.createElement('div');
     el.style.cssText = `position:fixed;left:${x}px;top:${y}px;pointer-events:none;z-index:9998;`;
@@ -400,7 +400,7 @@
 
   function spawnConfetti(x, y) {
     for (let i = 0; i < 4; i++) {
-      const size = 20 + Math.random() * 18;
+      const size = 30 + Math.random() * 27;
       const color = pastelColors[Math.floor(Math.random() * pastelColors.length)];
       const el = document.createElement('div');
       el.style.cssText = `position:fixed;left:${x}px;top:${y}px;pointer-events:none;z-index:9999;`;

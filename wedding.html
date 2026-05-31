@@ -24,6 +24,8 @@
       --ticker-dot: #D4AF37;
     }
     body { background: linear-gradient(135deg, #f5f0e8 0%, #ede4d4 100%); }
+    .section-divider .section-tag { color: var(--muted); }
+    .section-divider .section-title { color: var(--primary); }
     .section-divider { background: linear-gradient(135deg, #f5f0e8 0%, #ede4d4 100%); }
     .section-title { color: var(--primary); }
   </style>
@@ -116,10 +118,6 @@
 
 </div>
 
-
-<div style="text-align:center; padding: 56px 48px 72px; background: linear-gradient(135deg, #f5f0e8 0%, #ede4d4 100%);">
-  <a href="gallery.html" class="btn-collections" style="font-size:0.9rem; padding:16px 40px;">← Back to All Collections</a>
-</div>
 
 <script>
   const cursorEl = document.getElementById('site-cursor');
@@ -234,7 +232,7 @@ document.addEventListener('mousemove', function(e) {
   function spawnConfetti(x, y) {
     const colors = ['#D4AF37','#C5A028','#E8C84A','#B8960C','#F0D060'];
     for (let i = 0; i < 8; i++) {
-      const size = 18+Math.random()*16;
+      const size = 27+Math.random()*24;
       const color = colors[Math.floor(Math.random()*colors.length)];
       const el = document.createElement('div');
       el.style.cssText = 'position:fixed;left:'+x+'px;top:'+y+'px;pointer-events:none;z-index:9999;';

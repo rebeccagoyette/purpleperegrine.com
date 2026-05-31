@@ -91,7 +91,7 @@
 </section>
 
 <!-- SECTION DIVIDER -->
-<div class="section-divider fade-up">
+<div class="section-divider">
   <div class="divider-line"></div>
   <div class="divider-content">
     <span class="section-tag">SVG Cut Files</span>
@@ -103,7 +103,7 @@
 </div>
 
 <!-- GALLERY -->
-<div class="gallery fade-up">
+<div class="gallery">
 
   <div class="flip-card">
     <div class="flip-card-inner">
@@ -384,7 +384,7 @@
       const angle = (i / petalCount) * Math.PI * 2;
       const px = cx + Math.cos(angle) * pr;
       const py = cy + Math.sin(angle) * pr;
-      petals += `<ellipse cx="${px}" cy="${py}" rx="${r}" ry="${r * 0.6}" transform="rotate(${(angle * 180/Math.PI)}, ${px}, ${py})" fill="${color}" opacity="0.9"/>`;
+      petals += `<ellipse cx="${px}" cy="${py}" rx="${r}" ry="${r * 0.6}" transform="rotate(${(angle * 180/Math.PI)}, ${px}, ${py})" fill="${color}"/>`;
     }
     const centerColors = ['#f9e04b','#fff','#e07a30'];
     const cc = centerColors[Math.floor(Math.random() * centerColors.length)];
