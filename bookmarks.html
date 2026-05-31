@@ -21,6 +21,7 @@
       --paper:  #EDE0D4;
       --ink:    #2a1a28;
       --muted:  #8a6080;
+      --btn-text: #7d4878;
       --ticker-dot: #c9b800;
     }
     body { background: var(--cream); }
@@ -65,13 +66,14 @@
     <a href="https://www.etsy.com/shop/PurplePeregrine?section_id=41732399" class="nav-shop" target="_blank" rel="noopener">Shop Bookmarks on Etsy</a>
   </div>
   <div class="nav-mobile-buttons">
+    <a href="homepage.html" class="nav-home-mobile">Home</a>
     <a href="https://www.etsy.com/shop/PurplePeregrine?section_id=41732399" class="nav-shop-mobile" target="_blank" rel="noopener">Shop Etsy</a>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">SVG Cut Files for Cricut</div>
+    <div class="hero-eyebrow" style="color:#fff;">SVG Cut Files for Cricut</div>
     <h1 class="hero-title">Bookmark<br><em>Collection</em></h1>
     <p class="hero-body">Layered SVG bookmarks — from whimsical florals to charming scenery. Perfect for gifts, craft fairs, or keeping your place in style.</p>
     <div class="hero-buttons">
@@ -110,10 +112,9 @@
   <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/landscape-bookmarks.JPEG" alt="Landscape Bookmark Set"/><div class="flip-front-label">Landscape Bookmark Set</div></div><div class="flip-back"><img src="images/landscape-bookmarks-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://www.etsy.com/listing/4468836463/landscape-bookmark-set-svgs-layered" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
 </div>
 
-<div class="back-bar"><a href="gallery.html">← Back to All Collections</a></div>
 
-<footer>
-  <div class="footer-brand">Purple Peregrine</div>
+
+</div>
   <div class="footer-links">
     <a href="gallery.html">Gallery</a>
     <a href="homepage.html">Home</a>
@@ -234,5 +235,20 @@
   }, {threshold: 0.05});
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
+
+<!-- BACK TO COLLECTIONS -->
+<div class="back-bar">
+  <a href="gallery.html">← Back to All Collections</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Purple Peregrine</div>
+  <div class="footer-links">
+    <a href="gallery.html">Gallery</a>
+    <a href="homepage.html">Home</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" target="_blank" rel="noopener">Etsy</a>
+  </div>
+</footer>
 </body>
 </html>
