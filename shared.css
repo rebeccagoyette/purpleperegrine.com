@@ -338,6 +338,15 @@ nav * { pointer-events: auto; }
 }
 .section-divider .section-tag { color: rgba(255,255,255,0.75); }
 .section-divider .section-title { color: #fff; }
+.section-divider .btn-collections {
+  color: #fff;
+  border-color: rgba(255,255,255,0.7);
+}
+.section-divider .btn-collections:hover {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border-color: #fff;
+}
 .divider-line {
   width: 60%;
   height: 1px;

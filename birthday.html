@@ -181,7 +181,7 @@ document.addEventListener('mousemove', function(e) {
   document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
   // Mobile confetti on tap - Nordic shapes
   function spawnNordicConfetti(x, y) {
-    const colors = ['#E8517A','#F5C842','#5BA4CF','#ff8fab','#ffe066','#74c0fc'];
+    const colors = ['#E8517A','#c4282a','#1a78c2','#d4a000','#c23070','#0a5fa0'];
     const color = colors[Math.floor(Math.random() * colors.length)];
     const size = 14 + Math.random() * 14;
     const el = document.createElement('div');
@@ -208,7 +208,7 @@ document.addEventListener('mousemove', function(e) {
   let trailTimer = null;
   const snippetShapes = ['●','○','★','♥','▲','●','○'];
   function spawnSnippet(x, y) {
-    const colors = ['#E8517A','#F5C842','#5BA4CF','#ff8fab','#ffe066','#74c0fc'];
+    const colors = ['#E8517A','#c4282a','#1a78c2','#d4a000','#c23070','#0a5fa0'];
     const color = colors[Math.floor(Math.random() * colors.length)];
     const size = 14 + Math.random() * 14;
     const el = document.createElement('div');
@@ -225,7 +225,7 @@ document.addEventListener('mousemove', function(e) {
   }
 
   function spawnConfetti(x, y) {
-    const colors = ['#E8517A','#F5C842','#5BA4CF','#ff8fab','#ffe066','#74c0fc'];
+    const colors = ['#E8517A','#c4282a','#1a78c2','#d4a000','#c23070','#0a5fa0'];
     for (let i = 0; i < 18; i++) {
       const color = colors[Math.floor(Math.random() * colors.length)];
       const size = 14 + Math.random() * 14;
