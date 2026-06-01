@@ -30,14 +30,14 @@
     /* ── FREEBIE HERO ── */
     .freebie-hero {
       background: var(--primary);
-      padding: 80px 48px;
+      padding: 80px 96px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 80px;
       align-items: center;
-      min-height: 52vh;
+      min-height: 60vh;
     }
-    .freebie-hero-left { padding-left: 48px; }
+    .freebie-hero-left { }
     .freebie-eyebrow {
       font-size: 0.75rem;
       letter-spacing: 0.18em;
@@ -56,10 +56,10 @@
     }
     .freebie-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(42px, 5.5vw, 78px);
+      font-size: clamp(52px, 6vw, 86px);
       line-height: 1.05;
       color: #fff;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       font-weight: 600;
     }
     .freebie-title em { font-style: italic; color: var(--accent); }
@@ -67,7 +67,7 @@
       font-size: 0.95rem;
       line-height: 1.8;
       color: rgba(255,255,255,0.88);
-      max-width: 420px;
+      max-width: 480px;
       margin-bottom: 12px;
     }
     .freebie-trust {
@@ -75,22 +75,15 @@
       letter-spacing: 0.06em;
       color: rgba(255,255,255,0.6);
       margin-bottom: 36px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .freebie-trust::before {
-      content: '✓';
-      color: var(--accent);
-      font-size: 0.9rem;
     }
 
     /* ── HERO VIDEO ── */
     .hero-video-wrap {
       border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-      max-width: 340px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      width: 100%;
+      max-width: 400px;
       margin: 0 auto;
     }
     .hero-video-wrap video {
@@ -310,12 +303,13 @@
     @media (max-width: 768px) {
       .freebie-hero {
         grid-template-columns: 1fr;
-        padding: 40px 20px 32px;
-        gap: 28px;
+        padding: 48px 20px 40px;
+        gap: 32px;
         min-height: auto;
       }
-      .freebie-hero-left { padding-left: 0; }
-      .freebie-title { font-size: clamp(34px, 10vw, 50px); }
+      .freebie-title { font-size: clamp(42px, 11vw, 60px); }
+      .freebie-body { max-width: 100%; }
+      .hero-video-wrap { max-width: 100%; }
       .freebie-video-section {
         grid-template-columns: 1fr;
         padding: 48px 20px;
