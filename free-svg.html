@@ -30,19 +30,21 @@
     /* ── FREEBIE HERO ── */
     .freebie-hero {
       background: var(--primary);
-      padding: 80px 96px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      min-height: 60vh;
+      min-height: 88vh;
     }
-    .freebie-hero-left { }
+    .freebie-hero-left {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .freebie-eyebrow {
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: rgba(255,255,255,0.7);
       margin-bottom: 20px;
       display: flex;
       align-items: center;
@@ -52,44 +54,78 @@
       content: '';
       display: inline-block;
       width: 28px; height: 1px;
-      background: var(--accent);
+      background: rgba(255,255,255,0.5);
     }
     .freebie-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(52px, 6vw, 86px);
-      line-height: 1.05;
-      color: #fff;
+      font-size: clamp(52px, 7vw, 96px);
+      line-height: 1.1;
+      color: var(--cream);
       margin-bottom: 24px;
       font-weight: 600;
     }
-    .freebie-title em { font-style: italic; color: var(--accent); }
+    .freebie-title em { font-style: italic; color: var(--accent); margin-left: 0.3em; }
     .freebie-body {
-      font-size: 0.95rem;
+      font-size: 1rem;
       line-height: 1.8;
-      color: rgba(255,255,255,0.88);
-      max-width: 480px;
-      margin-bottom: 12px;
+      color: rgba(255,255,255,0.85);
+      max-width: 420px;
+      margin-bottom: 16px;
     }
     .freebie-trust {
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 36px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 40px;
     }
 
-    /* ── HERO VIDEO ── */
-    .hero-video-wrap {
-      border-radius: 4px;
+    /* ── HERO FLIP CARD — full height right panel ── */
+    .hero-flip {
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-      width: 100%;
-      max-width: 400px;
-      margin: 0 auto;
+      background: var(--paper);
+      perspective: 1000px;
     }
-    .hero-video-wrap video {
-      width: 100%;
+    .hero-flip .flip-card-inner {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .hero-flip:hover .flip-card-inner { transform: rotateY(180deg); }
+    .hero-flip .flip-front,
+    .hero-flip .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+    }
+    .hero-flip .flip-front img,
+    .hero-flip .flip-back img {
+      width: 100%; height: 100%;
+      object-fit: cover;
       display: block;
     }
+    .hero-flip .flip-back { transform: rotateY(180deg); }
+    .hero-flip .flip-back-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px;
+      background: linear-gradient(transparent, rgba(42,26,40,0.7));
+    }
+    .hero-flip .flip-back-link {
+      display: inline-block;
+      padding: 10px 24px;
+      border: 1px solid #fff;
+      color: #fff;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 1px;
+      transition: background 0.2s;
+      font-family: 'Jost', sans-serif;
+    }
+    .hero-flip .flip-back-link:hover { background: rgba(255,255,255,0.2); }
 
     /* ── DOWNLOAD BUTTON ── */
     .download-btn {
@@ -98,9 +134,9 @@
       gap: 10px;
       background: var(--accent);
       color: var(--primary);
-      padding: 16px 36px;
-      font-size: 0.85rem;
-      letter-spacing: 0.13em;
+      padding: 14px 32px;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       text-decoration: none;
       border-radius: 2px;
@@ -108,18 +144,10 @@
       font-weight: 500;
       transition: background 0.2s, transform 0.2s;
       border: none;
+      align-self: flex-start;
     }
     .download-btn:hover { background: #fff; transform: translateY(-2px); }
     .download-btn svg { flex-shrink: 0; }
-
-    /* ── HERO FLIP CARD ── */
-    .hero-flip {
-      aspect-ratio: 1/1.8;
-      max-width: 360px;
-      width: 100%;
-      margin: 0 auto;
-      min-height: 0;
-    }
 
     /* ── CREAM SECTION — video left, specs right ── */
     .freebie-cream-section {
@@ -176,7 +204,6 @@
       font-weight: 500;
       flex: 1;
     }
-    .spec-icon { color: var(--primary); font-size: 0.9rem; }
 
     /* ── GALLERY CTA — purple ── */
     .freebie-gallery-cta {
@@ -250,13 +277,16 @@
     @media (max-width: 768px) {
       .freebie-hero {
         grid-template-columns: 1fr;
-        padding: 48px 20px 40px;
-        gap: 32px;
         min-height: auto;
+      }
+      .freebie-hero-left {
+        padding: 48px 20px 40px;
       }
       .freebie-title { font-size: clamp(42px, 11vw, 60px); }
       .freebie-body { max-width: 100%; }
-      .hero-flip { max-width: 100%; aspect-ratio: 1/1.4; }
+      .hero-flip {
+        min-height: 60vw;
+      }
       .freebie-cream-section {
         grid-template-columns: 1fr;
         padding: 48px 20px;
@@ -333,7 +363,6 @@
     <div class="flip-card-inner">
       <div class="flip-front">
         <img src="images/barn-bookmark.JPEG" alt="Finished Barn Bookmark"/>
-        <div class="flip-front-label">Hover to see layers</div>
       </div>
       <div class="flip-back">
         <img src="images/barn-bookmark-layers.JPEG" alt="Barn Bookmark layers"/>
@@ -357,37 +386,34 @@
     <div class="spec-row">
       <span class="spec-label">Size</span>
       <span class="spec-value">2&quot; × 6&quot;</span>
-      <span class="spec-icon">📐</span>
     </div>
     <div class="spec-row">
       <span class="spec-label">Layers</span>
-      <span class="spec-value">4 — red (×2), white, green</span>
-      <span class="spec-icon">✂</span>
+      <span class="spec-value">4</span>
+    </div>
+    <div class="spec-row">
+      <span class="spec-label">Materials</span>
+      <span class="spec-value">Red, white, and green cardstock. Glue. Tassel or ribbon.</span>
+    </div>
+    <div class="spec-row">
+      <span class="spec-label">Type</span>
+      <span class="spec-value">Plain SVG</span>
     </div>
     <div class="spec-row">
       <span class="spec-label">Compatible</span>
-      <span class="spec-value">Cricut Design Space, Silhouette &amp; all SVG cutters</span>
-      <span class="spec-icon">✓</span>
-    </div>
-    <div class="spec-row">
-      <span class="spec-label">Supplies</span>
-      <span class="spec-value">Cardstock, glue, tassel or ribbon</span>
-      <span class="spec-icon">🎀</span>
+      <span class="spec-value">Cricut Design Space</span>
     </div>
     <div class="spec-row">
       <span class="spec-label">Assembly</span>
       <span class="spec-value">Stack &amp; glue — no small pieces</span>
-      <span class="spec-icon">✓</span>
     </div>
     <div class="spec-row">
       <span class="spec-label">Use</span>
       <span class="spec-value">Personal &amp; commercial — sell what you make</span>
-      <span class="spec-icon">🎁</span>
     </div>
     <div class="spec-row">
       <span class="spec-label">Cost</span>
       <span class="spec-value">Free — no sign-up needed</span>
-      <span class="spec-icon">✓</span>
     </div>
   </div>
 </div>
@@ -399,25 +425,25 @@
     <h2 class="section-title" style="color:#fff;">Browse the Collections</h2>
   </div>
   <div class="freebie-gallery-tiles">
-    <a href="gallery.html" class="freebie-gallery-tile">
-      <div class="freebie-tile-img">
-        <img src="images/Logo2.svg" alt="All Collections"/>
-        <div class="freebie-tile-overlay">
-          <div class="freebie-tile-name">All Collections</div>
-          <div class="freebie-tile-cta">View gallery →</div>
-        </div>
-      </div>
-      <div class="freebie-tile-label">All Collections</div>
-    </a>
     <a href="bookmarks.html" class="freebie-gallery-tile">
       <div class="freebie-tile-img">
-        <img src="images/barn-bookmark.JPEG" alt="Bookmarks Collection"/>
+        <img src="images/butterfly-bookmark.JPEG" alt="Bookmarks Collection"/>
         <div class="freebie-tile-overlay">
           <div class="freebie-tile-name">Bookmarks</div>
           <div class="freebie-tile-cta">View collection →</div>
         </div>
       </div>
       <div class="freebie-tile-label">Bookmarks</div>
+    </a>
+    <a href="gallery.html" class="freebie-gallery-tile">
+      <div class="freebie-tile-img">
+        <img src="images/bluejay.JPEG" alt="All Collections"/>
+        <div class="freebie-tile-overlay">
+          <div class="freebie-tile-name">All Collections</div>
+          <div class="freebie-tile-cta">View gallery →</div>
+        </div>
+      </div>
+      <div class="freebie-tile-label">All Collections</div>
     </a>
   </div>
 </div>
