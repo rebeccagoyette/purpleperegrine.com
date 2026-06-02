@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animals and Birds Collection | Purple Peregrine</title>
+  <title>Coming Soon | Purple Peregrine</title>
   <link rel="icon" type="image/svg+xml" href="images/Logo2.svg">
   <link rel="icon" type="image/png" href="images/Logo2.png">
   <link rel="stylesheet" href="shared.css">
   <style>
-    /* ── PAGE THEME: Bookmarks (shared coming soon style) ── */
     :root {
       --primary:       #7d4878;
       --primary-dark:  #8a5485;
@@ -27,7 +26,6 @@
     body { background: var(--cream); }
     .ticker { background: var(--primary); color: var(--accent); }
 
-    /* ── COMING SOON SECTION ── */
     .coming-soon {
       min-height: 60vh;
       display: flex;
@@ -96,13 +94,13 @@
 <div class="ticker">
   <div class="ticker-inner">
     <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
-    <span>Animals and Birds Collection</span><span class="ticker-dot">✦</span>
+    <span>Purple Peregrine</span><span class="ticker-dot">✦</span>
     <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
     <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
     <span>555+ Designs</span><span class="ticker-dot">✦</span>
     <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
     <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
-    <span>Animals and Birds Collection</span><span class="ticker-dot">✦</span>
+    <span>Purple Peregrine</span><span class="ticker-dot">✦</span>
     <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
     <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
     <span>555+ Designs</span><span class="ticker-dot">✦</span>
@@ -117,18 +115,20 @@
     <a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a>
   </div>
   <div class="nav-links">
-    <a href="homepage.html">Home</a>
     <a href="gallery.html">Gallery</a>
+    <a href="free-svg.html">Free SVG</a>
+    <a href="about.html">About</a>
     <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop" target="_blank" rel="noopener">Shop on Etsy</a>
   </div>
   <div class="nav-mobile-buttons">
+    <a href="homepage.html" class="nav-home-mobile">Home</a>
     <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop-mobile" target="_blank" rel="noopener">Shop Etsy</a>
   </div>
 </nav>
 
 <!-- COMING SOON -->
 <div class="coming-soon">
-  <div class="coming-soon-eyebrow">Summer Collection</div>
+  <div class="coming-soon-eyebrow">Purple Peregrine</div>
   <h1 class="coming-soon-title">Coming<br><em>Soon!</em></h1>
   <p class="coming-soon-sub">We're working on something lovely. Check back soon or browse our other collections in the meantime.</p>
 </div>
@@ -163,11 +163,6 @@
     cursorEl.style.opacity = '1';
   });
   document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; });
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, {threshold: 0.05});
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
