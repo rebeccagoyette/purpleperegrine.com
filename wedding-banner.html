@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Your Wedding Banner | Purple Peregrine</title>
+  <link rel="icon" type="image/svg+xml" href="images/Logo2.svg">
+  <link rel="icon" type="image/png" href="images/Logo2.png">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    :root {
+      --primary:       #8a7560;
+      --primary-dark:  #6b5c4a;
+      --primary-light: #D4AF37;
+      --accent:        #D4AF37;
+      --divider-bg:    #f5f0e8;
+      --nav-bg:        #e8e8e8;
+      --nav-border:    #8a7560;
+      --cream:  #fdfcfc;
+      --ink:    #1a1a1a;
+      --muted:  #6b6b6b;
+      --btn-text: #8a7560;
+      --ticker-dot: #D4AF37;
+      --paper-dark: #d4c4b4;
+    }
+    body { background: var(--cream); }
+
+    /* ── GROUP SECTIONS ── */
+    .banner-intro {
+      max-width: 720px;
+      margin: 64px auto 0;
+      padding: 0 48px;
+      text-align: center;
+    }
+    .banner-intro-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .banner-intro-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      color: var(--primary);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .banner-intro-body {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    /* ── GROUP HEADER ── */
+    .group-header {
+      padding: 56px 48px 24px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .group-header-line {
+      flex: 1;
+      height: 1px;
+      background: var(--paper-dark);
+      opacity: 0.6;
+    }
+    .group-header-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 2.5vw, 32px);
+      color: var(--primary);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .group-header-text em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ── PRODUCT GRID ── */
+    .product-grid {
+      padding: 0 48px 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .product-grid.two-col { grid-template-columns: repeat(2, 1fr); max-width: 720px; }
+    .product-grid.three-col { grid-template-columns: repeat(3, 1fr); }
+    .product-grid.two-col,
+    .product-grid.three-col { margin: 0 auto; }
+
+    .product-card {
+      text-decoration: none;
+      color: var(--ink);
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-card-img {
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--paper-dark);
+      position: relative;
+    }
+    .product-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-card-img img { transform: scale(1.05); }
+    .product-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(138,117,96,0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .product-card:hover .product-card-overlay { opacity: 1; }
+    .product-card-cta {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 6px 14px;
+      border-radius: 1px;
+    }
+    .product-card-label {
+      padding: 8px 4px 4px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .banner-divider {
+      height: 1px;
+      background: var(--paper-dark);
+      margin: 8px 48px;
+      opacity: 0.4;
+    }
+
+    /* ── SHOP ALL ── */
+    .shop-all {
+      text-align: center;
+      padding: 56px 48px 72px;
+      background: linear-gradient(135deg, #f5f0e8 0%, #ede4d4 100%);
+    }
+    .shop-all-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .shop-all-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    .shop-all-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 36px;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      font-family: 'Jost', sans-serif;
+      transition: background 0.2s;
+    }
+    .shop-all-btn:hover { background: var(--primary-dark); }
+
+    @media (max-width: 768px) {
+      .banner-intro { padding: 0 20px; margin-top: 40px; }
+      .group-header { padding: 40px 20px 16px; }
+      .product-grid { padding: 0 16px 32px; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .product-grid.two-col { grid-template-columns: 1fr 1fr; }
+      .product-grid.three-col { grid-template-columns: 1fr 1fr; }
+      .product-card-overlay { display: none; }
+      .banner-divider { margin: 8px 20px; }
+      .shop-all { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="site-cursor">
+  <svg id="cursor-svg" width="24" height="47" viewBox="0 0 354.14407 707.8291">
+    <g id="cursor-g" transform="translate(139.03787,207.75)">
+      <path id="cursor-path" fill="#D4AF37" d="M 214.8832,392.88124 C 213.6487,351.10144 192.4188,306.81849 151.2133,291.74442 124.2378,282.5742 92.4685,287.92207 90.4575,251.91109 76.6948,192.36961 65.7318,132.18954 51.8127,72.695 39.4648,46.6078 40.535,-51.7047 0.6983,-207.75 c -13.621,14.7397 -17.7326,200.0063 -14.5164,272.5398 -15.3032,28.0798 -8.258,113.55982 -23.3492,210.0048 -3.8938,32.71461 -41.7477,20.43878 -60.3525,38.15255 -44.0113,30.71139 -50.5531,94.37019 -31.2324,141.02386 15.9428,35.27857 61.4503,59.15221 97.5362,38.36748 42.9756,-20.06987 52.4825,-72.48508 48.4413,-115.16713 -6.9013,-28.59832 -13.7438,-57.36829 -2.6276,-86.26001 5.1649,-16.25131 7.8294,-48.82214 12.8467,-56.27239 9.0186,33.08779 25.5753,64.20235 30.8527,98.13343 -4.7972,28.88996 -5.2245,58.6576 4.0555,86.86484 9.033,45.57671 62.0423,81.53294 106.4604,60.54992 32.0848,-15.61392 48.4238,-52.77583 46.0702,-87.30591 z m -25.1994,-0.44041 c 4.4186,32.42715 -21.4514,71.62555 -57.0411,66.05268 -42.6586,-7.91717 -59.2413,-60.62059 -48.5494,-98.33732 6.7516,-31.15254 45.5418,-51.65329 73.1732,-32.52716 21.8624,13.61616 31.4284,40.10025 32.4173,64.8118 z m -196.3326,5.06143 c 2.3117,33.0479 -17.5032,75.09011 -55.1263,74.94116 -35.1936,-1.49618 -55.2632,-38.63037 -53.0197,-70.72062 -1.8119,-33.53315 23.1599,-73.03612 60.4974,-68.62124 29.8497,4.9459 47.8069,35.91883 47.6486,64.4007 z"/>
+    </g>
+  </svg>
+</div>
+
+<!-- TICKER -->
+<div class="ticker" style="background:#8a7560; color:#D4AF37;">
+  <div class="ticker-inner">
+    <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
+    <span>Wedding Banner Collection</span><span class="ticker-dot">✦</span>
+    <span>Mix &amp; Match Styles</span><span class="ticker-dot">✦</span>
+    <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
+    <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
+    <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
+    <span>Wedding Banner Collection</span><span class="ticker-dot">✦</span>
+    <span>Mix &amp; Match Styles</span><span class="ticker-dot">✦</span>
+    <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
+    <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand-wrap">
+    <img src="images/Logo2.svg" class="nav-logo" alt="Purple Peregrine logo"/>
+    <a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a>
+  </div>
+  <div class="nav-links">
+    <a href="gallery.html">Gallery</a>
+    <a href="free-svg.html">Free SVG</a>
+    <a href="about.html">About</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop" target="_blank" rel="noopener">Shop on Etsy</a>
+  </div>
+  <div class="nav-mobile-buttons">
+    <a href="homepage.html" class="nav-home-mobile">Home</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop-mobile" target="_blank" rel="noopener">Shop Etsy</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">SVG Cut Files for Cricut</div>
+    <h1 class="hero-title">Build Your<br><em>Wedding Banner</em></h1>
+    <p class="hero-body">Mix and match bridal gowns, tuxedos, bridesmaid dresses and more — create a banner that mirrors your actual wedding party.</p>
+    <div class="hero-buttons">
+      <a href="https://www.etsy.com/shop/PurplePeregrine?section_id=41732399" class="btn-primary" target="_blank" rel="noopener">Shop all Wedding on Etsy →</a>
+      <a href="wedding.html" class="btn-ghost">← Wedding Collection</a>
+    </div>
+  </div>
+  <div class="hero-right-single">
+    <img src="images/bride-short-party-banner.JPEG" alt="Wedding Party Banner"/>
+  </div>
+</section>
+
+<!-- INTRO -->
+<div class="banner-intro">
+  <span class="banner-intro-tag">How it works</span>
+  <h2 class="banner-intro-title">Choose your styles, <em>build your banner</em></h2>
+  <p class="banner-intro-body">Each listing is a separate SVG file for Cricut. Browse by category below — pick the bridal gown style, groom's outfit, and add bridesmaids, flower girls, or the full wedding party to match your celebration.</p>
+</div>
+
+<!-- GROUP 1: BRIDAL GOWNS -->
+<div class="group-header">
+  <div class="group-header-line"></div>
+  <div class="group-header-text">Bridal <em>Gowns</em></div>
+  <div class="group-header-line"></div>
+</div>
+<div class="product-grid">
+  <a href="https://www.etsy.com/listing/1436848002/lace-bridal-dress-banner-svg-diy-wedding" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bride-short-banner.JPEG" alt="Short Sleeved Lace Bridal Dress Banner"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Short Sleeved Lace</div>
+  </a>
+  <a href="https://www.etsy.com/listing/1469352989/lace-bridal-dress-svg-diy-wedding-banner" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bride-no-banner.JPEG" alt="No Sleeve Lace Bridal Dress Banner"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">No Sleeve Lace</div>
+  </a>
+  <a href="https://www.etsy.com/listing/1469354501/lace-bridal-dress-banner-svg-diy-wedding" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bride-long-banner.JPEG" alt="Long Sleeved Lace Bridal Dress Banner"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Long Sleeved Lace</div>
+  </a>
+  <a href="https://www.etsy.com/listing/1469595250/tiered-wedding-dress-banner-and-decor" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bride-tiered-banner.JPEG" alt="Tiered Bridal Dress Banner"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Tiered Dress</div>
+  </a>
+</div>
+
+<!-- GROUP 2: GROOM -->
+<div class="group-header">
+  <div class="group-header-line"></div>
+  <div class="group-header-text">Groom's <em>Attire</em></div>
+  <div class="group-header-line"></div>
+</div>
+<div class="product-grid three-col">
+  <a href="https://www.etsy.com/listing/1436850928/tuxedo-groom-wedding-banner-or-cut-out" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/tuxedo-banner.JPEG" alt="Tuxedo Banner"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Classic Tuxedo</div>
+  </a>
+  <a href="https://www.etsy.com/listing/1530195203/tuxedo-with-tails-banner-or-garland-svg" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/tuxedo-tails.JPEG" alt="Tuxedo with Tails Banner"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Tuxedo with Tails</div>
+  </a>
+  <a href="https://www.etsy.com/listing/1530196989/bridegroom-and-groomsman-with-tie-banner" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/suit-banner.JPEG" alt="Suit Banner"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Suit &amp; Tie</div>
+  </a>
+</div>
+
+<!-- GROUP 3: BRIDE + GROOM PAIRS -->
+<div class="group-header">
+  <div class="group-header-line"></div>
+  <div class="group-header-text">Bride <em>&amp; Groom</em> Pairs</div>
+  <div class="group-header-line"></div>
+</div>
+<div class="product-grid">
+  <a href="https://www.etsy.com/listing/1427949957/lace-bridal-dress-tuxedo-banner-svg" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bride-short-tuxedo-banner.JPEG" alt="Short Sleeved Lace and Tuxedo"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Short Sleeved Lace &amp; Tuxedo</div>
+  </a>
+  <a href="https://www.etsy.com/listing/1469351533/lace-dress-tuxedo-wedding-banner-svg-diy" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bride-no-tuxedo-banner.JPEG" alt="No Sleeve Lace and Tuxedo"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">No Sleeve Lace &amp; Tuxedo</div>
+  </a>
+  <a href="https://www.etsy.com/listing/1455148828/sleeved-lace-bride-and-groom-wedding" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bride-long-tuxedo-banner.JPEG" alt="Long Sleeved Lace and Tuxedo"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Long Sleeved Lace &amp; Tuxedo</div>
+  </a>
+  <a href="https://www.etsy.com/listing/1483792523/tiered-wedding-dress-and-tuxedo-banner" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bride-tiered-tuxedo-banner.JPEG" alt="Tiered Dress and Tuxedo"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Tiered Dress &amp; Tuxedo</div>
+  </a>
+</div>
+
+<!-- GROUP 4: WEDDING PARTY -->
+<div class="group-header">
+  <div class="group-header-line"></div>
+  <div class="group-header-text">The <em>Wedding Party</em></div>
+  <div class="group-header-line"></div>
+</div>
+<div class="product-grid three-col">
+  <a href="https://www.etsy.com/listing/1446700716/lace-bride-and-bridesmaid-dress-banner" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bride-bridesmaid-banner.JPEG" alt="Bride and Bridesmaid"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Bride &amp; Bridesmaid</div>
+  </a>
+  <a href="https://www.etsy.com/listing/1530163307/bridesmaid-dress-collection-banner-or" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bridesmaid-banner.JPEG" alt="Bridesmaid Dress Collection"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Bridesmaid Collection</div>
+  </a>
+  <a href="https://www.etsy.com/listing/1517885600/flower-girl-and-ring-bearer-banner-svg" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/wedding-kids-banner.JPEG" alt="Flower Girl and Ring Bearer"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Flower Girl &amp; Ring Bearer</div>
+  </a>
+</div>
+
+<!-- GROUP 5: FULL PARTY -->
+<div class="group-header">
+  <div class="group-header-line"></div>
+  <div class="group-header-text">Full <em>Wedding Party</em> Banners</div>
+  <div class="group-header-line"></div>
+</div>
+<div class="product-grid two-col">
+  <a href="https://www.etsy.com/listing/1413751498/lace-bride-dress-wedding-party-banner" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bride-short-party-banner.JPEG" alt="Short Sleeved Lace Wedding Party"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">Short Sleeved Lace &amp; Wedding Party</div>
+  </a>
+  <a href="https://www.etsy.com/listing/1652983440/no-sleeve-lace-bride-and-wedding-party" class="product-card" target="_blank" rel="noopener">
+    <div class="product-card-img"><img src="images/bride-no-party-banner.JPEG" alt="No Sleeve Lace Wedding Party"/><div class="product-card-overlay"><span class="product-card-cta">View on Etsy →</span></div></div>
+    <div class="product-card-label">No Sleeve Lace &amp; Wedding Party</div>
+  </a>
+</div>
+
+<!-- SHOP ALL -->
+<div class="shop-all">
+  <div class="shop-all-title">Shop the full wedding banner collection</div>
+  <p class="shop-all-body">All files are layered SVGs ready to upload to Cricut Design Space. Choose your own wedding colors and assemble the perfect banner.</p>
+  <a href="https://www.etsy.com/shop/PurplePeregrine?section_id=41732399" class="shop-all-btn" target="_blank" rel="noopener">Shop all Wedding on Etsy →</a>
+</div>
+
+<!-- BACK TO COLLECTIONS -->
+<div class="back-bar">
+  <a href="wedding.html">← Back to Wedding Collection</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Purple Peregrine</div>
+  <div class="footer-links">
+    <a href="gallery.html">Gallery</a>
+    <a href="homepage.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine" target="_blank" rel="noopener">Etsy</a>
+  </div>
+</footer>
+
+<script>
+  const cursorEl = document.getElementById('site-cursor');
+  const cursorSvg = document.getElementById('cursor-svg');
+  const cursorG = document.getElementById('cursor-g');
+  const cursorPath = document.getElementById('cursor-path');
+
+  const scPaths = ["M 214.8832,392.88124 C 213.6487,351.10144 192.4188,306.81849 151.2133,291.74442 124.2378,282.5742 92.4685,287.92207 90.4575,251.91109 76.6948,192.36961 65.7318,132.18954 51.8127,72.695 39.4648,46.6078 40.535,-51.7047 0.6983,-207.75 c -13.621,14.7397 -17.7326,200.0063 -14.5164,272.5398 -15.3032,28.0798 -8.258,113.55982 -23.3492,210.0048 -3.8938,32.71461 -41.7477,20.43878 -60.3525,38.15255 -44.0113,30.71139 -50.5531,94.37019 -31.2324,141.02386 15.9428,35.27857 61.4503,59.15221 97.5362,38.36748 42.9756,-20.06987 52.4825,-72.48508 48.4413,-115.16713 -6.9013,-28.59832 -13.7438,-57.36829 -2.6276,-86.26001 5.1649,-16.25131 7.8294,-48.82214 12.8467,-56.27239 9.0186,33.08779 25.5753,64.20235 30.8527,98.13343 -4.7972,28.88996 -5.2245,58.6576 4.0555,86.86484 9.033,45.57671 62.0423,81.53294 106.4604,60.54992 32.0848,-15.61392 48.4238,-52.77583 46.0702,-87.30591 z m -25.1994,-0.44041 c 4.4186,32.42715 -21.4514,71.62555 -57.0411,66.05268 -42.6586,-7.91717 -59.2413,-60.62059 -48.5494,-98.33732 6.7516,-31.15254 45.5418,-51.65329 73.1732,-32.52716 21.8624,13.61616 31.4284,40.10025 32.4173,64.8118 z m -196.3326,5.06143 c 2.3117,33.0479 -17.5032,75.09011 -55.1263,74.94116 -35.1936,-1.49618 -55.2632,-38.63037 -53.0197,-70.72062 -1.8119,-33.53315 23.1599,-73.03612 60.4974,-68.62124 29.8497,4.9459 47.8069,35.91883 47.6486,64.4007 z", "m 529.824,-194.4682 c -17.6322,49.3031 -31.3609,95.0692 -42.3559,135.3984 -12.5535,-39.8712 -28.05,-85.0692 -47.584,-133.6494 -13.059,21.6365 20.1677,233.7133 17.5599,244.3381 l -2.1688,-0.065 c -6.415,45.0751 -8.7411,130.39903 -20.0537,202.10009 -3.8938,32.71461 -41.7482,20.43955 -60.353,38.15332 -44.0113,30.71139 -50.5526,94.36977 -31.232,141.02344 15.9429,35.27857 61.4493,59.15192 97.5352,38.36719 42.9756,-20.06987 52.4836,-72.48543 48.4424,-115.16748 -6.9013,-28.59832 -13.7443,-57.36854 -2.628,-86.26026 5.1649,-16.25131 7.8294,-48.82172 12.8467,-56.27197 9.0186,33.08779 25.5751,64.2032 30.8526,98.13428 -4.7972,28.88996 -5.2254,58.65653 4.0547,86.86377 9.0329,45.57671 62.0423,81.5338 106.4604,60.55078 32.0849,-15.61392 48.4245,-52.77607 46.0708,-87.30615 C 686.0368,329.96111 664.8074,285.67777 623.6019,270.6037 596.6263,261.43348 564.857,266.78118 562.846,230.7702 550.3633,176.76565 542.0498,127.84736 524.2005,51.5539 l -2.8633,-0.092 c -3.7862,-13.1651 22.6072,-224.4661 8.4868,-245.9298 z m 77.6895,493.58934 c 7.6278,0.28091 15.2333,2.58516 22.1411,7.3667 21.8625,13.61616 31.4281,40.10046 32.417,64.81201 4.4186,32.42715 -21.4513,71.6256 -57.041,66.05273 -42.6586,-7.91717 -59.2412,-60.61969 -48.5493,-98.33642 5.0637,-23.36441 28.149,-40.73775 51.0322,-39.89502 z M 411.2376,311.6353 c 2.2335,-0.055 4.519,0.0493 6.8526,0.32519 29.8497,4.9459 47.8082,35.91852 47.6499,64.40039 2.3117,33.0479 -17.5034,75.09036 -55.1265,74.94141 -35.1937,-1.49618 -55.2635,-38.62948 -53.02,-70.71973 -1.6986,-31.43733 20.1421,-68.12228 53.644,-68.94726 z", "m 825.2696,-105.6028 c 42.5938,136.6978 109.032,240.77678 177.9844,341.95604 -7.281,11.34069 -14.7863,22.74225 -22.9454,34.41503 -15.3189,32.65217 -42.79,15.8232 -71.2382,14.25147 -43.8535,-1.41165 -80.0899,31.73348 -96.8438,70.02685 -15.0835,31.15051 -13.8105,71.72571 10.1177,98.19581 53.3309,57.63959 151.3208,3.7576 166.4619,-84.01319 17.0346,-26.47357 34.5056,-52.29964 52.0635,-77.96631 17.5578,25.66667 35.0288,51.49274 52.0635,77.96631 15.1411,87.77079 113.131,141.65278 166.4619,84.01319 23.9282,-26.4701 25.2011,-67.0453 10.1176,-98.19581 -16.7539,-38.29337 -52.9902,-71.4385 -96.8437,-70.02685 -28.4482,1.57173 -55.9194,18.4007 -71.2383,-14.25147 -8.159,-11.67278 -15.6643,-23.07434 -22.9453,-34.41503 68.9523,-101.17926 135.3891,-205.25824 177.9829,-341.95604 -101.4546,127.3477 -158.2275,200.579 -173.3584,224.56931 -16.4678,20.80195 -29.9878,40.053 -42.2402,58.56885 -12.2525,-18.51585 -25.7724,-37.7669 -42.2403,-58.56885 C 983.4985,94.9762 926.7242,21.7449 825.2696,-105.6028 Z m 76.8047,420.70018 c 27.305,1.87359 48.4015,30.96425 43.6977,58.45605 -4.1731,38.98017 -39.2445,81.67279 -81.772,73.07959 -35.0947,-8.12684 -44.4482,-54.1522 -28.2348,-82.58057 10.1494,-22.55277 28.9179,-43.54627 54.2842,-48.00878 4.097,-0.92728 8.1241,-1.21395 12.0249,-0.94629 z m 277.5908,0 c 3.9007,-0.26766 7.9279,0.019 12.0249,0.94629 25.3663,4.46251 44.1333,25.45601 54.2827,48.00878 16.2134,28.42837 6.8613,74.45373 -28.2334,82.58057 -42.5275,8.5932 -77.5989,-34.09942 -81.772,-73.07959 -4.7038,-27.4918 16.3928,-56.58246 43.6978,-58.45605 z", "m 529.824,-194.4682 c -17.6322,49.3031 -31.3609,95.0692 -42.3559,135.3984 -12.5535,-39.8712 -28.05,-85.0692 -47.584,-133.6494 -13.059,21.6365 20.1677,233.7133 17.5599,244.3381 l -2.1688,-0.065 c -6.415,45.0751 -8.7411,130.39903 -20.0537,202.10009 -3.8938,32.71461 -41.7482,20.43955 -60.353,38.15332 -44.0113,30.71139 -50.5526,94.36977 -31.232,141.02344 15.9429,35.27857 61.4493,59.15192 97.5352,38.36719 42.9756,-20.06987 52.4836,-72.48543 48.4424,-115.16748 -6.9013,-28.59832 -13.7443,-57.36854 -2.628,-86.26026 5.1649,-16.25131 7.8294,-48.82172 12.8467,-56.27197 9.0186,33.08779 25.5751,64.2032 30.8526,98.13428 -4.7972,28.88996 -5.2254,58.65653 4.0547,86.86377 9.0329,45.57671 62.0423,81.5338 106.4604,60.55078 32.0849,-15.61392 48.4245,-52.77607 46.0708,-87.30615 C 686.0368,329.96111 664.8074,285.67777 623.6019,270.6037 596.6263,261.43348 564.857,266.78118 562.846,230.7702 550.3633,176.76565 542.0498,127.84736 524.2005,51.5539 l -2.8633,-0.092 c -3.7862,-13.1651 22.6072,-224.4661 8.4868,-245.9298 z m 77.6895,493.58934 c 7.6278,0.28091 15.2333,2.58516 22.1411,7.3667 21.8625,13.61616 31.4281,40.10046 32.417,64.81201 4.4186,32.42715 -21.4513,71.6256 -57.041,66.05273 -42.6586,-7.91717 -59.2412,-60.61969 -48.5493,-98.33642 5.0637,-23.36441 28.149,-40.73775 51.0322,-39.89502 z M 411.2376,311.6353 c 2.2335,-0.055 4.519,0.0493 6.8526,0.32519 29.8497,4.9459 47.8082,35.91852 47.6499,64.40039 2.3117,33.0479 -17.5034,75.09036 -55.1265,74.94141 -35.1937,-1.49618 -55.2635,-38.62948 -53.02,-70.71973 -1.6986,-31.43733 20.1421,-68.12228 53.644,-68.94726 z"];
+  const scViewboxes = ["0 0 354.14407 707.8291","0 0 354.14355 673.4068","0 0 477.05582 582.75037","0 0 354.14355 673.4068"];
+  const scTransforms = ["translate(139.03787,207.75)","translate(-333.35076,194.4682)","translate(-802.34177,105.6028)","translate(-333.35076,194.4682)"];
+
+  let scIdx = 0, mouseMoving = false;
+  let mouseMoveTimer = null, snipInterval = null;
+  let lastX = null, lastY = null, currentAngle = 0;
+
+  function updateCursor(x, y) {
+    if (lastX !== null) {
+      const dx = x - lastX, dy = y - lastY;
+      if (Math.sqrt(dx*dx+dy*dy) > 3) currentAngle = Math.atan2(dy, dx) * (180/Math.PI) + 90;
+    }
+    lastX = x; lastY = y;
+    cursorEl.style.left = x + 'px';
+    cursorEl.style.top = y + 'px';
+    cursorEl.style.transform = `translate(-12px,-8px) rotate(${currentAngle}deg)`;
+  }
+
+  document.addEventListener('mousemove', function(e) {
+    updateCursor(e.clientX, e.clientY);
+    cursorEl.style.opacity = '1';
+    if (!mouseMoving) {
+      mouseMoving = true;
+      snipInterval = setInterval(() => {
+        scIdx = (scIdx+1) % scPaths.length;
+        cursorSvg.setAttribute('viewBox', scViewboxes[scIdx]);
+        cursorG.setAttribute('transform', scTransforms[scIdx]);
+        cursorPath.setAttribute('d', scPaths[scIdx]);
+      }, 200);
+    }
+    clearTimeout(mouseMoveTimer);
+    mouseMoveTimer = setTimeout(() => {
+      mouseMoving = false;
+      clearInterval(snipInterval);
+      scIdx = 0;
+      cursorSvg.setAttribute('viewBox', scViewboxes[0]);
+      cursorG.setAttribute('transform', scTransforms[0]);
+      cursorPath.setAttribute('d', scPaths[0]);
+    }, 150);
+  });
+
+  document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; lastX = null; lastY = null; });
+  document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
+
+  // Snippet trail following scissors
+  document.addEventListener('mousemove', function(e) {
+    if (mouseMoving && Math.random() < 0.4) spawnSnippet(e.clientX, e.clientY);
+  });
+
+  document.addEventListener('touchend', e => {
+    if (!e.target.closest('a') && !e.target.closest('button')) {
+      const touch = e.changedTouches[0];
+      spawnConfetti(touch.clientX, touch.clientY);
+    }
+  });
+
+  document.addEventListener('mousedown', e => {
+    if (!e.target.closest('a') && !e.target.closest('button')) spawnConfetti(e.clientX, e.clientY);
+  });
+
+  function makeRing(size, color) {
+    const type = Math.floor(Math.random()*5);
+    const sparkSize = Math.round(size/3);
+    if (type === 0) {
+      return '<svg width="'+size+'" height="'+size+'" viewBox="12 6 30 40" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" stroke="#e8e0d8" stroke-width="0.3" d="m 23.939064,8.6471124 c -0.387484,0.142065 -0.756598,0.281927 -1.082072,0.448029 0.677653,1.9582076 0.49577,2.7106496 0.831369,4.0459496 0.212117,0.843981 0.451467,1.68887 0.746023,2.501825 -7.542255,7.011513 -11.329811,26.43946 -9.967181,26.962352 9.192011,3.22001 15.534439,3.226746 24.745691,0 1.362629,-0.522892 -2.424921,-19.950839 -9.967182,-26.962352 0.294556,-0.812955 0.529566,-1.658947 0.746025,-2.501825 0.341498,-1.329773 0.532042,-2.689831 0.870505,-4.0257276 -0.334912,-0.175064 -0.718075,-0.320447 -1.12121,-0.468251 -1.352694,0.9476625 -1.439708,0.893548 -2.901039,1.8903926 C 25.272292,9.4681117 25.375696,9.6536723 23.939064,8.6471124 Z"/></svg>';
+    } else if (type === 1) {
+      return '<svg width="'+size+'" height="'+size+'" viewBox="12 8 22 44" xmlns="http://www.w3.org/2000/svg"><path fill="#1a1a1a" d="m 19.535145,9.3307521 c -0.13997,0.04423 -0.163378,0.244777 -0.195152,0.388615 -0.606755,0.4176919 -1.080857,0.7713789 -2.169759,1.1635299 -0.839021,0.470637 -2.696104,0.327425 -2.916342,1.252244 -1.913971,5.37251 -1.430454,11.06552 -1.929408,16.654182 1.1555,0.348422 2.272555,0.29314 3.36687,-8.78e-4 -0.0095,0.322914 -0.0198,0.645809 -0.0242,0.968811 0.136351,0.171224 0.266511,0.36531 0.407936,0.502757 0.834503,5.949949 -0.358791,17.786964 0.709405,20.315236 0.814316,0.812878 3.432079,0.263474 3.651385,0.172661 0.313991,-0.132267 0.329108,-0.62573 0.359425,-0.854272 0.105417,-0.808405 0.113023,-1.536451 0.03477,-3.310875 -0.02743,-4.113177 0.408868,-7.785028 0.319242,-11.888434 0.02315,-2.709048 0.315451,-1.889274 0.311893,-0.02158 -0.119516,3.917197 0.493651,8.316093 0.365003,11.910007 -0.07827,1.774429 -0.07067,2.502474 0.03477,3.310875 0.03344,0.308597 0.131713,0.806792 0.359429,0.854272 0.594148,0.246032 3.34348,0.481562 3.651385,-0.172666 0.340608,-0.806181 0.737009,-12.054671 0.709405,-20.315236 0.158239,-0.161848 0.27924,-0.334209 0.407936,-0.502757 -0.0044,-0.323002 -0.01472,-0.645897 -0.0242,-0.968806 1.12229,0.183437 2.244584,0.141188 3.366874,8.32e-4 0.124602,-5.552863 -0.245715,-11.155326 -1.831977,-16.504123 -0.362034,-1.060722 -2.14216,-1.116466 -3.013768,-1.402301 -0.866221,-0.204784 -1.444561,-0.820241 -2.169905,-1.1635299 -0.02981,-0.138408 -0.0044,-0.305214 -0.195127,-0.388615 -0.559456,-0.1057416 -1.034891,0.160856 -1.502339,0.422409 -0.002,-4.62e-4 -0.0032,-4.62e-4 -0.0053,-9.24e-4 -0.196349,-0.06286 -0.372408,-0.06441 -0.570552,0 -0.184305,-0.013916 -0.955601,-0.4826698 -1.507715,-0.421474 z m 1.566219,1.3851819 c 0.153904,0.06306 0.302076,0.04372 0.454056,0 0.333004,0.673065 1.099466,0.75206 1.811121,0.972761 -0.07378,2.300015 -0.965501,4.369622 -2.03801,6.363842 -1.182785,-1.947658 -1.884689,-4.098566 -2.038148,-6.368629 0.605521,-0.04807 1.69114,-0.400007 1.810981,-0.967974 z"/></svg>';
+    } else {
+      return '<svg width="'+sparkSize+'" height="'+sparkSize+'" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 3 L54 44 L90 15 L58 47 L97 50 L58 53 L90 85 L54 56 L50 97 L46 56 L10 85 L42 53 L3 50 L42 47 L10 15 L46 44 Z" fill="'+color+'"/></svg>';
+    }
+  }
+
+  function spawnSnippet(x, y) {
+    const size = 48+Math.random()*28;
+    const colors = ['#D4AF37','#C5A028','#E8C84A','#B8960C','#F0D060'];
+    const color = colors[Math.floor(Math.random()*colors.length)];
+    const el = document.createElement('div');
+    el.style.cssText = 'position:fixed;left:'+x+'px;top:'+y+'px;pointer-events:none;z-index:9998;';
+    el.innerHTML = makeRing(size, color);
+    document.body.appendChild(el);
+    const angle = Math.random()*Math.PI*2, dist = 40+Math.random()*100;
+    el.animate([
+      {transform:'translate(0,0) rotate(0deg)',opacity:0.95},
+      {transform:'translate('+(Math.cos(angle)*dist)+'px,'+(Math.sin(angle)*dist)+'px) rotate('+(Math.random()*360)+'deg)',opacity:0}
+    ],{duration:1000+Math.random()*600,easing:'ease-out'}).onfinish=function(){el.remove();};
+  }
+
+  function spawnConfetti(x, y) {
+    const colors = ['#D4AF37','#C5A028','#E8C84A','#B8960C','#F0D060'];
+    for (let i = 0; i < 8; i++) {
+      const size = 27+Math.random()*24;
+      const color = colors[Math.floor(Math.random()*colors.length)];
+      const el = document.createElement('div');
+      el.style.cssText = 'position:fixed;left:'+x+'px;top:'+y+'px;pointer-events:none;z-index:9999;';
+      el.innerHTML = makeRing(size, color);
+      document.body.appendChild(el);
+      const angle=Math.random()*Math.PI*2, dist=60+Math.random()*130;
+      el.animate([
+        {transform:'translate(0,0) rotate(0deg)',opacity:1},
+        {transform:'translate('+(Math.cos(angle)*dist)+'px,'+(Math.sin(angle)*dist)+'px) rotate('+(Math.random()*360)+'deg)',opacity:0}
+      ],{duration:900+Math.random()*500,easing:'ease-out'}).onfinish=function(){el.remove();};
+    }
+  }
+</script>
+</body>
+</html>
