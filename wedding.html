@@ -41,7 +41,7 @@
     }
     .banner-feature-img {
       position: relative;
-      aspect-ratio: 16/7;
+      aspect-ratio: 16/9;
       overflow: hidden;
       border-radius: 4px;
       box-shadow: 0 0 0 2px #D4AF37;
@@ -61,7 +61,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 40px 48px;
+      padding: 40px 56px;
       gap: 12px;
     }
     .banner-feature-title {
@@ -94,7 +94,6 @@
       transition: background 0.2s;
     }
     .banner-feature:hover .banner-feature-cta { background: #fff; }
-    /* Scissors dot travelling around the tile */
     #banner-scissors {
       position: absolute;
       width: 24px;
@@ -107,8 +106,12 @@
 
     @media (max-width: 768px) {
       .banner-feature-wrap { padding: 32px 16px 0; }
-      .banner-feature-img { aspect-ratio: 4/3; }
-      .banner-feature-overlay { padding: 24px; }
+      .banner-feature-img { aspect-ratio: 3/2; }
+      .banner-feature-overlay {
+        padding: 20px 20px 28px;
+        justify-content: flex-end;
+        background: linear-gradient(to top, rgba(42,26,40,0.88) 0%, rgba(42,26,40,0.5) 60%, rgba(42,26,40,0.1) 100%);
+      }
       #banner-scissors { display: none; }
     }
     .section-title { color: var(--primary); }
@@ -196,6 +199,8 @@
     </div>
   </a>
 </div>
+
+<div class="gallery">
   <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/bride-groom-banner.JPEG" alt="Lace Bride &amp; Tuxedo Banner"/><div class="flip-front-label">Lace Bride &amp; Tuxedo Banner</div></div><div class="flip-back"><img src="images/bride-groom-banner-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1427949957" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
   <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/bride-groom-cupcake-toppers.JPEG" alt="Bride and Groom Cupcake Toppers"/><div class="flip-front-label">Bride and Groom Cupcake Toppers</div></div><div class="flip-back"><img src="images/bride-groom-cupcake-toppers-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://www.etsy.com/listing/1418669228/bride-and-groom-cupcake-toppers-svg-diy" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
   <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/bow-door-corner.JPEG" alt="Bow Door Corners"/><div class="flip-front-label">Bow Door Corners</div></div><div class="flip-back"><img src="images/bow-door-corner-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/4461905563" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
