@@ -30,8 +30,53 @@
 
     /* ── WEDDING BANNER FEATURE TILE ── */
     .banner-feature-wrap {
-      padding: 32px 48px 0;
+      padding: 48px 48px 0;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: center;
     }
+    .banner-feature-text {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .banner-feature-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .banner-feature-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 3vw, 42px);
+      font-weight: 600;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+    .banner-feature-title em { font-style: italic; color: #8a7560; }
+    .banner-feature-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .banner-feature-cta {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border-radius: 2px;
+      margin-top: 6px;
+      text-decoration: none;
+      align-self: flex-start;
+      transition: background 0.2s;
+    }
+    .banner-feature-cta:hover { background: #6b5c4a; }
     .banner-feature {
       display: block;
       text-decoration: none;
@@ -41,7 +86,7 @@
     }
     .banner-feature-img {
       position: relative;
-      height: 420px;
+      height: 320px;
       overflow: hidden;
       border-radius: 4px;
       box-shadow: 0 0 0 2px #D4AF37;
@@ -55,46 +100,6 @@
     }
     .banner-img-mobile { display: none; }
     .banner-feature:hover .banner-feature-img img { transform: scale(1.03); }
-    .banner-feature-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(42,26,40,0.85) 0%, rgba(42,26,40,0.45) 55%, rgba(42,26,40,0.05) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 32px 48px;
-      gap: 10px;
-    }
-    .banner-feature-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(24px, 3vw, 38px);
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.05;
-    }
-    .banner-feature-title em { font-style: italic; color: #D4AF37; }
-    .banner-feature-sub {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.8);
-      letter-spacing: 0.06em;
-      max-width: 340px;
-    }
-    .banner-feature-cta {
-      display: inline-block;
-      background: #D4AF37;
-      color: #2a1a28;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 8px 20px;
-      border-radius: 2px;
-      margin-top: 6px;
-      align-self: flex-start;
-      transition: background 0.2s;
-    }
-    .banner-feature:hover .banner-feature-cta { background: #fff; }
     #banner-scissors {
       position: absolute;
       width: 24px;
@@ -106,16 +111,14 @@
     }
 
     @media (max-width: 768px) {
-      .banner-feature-wrap { padding: 24px 16px 0; }
-      .banner-feature-img { height: 300px; }
+      .banner-feature-wrap {
+        grid-template-columns: 1fr;
+        padding: 32px 16px 0;
+        gap: 16px;
+      }
+      .banner-feature-img { height: 260px; }
       .banner-img-desktop { display: none; }
       .banner-img-mobile { display: block; object-position: center top; }
-      .banner-feature-overlay {
-        padding: 20px 20px 24px;
-        justify-content: flex-end;
-        background: linear-gradient(to top, rgba(42,26,40,0.88) 0%, rgba(42,26,40,0.4) 70%, rgba(42,26,40,0.0) 100%);
-      }
-      .banner-feature-title { font-size: 22px; }
       #banner-scissors { display: none; }
     }
     .section-title { color: var(--primary); }
@@ -192,15 +195,16 @@
 
 <!-- WEDDING BANNER FEATURE TILE -->
 <div class="banner-feature-wrap">
+  <div class="banner-feature-text">
+    <span class="banner-feature-tag">Featured collection</span>
+    <div class="banner-feature-title">Build Your<br><em>Wedding Banner</em></div>
+    <div class="banner-feature-sub">Mix &amp; match gowns, tuxedos &amp; wedding party — create a banner that mirrors your actual wedding.</div>
+    <a href="wedding-banner.html" class="banner-feature-cta">Explore the collection →</a>
+  </div>
   <a href="wedding-banner.html" class="banner-feature" id="banner-feature-tile">
     <div class="banner-feature-img">
       <img class="banner-img-desktop" src="images/wedding-banner-long.JPEG" alt="Build Your Wedding Banner"/>
       <img class="banner-img-mobile" src="images/bride-short-party-banner.JPEG" alt="Build Your Wedding Banner"/>
-      <div class="banner-feature-overlay">
-        <div class="banner-feature-title">Build Your<br><em>Wedding Banner</em></div>
-        <div class="banner-feature-sub">Mix &amp; match gowns, tuxedos &amp; wedding party</div>
-        <span class="banner-feature-cta">Explore the collection →</span>
-      </div>
     </div>
   </a>
 </div>
