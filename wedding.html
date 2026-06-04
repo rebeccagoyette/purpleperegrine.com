@@ -27,6 +27,90 @@
     .section-divider .section-tag { color: var(--muted); }
     .section-divider .section-title { color: var(--primary); }
     .section-divider { background: linear-gradient(135deg, #f5f0e8 0%, #ede4d4 100%); }
+
+    /* ── WEDDING BANNER FEATURE TILE ── */
+    .banner-feature-wrap {
+      padding: 48px 48px 0;
+    }
+    .banner-feature {
+      display: block;
+      text-decoration: none;
+      position: relative;
+      border-radius: 4px;
+      overflow: visible;
+    }
+    .banner-feature-img {
+      position: relative;
+      aspect-ratio: 16/7;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 0 0 2px #D4AF37;
+    }
+    .banner-feature-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .banner-feature:hover .banner-feature-img img { transform: scale(1.03); }
+    .banner-feature-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(42,26,40,0.82) 0%, rgba(42,26,40,0.4) 60%, rgba(42,26,40,0.1) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 48px;
+      gap: 12px;
+    }
+    .banner-feature-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.05;
+    }
+    .banner-feature-title em { font-style: italic; color: #D4AF37; }
+    .banner-feature-sub {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.06em;
+      max-width: 360px;
+    }
+    .banner-feature-cta {
+      display: inline-block;
+      background: #D4AF37;
+      color: #2a1a28;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 2px;
+      margin-top: 8px;
+      align-self: flex-start;
+      transition: background 0.2s;
+    }
+    .banner-feature:hover .banner-feature-cta { background: #fff; }
+    /* Scissors dot travelling around the tile */
+    #banner-scissors {
+      position: absolute;
+      width: 24px;
+      height: 47px;
+      pointer-events: none;
+      z-index: 10;
+      filter: drop-shadow(0 0 3px #D4AF37);
+      transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: 768px) {
+      .banner-feature-wrap { padding: 32px 16px 0; }
+      .banner-feature-img { aspect-ratio: 4/3; }
+      .banner-feature-overlay { padding: 24px; }
+      #banner-scissors { display: none; }
+    }
     .section-title { color: var(--primary); }
   </style>
 </head>
@@ -99,7 +183,19 @@
   <div class="divider-line"></div>
 </div>
 
-<div class="gallery">
+<!-- WEDDING BANNER FEATURE TILE -->
+<div class="banner-feature-wrap">
+  <a href="wedding-banner.html" class="banner-feature" id="banner-feature-tile">
+    <div class="banner-feature-img">
+      <img src="images/bride-short-party-banner.JPEG" alt="Build Your Wedding Banner"/>
+      <div class="banner-feature-overlay">
+        <div class="banner-feature-title">Build Your<br><em>Wedding Banner</em></div>
+        <div class="banner-feature-sub">Mix &amp; match gowns, tuxedos &amp; wedding party</div>
+        <span class="banner-feature-cta">Explore the collection →</span>
+      </div>
+    </div>
+  </a>
+</div>
   <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/bride-groom-banner.JPEG" alt="Lace Bride &amp; Tuxedo Banner"/><div class="flip-front-label">Lace Bride &amp; Tuxedo Banner</div></div><div class="flip-back"><img src="images/bride-groom-banner-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/1427949957" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
   <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/bride-groom-cupcake-toppers.JPEG" alt="Bride and Groom Cupcake Toppers"/><div class="flip-front-label">Bride and Groom Cupcake Toppers</div></div><div class="flip-back"><img src="images/bride-groom-cupcake-toppers-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://www.etsy.com/listing/1418669228/bride-and-groom-cupcake-toppers-svg-diy" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
   <div class="flip-card"><div class="flip-card-inner"><div class="flip-front"><img src="images/bow-door-corner.JPEG" alt="Bow Door Corners"/><div class="flip-front-label">Bow Door Corners</div></div><div class="flip-back"><img src="images/bow-door-corner-layers.JPEG" alt="layers"/><div class="flip-back-overlay"><a href="https://purpleperegrine.etsy.com/listing/4461905563" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a></div></div></div></div>
@@ -259,6 +355,51 @@ document.addEventListener('mousemove', function(e) {
       }
     });
   });
+
+  // Scissors travelling around wedding banner feature tile
+  const featureTile = document.getElementById('banner-feature-tile');
+  if (featureTile) {
+    const sc = document.createElement('div');
+    sc.id = 'banner-scissors';
+    sc.innerHTML = '<svg id="bf-svg" width="24" height="47" viewBox="0 0 354.14407 707.8291" xmlns="http://www.w3.org/2000/svg"><g id="bf-g" transform="translate(139.03787,207.75)"><path id="bf-path" fill="#D4AF37" d="M 214.8832,392.88124 C 213.6487,351.10144 192.4188,306.81849 151.2133,291.74442 124.2378,282.5742 92.4685,287.92207 90.4575,251.91109 76.6948,192.36961 65.7318,132.18954 51.8127,72.695 39.4648,46.6078 40.535,-51.7047 0.6983,-207.75 c -13.621,14.7397 -17.7326,200.0063 -14.5164,272.5398 -15.3032,28.0798 -8.258,113.55982 -23.3492,210.0048 -3.8938,32.71461 -41.7477,20.43878 -60.3525,38.15255 -44.0113,30.71139 -50.5531,94.37019 -31.2324,141.02386 15.9428,35.27857 61.4503,59.15221 97.5362,38.36748 42.9756,-20.06987 52.4825,-72.48508 48.4413,-115.16713 -6.9013,-28.59832 -13.7438,-57.36829 -2.6276,-86.26001 5.1649,-16.25131 7.8294,-48.82214 12.8467,-56.27239 9.0186,33.08779 25.5753,64.20235 30.8527,98.13343 -4.7972,28.88996 -5.2245,58.6576 4.0555,86.86484 9.033,45.57671 62.0423,81.53294 106.4604,60.54992 32.0848,-15.61392 48.4238,-52.77583 46.0702,-87.30591 z m -25.1994,-0.44041 c 4.4186,32.42715 -21.4514,71.62555 -57.0411,66.05268 -42.6586,-7.91717 -59.2413,-60.62059 -48.5494,-98.33732 6.7516,-31.15254 45.5418,-51.65329 73.1732,-32.52716 21.8624,13.61616 31.4284,40.10025 32.4173,64.8118 z m -196.3326,5.06143 c 2.3117,33.0479 -17.5032,75.09011 -55.1263,74.94116 -35.1936,-1.49618 -55.2632,-38.63037 -53.0197,-70.72062 -1.8119,-33.53315 23.1599,-73.03612 60.4974,-68.62124 29.8497,4.9459 47.8069,35.91883 47.6486,64.4007 z"/></g></svg>';
+    featureTile.appendChild(sc);
+
+    const bfSvg = sc.querySelector('#bf-svg');
+    const bfG = sc.querySelector('#bf-g');
+    const bfPath = sc.querySelector('#bf-path');
+
+    const spPaths = ["M 214.8832,392.88124 C 213.6487,351.10144 192.4188,306.81849 151.2133,291.74442 124.2378,282.5742 92.4685,287.92207 90.4575,251.91109 76.6948,192.36961 65.7318,132.18954 51.8127,72.695 39.4648,46.6078 40.535,-51.7047 0.6983,-207.75 c -13.621,14.7397 -17.7326,200.0063 -14.5164,272.5398 -15.3032,28.0798 -8.258,113.55982 -23.3492,210.0048 -3.8938,32.71461 -41.7477,20.43878 -60.3525,38.15255 -44.0113,30.71139 -50.5531,94.37019 -31.2324,141.02386 15.9428,35.27857 61.4503,59.15221 97.5362,38.36748 42.9756,-20.06987 52.4825,-72.48508 48.4413,-115.16713 -6.9013,-28.59832 -13.7438,-57.36829 -2.6276,-86.26001 5.1649,-16.25131 7.8294,-48.82214 12.8467,-56.27239 9.0186,33.08779 25.5753,64.20235 30.8527,98.13343 -4.7972,28.88996 -5.2245,58.6576 4.0555,86.86484 9.033,45.57671 62.0423,81.53294 106.4604,60.54992 32.0848,-15.61392 48.4238,-52.77583 46.0702,-87.30591 z m -25.1994,-0.44041 c 4.4186,32.42715 -21.4514,71.62555 -57.0411,66.05268 -42.6586,-7.91717 -59.2413,-60.62059 -48.5494,-98.33732 6.7516,-31.15254 45.5418,-51.65329 73.1732,-32.52716 21.8624,13.61616 31.4284,40.10025 32.4173,64.8118 z m -196.3326,5.06143 c 2.3117,33.0479 -17.5032,75.09011 -55.1263,74.94116 -35.1936,-1.49618 -55.2632,-38.63037 -53.0197,-70.72062 -1.8119,-33.53315 23.1599,-73.03612 60.4974,-68.62124 29.8497,4.9459 47.8069,35.91883 47.6486,64.4007 z",
+      "m 825.2696,-105.6028 c 42.5938,136.6978 109.032,240.77678 177.9844,341.95604 -7.281,11.34069 -14.7863,22.74225 -22.9454,34.41503 -15.3189,32.65217 -42.79,15.8232 -71.2382,14.25147 -43.8535,-1.41165 -80.0899,31.73348 -96.8438,70.02685 -15.0835,31.15051 -13.8105,71.72571 10.1177,98.19581 53.3309,57.63959 151.3208,3.7576 166.4619,-84.01319 17.0346,-26.47357 34.5056,-52.29964 52.0635,-77.96631 17.5578,25.66667 35.0288,51.49274 52.0635,77.96631 15.1411,87.77079 113.131,141.65278 166.4619,84.01319 23.9282,-26.4701 25.2011,-67.0453 10.1176,-98.19581 -16.7539,-38.29337 -52.9902,-71.4385 -96.8437,-70.02685 -28.4482,1.57173 -55.9194,18.4007 -71.2383,-14.25147 -8.159,-11.67278 -15.6643,-23.07434 -22.9453,-34.41503 68.9523,-101.17926 135.3891,-205.25824 177.9829,-341.95604 -101.4546,127.3477 -158.2275,200.579 -173.3584,224.56931 -16.4678,20.80195 -29.9878,40.053 -42.2402,58.56885 -12.2525,-18.51585 -25.7724,-37.7669 -42.2403,-58.56885 C 983.4985,94.9762 926.7242,21.7449 825.2696,-105.6028 Z m 76.8047,420.70018 c 27.305,1.87359 48.4015,30.96425 43.6977,58.45605 -4.1731,38.98017 -39.2445,81.67279 -81.772,73.07959 -35.0947,-8.12684 -44.4482,-54.1522 -28.2348,-82.58057 10.1494,-22.55277 28.9179,-43.54627 54.2842,-48.00878 4.097,-0.92728 8.1241,-1.21395 12.0249,-0.94629 z m 277.5908,0 c 3.9007,-0.26766 7.9279,0.019 12.0249,0.94629 25.3663,4.46251 44.1333,25.45601 54.2827,48.00878 16.2134,28.42837 6.8613,74.45373 -28.2334,82.58057 -42.5275,8.5932 -77.5989,-34.09942 -81.772,-73.07959 -4.7038,-27.4918 16.3928,-56.58246 43.6978,-58.45605 z"];
+    const spVBs = ["0 0 354.14407 707.8291","0 0 477.05582 582.75037"];
+    const spTs = ["translate(139.03787,207.75)","translate(-802.34177,105.6028)"];
+
+    let t = 0, spFrame = 0, spIdx = 0;
+    function animateBannerScissors() {
+      const img = featureTile.querySelector('.banner-feature-img');
+      const w = featureTile.offsetWidth;
+      const h = img ? img.offsetHeight : featureTile.offsetHeight;
+      const perimeter = 2 * (w + h);
+      const pos = (t % perimeter + perimeter) % perimeter;
+      let px, py, angle;
+      if (pos < w) { px = pos; py = 0; angle = 90; }
+      else if (pos < w + h) { px = w; py = pos - w; angle = 180; }
+      else if (pos < 2 * w + h) { px = w - (pos - w - h); py = h; angle = 270; }
+      else { px = 0; py = h - (pos - 2 * w - h); angle = 0; }
+      sc.style.left = px + 'px';
+      sc.style.top = py + 'px';
+      sc.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+      spFrame++;
+      if (spFrame % 12 === 0) {
+        spIdx = (spIdx + 1) % spPaths.length;
+        bfSvg.setAttribute('viewBox', spVBs[spIdx]);
+        bfG.setAttribute('transform', spTs[spIdx]);
+        bfPath.setAttribute('d', spPaths[spIdx]);
+      }
+      t += 1.2;
+      requestAnimationFrame(animateBannerScissors);
+    }
+    animateBannerScissors();
+  }
 </script>
 
 <!-- BACK TO COLLECTIONS -->
