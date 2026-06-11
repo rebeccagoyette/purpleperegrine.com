@@ -265,6 +265,93 @@ document.addEventListener('mousemove', function(e) {
   });
 </script>
 
+<!-- KNIGHT FEATURED COLLECTION BANNER -->
+<style>
+  .banner-feature-wrap {
+    max-width: 1100px;
+    margin: 60px auto 20px;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+  .banner-feature-text {
+    flex: 1;
+    min-width: 220px;
+  }
+  .banner-feature-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .banner-feature-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 46px);
+    color: var(--primary);
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .banner-feature-title em { font-style: italic; color: #8B0000; }
+  .banner-feature-sub {
+    font-size: 0.92rem;
+    color: var(--muted);
+    margin-bottom: 22px;
+    line-height: 1.6;
+  }
+  .banner-feature-cta {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #5a3a1a;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    border-radius: 3px;
+    transition: background 0.2s;
+  }
+  .banner-feature-cta:hover { background: #3d2510; }
+  .banner-feature {
+    flex: 1.4;
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .banner-feature:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
+  .banner-feature-img { width: 100%; overflow: hidden; }
+  .banner-feature-img img { width: 100%; display: block; transition: transform 0.4s; object-fit: cover; }
+  .banner-img-mobile { display: none !important; }
+  .banner-img-desktop { display: block; }
+  .banner-feature:hover .banner-feature-img img { transform: scale(1.03); }
+  @media (max-width: 700px) {
+    .banner-feature-wrap { flex-direction: column; gap: 24px; padding: 0 16px; }
+    .banner-feature-img { aspect-ratio: 1.2 / 1; height: auto; }
+    .banner-img-desktop { display: none; }
+    .banner-img-mobile { display: block !important; object-position: center top; }
+  }
+</style>
+
+<div class="banner-feature-wrap">
+  <div class="banner-feature-text">
+    <span class="banner-feature-tag">Featured collection</span>
+    <div class="banner-feature-title">Knights &amp; <em>Dragons</em></div>
+    <div class="banner-feature-sub">Layered SVG banners, shields, dragons and castle cards — perfect for a medieval birthday party.</div>
+    <a href="knight.html" class="banner-feature-cta">Explore the collection →</a>
+  </div>
+  <a href="knight.html" class="banner-feature">
+    <div class="banner-feature-img">
+      <img class="banner-img-desktop" src="images/knight-banner-long.JPEG" alt="Knight and Medieval SVG Collection"/>
+      <img class="banner-img-mobile" src="images/knight-collection.JPEG" alt="Knight and Medieval SVG Collection"/>
+    </div>
+  </a>
+</div>
+
 <!-- BACK TO COLLECTIONS -->
 <div class="back-bar">
   <a href="gallery.html">← Back to All Collections</a>
