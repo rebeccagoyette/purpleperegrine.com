@@ -3,89 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coming Soon | Purple Peregrine</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W0YPYMQTKW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W0YPYMQTKW');
+  </script>
+  <title>Birds &amp; Animals Collection | Purple Peregrine</title>
   <link rel="icon" type="image/svg+xml" href="images/Logo2.svg">
   <link rel="icon" type="image/png" href="images/Logo2.png">
   <link rel="stylesheet" href="shared.css">
   <style>
+    /* ── PAGE THEME: Animals — Warm Terracotta ── */
     :root {
-      --primary:       #7d4878;
-      --primary-dark:  #8a5485;
-      --primary-light: #7d4878;
-      --accent:        #ebdb43;
-      --divider-bg:    #7d4878;
-      --nav-bg:        #FDF8F4;
-      --nav-border:    #d4c4b4;
-      --cream:  #FDF8F4;
-      --paper:  #EDE0D4;
-      --ink:    #2a1a28;
-      --muted:  #8a6080;
-      --btn-text: #7d4878;
-      --ticker-dot: #c9b800;
+      --primary:       #b85c38;
+      --primary-dark:  #8c3e22;
+      --primary-light: #d4845a;
+      --accent:        #e8a882;
+      --divider-bg:    #b85c38;
+      --nav-bg:        #fdf6f0;
+      --nav-border:    #b85c38;
+      --cream:         #fdf6f0;
+      --ink:           #2a1a10;
+      --muted:         #7a5040;
+      --btn-text:      #b85c38;
+      --ticker-dot:    #e8a882;
     }
     body { background: var(--cream); }
-    .ticker { background: var(--primary); color: var(--accent); }
 
-    .coming-soon {
-      min-height: 60vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 48px;
-      gap: 24px;
+    /* 12-card gallery: 4 columns on wide, 3 on mid, 2 on mobile */
+    .gallery { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .gallery { grid-template-columns: repeat(3, 1fr); }
     }
-    .coming-soon-eyebrow {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .coming-soon-eyebrow::before,
-    .coming-soon-eyebrow::after {
-      content: '';
-      display: inline-block;
-      width: 40px;
-      height: 1px;
-      background: var(--muted);
-      opacity: 0.5;
-    }
-    .coming-soon-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(56px, 9vw, 110px);
-      color: var(--primary);
-      font-weight: 600;
-      line-height: 1.0;
-    }
-    .coming-soon-title em {
-      font-style: italic;
-      color: var(--primary-dark);
-      opacity: 0.7;
-    }
-    .coming-soon-sub {
-      font-size: 1rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      max-width: 360px;
-      line-height: 1.7;
-    }
-
     @media (max-width: 768px) {
-      .coming-soon { padding: 48px 20px; min-height: 50vh; }
+      .gallery { grid-template-columns: 1fr 1fr !important; }
     }
   </style>
 </head>
 <body>
 
-<!-- CURSOR -->
+<!-- SCISSORS CURSOR -->
 <div id="site-cursor">
   <svg id="cursor-svg" width="24" height="47" viewBox="0 0 354.14407 707.8291">
     <g id="cursor-g" transform="translate(139.03787,207.75)">
-      <path id="cursor-path" fill="#3a3a3a" d="M 214.8832,392.88124 C 213.6487,351.10144 192.4188,306.81849 151.2133,291.74442 124.2378,282.5742 92.4685,287.92207 90.4575,251.91109 76.6948,192.36961 65.7318,132.18954 51.8127,72.695 39.4648,46.6078 40.535,-51.7047 0.6983,-207.75 c -13.621,14.7397 -17.7326,200.0063 -14.5164,272.5398 -15.3032,28.0798 -8.258,113.55982 -23.3492,210.0048 -3.8938,32.71461 -41.7477,20.43878 -60.3525,38.15255 -44.0113,30.71139 -50.5531,94.37019 -31.2324,141.02386 15.9428,35.27857 61.4503,59.15221 97.5362,38.36748 42.9756,-20.06987 52.4825,-72.48508 48.4413,-115.16713 -6.9013,-28.59832 -13.7438,-57.36829 -2.6276,-86.26001 5.1649,-16.25131 7.8294,-48.82214 12.8467,-56.27239 9.0186,33.08779 25.5753,64.20235 30.8527,98.13343 -4.7972,28.88996 -5.2245,58.6576 4.0555,86.86484 9.033,45.57671 62.0423,81.53294 106.4604,60.54992 32.0848,-15.61392 48.4238,-52.77583 46.0702,-87.30591 z m -25.1994,-0.44041 c 4.4186,32.42715 -21.4514,71.62555 -57.0411,66.05268 -42.6586,-7.91717 -59.2413,-60.62059 -48.5494,-98.33732 6.7516,-31.15254 45.5418,-51.65329 73.1732,-32.52716 21.8624,13.61616 31.4284,40.10025 32.4173,64.8118 z m -196.3326,5.06143 c 2.3117,33.0479 -17.5032,75.09011 -55.1263,74.94116 -35.1936,-1.49618 -55.2632,-38.63037 -53.0197,-70.72062 -1.8119,-33.53315 23.1599,-73.03612 60.4974,-68.62124 29.8497,4.9459 47.8069,35.91883 47.6486,64.4007 z"/>
+      <path id="cursor-path" fill="#ffffff" d="M 214.8832,392.88124 C 213.6487,351.10144 192.4188,306.81849 151.2133,291.74442 124.2378,282.5742 92.4685,287.92207 90.4575,251.91109 76.6948,192.36961 65.7318,132.18954 51.8127,72.695 39.4648,46.6078 40.535,-51.7047 0.6983,-207.75 c -13.621,14.7397 -17.7326,200.0063 -14.5164,272.5398 -15.3032,28.0798 -8.258,113.55982 -23.3492,210.0048 -3.8938,32.71461 -41.7477,20.43878 -60.3525,38.15255 -44.0113,30.71139 -50.5531,94.37019 -31.2324,141.02386 15.9428,35.27857 61.4503,59.15221 97.5362,38.36748 42.9756,-20.06987 52.4825,-72.48508 48.4413,-115.16713 -6.9013,-28.59832 -13.7438,-57.36829 -2.6276,-86.26001 5.1649,-16.25131 7.8294,-48.82214 12.8467,-56.27239 9.0186,33.08779 25.5753,64.20235 30.8527,98.13343 -4.7972,28.88996 -5.2245,58.6576 4.0555,86.86484 9.033,45.57671 62.0423,81.53294 106.4604,60.54992 32.0848,-15.61392 48.4238,-52.77583 46.0702,-87.30591 z m -25.1994,-0.44041 c 4.4186,32.42715 -21.4514,71.62555 -57.0411,66.05268 -42.6586,-7.91717 -59.2413,-60.62059 -48.5494,-98.33732 6.7516,-31.15254 45.5418,-51.65329 73.1732,-32.52716 21.8624,13.61616 31.4284,40.10025 32.4173,64.8118 z m -196.3326,5.06143 c 2.3117,33.0479 -17.5032,75.09011 -55.1263,74.94116 -35.1936,-1.49618 -55.2632,-38.63037 -53.0197,-70.72062 -1.8119,-33.53315 23.1599,-73.03612 60.4974,-68.62124 29.8497,4.9459 47.8069,35.91883 47.6486,64.4007 z"/>
     </g>
   </svg>
 </div>
@@ -94,16 +58,18 @@
 <div class="ticker">
   <div class="ticker-inner">
     <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
-    <span>Purple Peregrine</span><span class="ticker-dot">✦</span>
+    <span>Birds &amp; Animals Collection</span><span class="ticker-dot">✦</span>
+    <span>Paperchains &amp; Ornaments</span><span class="ticker-dot">✦</span>
     <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
     <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
-    <span>555+ Designs</span><span class="ticker-dot">✦</span>
+    <span>Birds, Dogs &amp; More</span><span class="ticker-dot">✦</span>
     <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
     <span>SVG Cut Files</span><span class="ticker-dot">✦</span>
-    <span>Purple Peregrine</span><span class="ticker-dot">✦</span>
+    <span>Birds &amp; Animals Collection</span><span class="ticker-dot">✦</span>
+    <span>Paperchains &amp; Ornaments</span><span class="ticker-dot">✦</span>
     <span>Cricut Design Space</span><span class="ticker-dot">✦</span>
     <span>Cricut Contributing Artist since 2023</span><span class="ticker-dot">✦</span>
-    <span>555+ Designs</span><span class="ticker-dot">✦</span>
+    <span>Birds, Dogs &amp; More</span><span class="ticker-dot">✦</span>
     <span>4.9 Stars on Etsy</span><span class="ticker-dot">✦</span>
   </div>
 </div>
@@ -115,23 +81,228 @@
     <a href="homepage.html" class="nav-brand-text-link"><span class="nav-brand-text">Purple Peregrine</span></a>
   </div>
   <div class="nav-links">
+    <a href="homepage.html">Home</a>
     <a href="gallery.html">Gallery</a>
-    <a href="free-svg.html">Free SVG</a>
-    <a href="about.html">About</a>
-    <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop" target="_blank" rel="noopener">Shop on Etsy</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=4388295901&from_page=listing&section_id=46112364" class="nav-shop" target="_blank" rel="noopener">Shop Animals on Etsy</a>
   </div>
   <div class="nav-mobile-buttons">
     <a href="homepage.html" class="nav-home-mobile">Home</a>
-    <a href="https://www.etsy.com/shop/PurplePeregrine" class="nav-shop-mobile" target="_blank" rel="noopener">Shop Etsy</a>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=4388295901&from_page=listing&section_id=46112364" class="nav-shop-mobile" target="_blank" rel="noopener">Shop Etsy</a>
   </div>
 </nav>
 
-<!-- COMING SOON -->
-<div class="coming-soon">
-  <div class="coming-soon-eyebrow">Purple Peregrine</div>
-  <h1 class="coming-soon-title">Coming<br><em>Soon!</em></h1>
-  <p class="coming-soon-sub">We're working on something lovely. Check back soon or browse our other collections in the meantime.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow" style="color:#fff;">SVG Cut Files for Cricut</div>
+    <h1 class="hero-title">Birds &amp;<br><em>Animals</em></h1>
+    <p class="hero-body">Birds, dogs, paperchains, and more — charming SVG cut files celebrating the animal world.</p>
+    <div class="hero-buttons">
+      <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=4388295901&from_page=listing&section_id=46112364" class="btn-primary" target="_blank" rel="noopener">Shop Animals on Etsy →</a>
+      <a href="gallery.html" class="btn-ghost">← All Collections</a>
+    </div>
+  </div>
+  <div class="hero-right-single">
+    <img src="images/animal-collection.JPEG" alt="Birds and Animals Collection"/>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-content">
+    <span class="section-tag">SVG Cut Files</span>
+    <h2 class="section-title">Browse the Animals Collection</h2>
+    <a href="https://www.etsy.com/shop/PurplePeregrine?ref=shop-header-name&listing_id=4388295901&from_page=listing&section_id=46112364" class="btn-primary" target="_blank" rel="noopener">Shop all Animals on Etsy →</a>
+    <a href="gallery.html" class="btn-collections">← All Collections</a>
+  </div>
+  <div class="divider-line"></div>
 </div>
+
+<!-- GALLERY — 12 flip cards -->
+<div class="gallery">
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/cardinals.JPEG" alt="Cardinal Images and Ornaments"/>
+        <div class="flip-front-label">Cardinal Images &amp; Ornaments</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/cardinals-layers.JPEG" alt="Cardinal Images and Ornaments layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1620386523/cardinals-ornament-and-cut-out-svg-diy" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/woodpecker-collection.JPEG" alt="Woodpecker Collection"/>
+        <div class="flip-front-label">Woodpecker Collection</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/woodpecker-collection-layers.JPEG" alt="Woodpecker Collection layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/4443895898/woodpecker-collection-svgs-digital-cut" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/robin.JPEG" alt="Robin Image"/>
+        <div class="flip-front-label">Robin Image</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/robin-layers.JPEG" alt="Robin Image layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1623230398/robin-ornament-and-cut-out-svg-diy" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/puffin.JPEG" alt="Puffin Image"/>
+        <div class="flip-front-label">Puffin Image</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/puffin-layers.JPEG" alt="Puffin Image layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1483743668/cute-puffin-svg-multi-layered-cricut" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/parrot.JPEG" alt="Parrot Image"/>
+        <div class="flip-front-label">Parrot Image</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/parrot-layers.JPEG" alt="Parrot Image layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1509917235/blue-and-yellow-macaw-svg-cricut-ready" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/seagulls.JPEG" alt="Seagull Image"/>
+        <div class="flip-front-label">Seagull Image</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/seagulls-layers.JPEG" alt="Seagull Image layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1497929879/fancy-seagull-svg-multi-layered-digital" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/scottish-terrier.JPEG" alt="Scottish Terrier Images"/>
+        <div class="flip-front-label">Scottish Terrier Images</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/scottish-terrier-layers.JPEG" alt="Scottish Terrier Images layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1511535317/scottish-terrier-svg-dog-profile-image" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/french-bulldog.JPEG" alt="French Bulldog Image"/>
+        <div class="flip-front-label">French Bulldog Image</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/french-bulldog-layers.JPEG" alt="French Bulldog Image layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1574869615/french-bulldog-svg-layered-digital-file" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/golden-retriever-paperchains.JPEG" alt="Golden Retriever Paperchains"/>
+        <div class="flip-front-label">Golden Retriever Paperchains</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/golden-retriever-paperchains-layers.JPEG" alt="Golden Retriever Paperchains layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1644213968/golden-retriever-paper-chain-svg-pet" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/llama-paperchain.JPEG" alt="Llama Paperchains"/>
+        <div class="flip-front-label">Llama Paperchains</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/llama-paperchain-layers.JPEG" alt="Llama Paperchains layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/4311577027/llama-paper-chain-paper-doll-svgs" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/panda-paperchain.JPEG" alt="Panda Bear Paperchains"/>
+        <div class="flip-front-label">Panda Bear Paperchains</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/panda-paperchain-layers.JPEG" alt="Panda Bear Paperchains layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/1739875535/panda-bear-paper-chains-svg-fun" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card fade-up">
+    <div class="flip-card-inner">
+      <div class="flip-front">
+        <img src="images/chicken-paperchain.JPEG" alt="Chicken Paperchains"/>
+        <div class="flip-front-label">Chicken Paperchains</div>
+      </div>
+      <div class="flip-back">
+        <img src="images/chicken-paperchain-layers.JPEG" alt="Chicken Paperchains layers"/>
+        <div class="flip-back-overlay">
+          <a href="https://www.etsy.com/listing/4388295901/autumn-chicken-paper-chain-svg-diy" class="flip-back-link" target="_blank" rel="noopener">View on Etsy →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /gallery -->
 
 <!-- BACK TO COLLECTIONS -->
 <div class="back-bar">
@@ -144,25 +315,185 @@
   <div class="footer-links">
     <a href="gallery.html">Gallery</a>
     <a href="homepage.html">Home</a>
+    <a href="about.html">About</a>
     <a href="https://www.etsy.com/shop/PurplePeregrine" target="_blank" rel="noopener">Etsy</a>
   </div>
 </footer>
 
 <script>
-  const cursorEl = document.getElementById('site-cursor');
+  /* ── SCISSORS CURSOR ── */
+  const cursorEl   = document.getElementById('site-cursor');
+  const cursorSvg  = document.getElementById('cursor-svg');
+  const cursorG    = document.getElementById('cursor-g');
+  const cursorPath = document.getElementById('cursor-path');
+
+  const scPaths = [
+    "M 214.8832,392.88124 C 213.6487,351.10144 192.4188,306.81849 151.2133,291.74442 124.2378,282.5742 92.4685,287.92207 90.4575,251.91109 76.6948,192.36961 65.7318,132.18954 51.8127,72.695 39.4648,46.6078 40.535,-51.7047 0.6983,-207.75 c -13.621,14.7397 -17.7326,200.0063 -14.5164,272.5398 -15.3032,28.0798 -8.258,113.55982 -23.3492,210.0048 -3.8938,32.71461 -41.7477,20.43878 -60.3525,38.15255 -44.0113,30.71139 -50.5531,94.37019 -31.2324,141.02386 15.9428,35.27857 61.4503,59.15221 97.5362,38.36748 42.9756,-20.06987 52.4825,-72.48508 48.4413,-115.16713 -6.9013,-28.59832 -13.7438,-57.36829 -2.6276,-86.26001 5.1649,-16.25131 7.8294,-48.82214 12.8467,-56.27239 9.0186,33.08779 25.5753,64.20235 30.8527,98.13343 -4.7972,28.88996 -5.2245,58.6576 4.0555,86.86484 9.033,45.57671 62.0423,81.53294 106.4604,60.54992 32.0848,-15.61392 48.4238,-52.77583 46.0702,-87.30591 z m -25.1994,-0.44041 c 4.4186,32.42715 -21.4514,71.62555 -57.0411,66.05268 -42.6586,-7.91717 -59.2413,-60.62059 -48.5494,-98.33732 6.7516,-31.15254 45.5418,-51.65329 73.1732,-32.52716 21.8624,13.61616 31.4284,40.10025 32.4173,64.8118 z m -196.3326,5.06143 c 2.3117,33.0479 -17.5032,75.09011 -55.1263,74.94116 -35.1936,-1.49618 -55.2632,-38.63037 -53.0197,-70.72062 -1.8119,-33.53315 23.1599,-73.03612 60.4974,-68.62124 29.8497,4.9459 47.8069,35.91883 47.6486,64.4007 z",
+    "m 529.824,-194.4682 c -17.6322,49.3031 -31.3609,95.0692 -42.3559,135.3984 -12.5535,-39.8712 -28.05,-85.0692 -47.584,-133.6494 -13.059,21.6365 20.1677,233.7133 17.5599,244.3381 l -2.1688,-0.065 c -6.415,45.0751 -8.7411,130.39903 -20.0537,202.10009 -3.8938,32.71461 -41.7482,20.43955 -60.353,38.15332 -44.0113,30.71139 -50.5526,94.36977 -31.232,141.02344 15.9429,35.27857 61.4493,59.15192 97.5352,38.36719 42.9756,-20.06987 52.4836,-72.48543 48.4424,-115.16748 -6.9013,-28.59832 -13.7443,-57.36854 -2.628,-86.26026 5.1649,-16.25131 7.8294,-48.82172 12.8467,-56.27197 9.0186,33.08779 25.5751,64.2032 30.8526,98.13428 -4.7972,28.88996 -5.2254,58.65653 4.0547,86.86377 9.0329,45.57671 62.0423,81.5338 106.4604,60.55078 32.0849,-15.61392 48.4245,-52.77607 46.0708,-87.30615 C 686.0368,329.96111 664.8074,285.67777 623.6019,270.6037 596.6263,261.43348 564.857,266.78118 562.846,230.7702 550.3633,176.76565 542.0498,127.84736 524.2005,51.5539 l -2.8633,-0.092 c -3.7862,-13.1651 22.6072,-224.4661 8.4868,-245.9298 z m 77.6895,493.58934 c 7.6278,0.28091 15.2333,2.58516 22.1411,7.3667 21.8625,13.61616 31.4281,40.10046 32.417,64.81201 4.4186,32.42715 -21.4513,71.6256 -57.041,66.05273 -42.6586,-7.91717 -59.2412,-60.61969 -48.5493,-98.33642 5.0637,-23.36441 28.149,-40.73775 51.0322,-39.89502 z M 411.2376,311.6353 c 2.2335,-0.055 4.519,0.0493 6.8526,0.32519 29.8497,4.9459 47.8082,35.91852 47.6499,64.40039 2.3117,33.0479 -17.5034,75.09036 -55.1265,74.94141 -35.1937,-1.49618 -55.2635,-38.62948 -53.02,-70.71973 -1.6986,-31.43733 20.1421,-68.12228 53.644,-68.94726 z",
+    "m 825.2696,-105.6028 c 42.5938,136.6978 109.032,240.77678 177.9844,341.95604 -7.281,11.34069 -14.7863,22.74225 -22.9454,34.41503 -15.3189,32.65217 -42.79,15.8232 -71.2382,14.25147 -43.8535,-1.41165 -80.0899,31.73348 -96.8438,70.02685 -15.0835,31.15051 -13.8105,71.72571 10.1177,98.19581 53.3309,57.63959 151.3208,3.7576 166.4619,-84.01319 17.0346,-26.47357 34.5056,-52.29964 52.0635,-77.96631 17.5578,25.66667 35.0288,51.49274 52.0635,77.96631 15.1411,87.77079 113.131,141.65278 166.4619,84.01319 23.9282,-26.4701 25.2011,-67.0453 10.1176,-98.19581 -16.7539,-38.29337 -52.9902,-71.4385 -96.8437,-70.02685 -28.4482,1.57173 -55.9194,18.4007 -71.2383,-14.25147 -8.159,-11.67278 -15.6643,-23.07434 -22.9453,-34.41503 68.9523,-101.17926 135.3891,-205.25824 177.9829,-341.95604 -101.4546,127.3477 -158.2275,200.579 -173.3584,224.56931 -16.4678,20.80195 -29.9878,40.053 -42.2402,58.56885 -12.2525,-18.51585 -25.7724,-37.7669 -42.2403,-58.56885 C 983.4985,94.9762 926.7242,21.7449 825.2696,-105.6028 Z m 76.8047,420.70018 c 27.305,1.87359 48.4015,30.96425 43.6977,58.45605 -4.1731,38.98017 -39.2445,81.67279 -81.772,73.07959 -35.0947,-8.12684 -44.4482,-54.1522 -28.2348,-82.58057 10.1494,-22.55277 28.9179,-43.54627 54.2842,-48.00878 4.097,-0.92728 8.1241,-1.21395 12.0249,-0.94629 z m 277.5908,0 c 3.9007,-0.26766 7.9279,0.019 12.0249,0.94629 25.3663,4.46251 44.1333,25.45601 54.2827,48.00878 16.2134,28.42837 6.8613,74.45373 -28.2334,82.58057 -42.5275,8.5932 -77.5989,-34.09942 -81.772,-73.07959 -4.7038,-27.4918 16.3928,-56.58246 43.6978,-58.45605 z",
+    "m 529.824,-194.4682 c -17.6322,49.3031 -31.3609,95.0692 -42.3559,135.3984 -12.5535,-39.8712 -28.05,-85.0692 -47.584,-133.6494 -13.059,21.6365 20.1677,233.7133 17.5599,244.3381 l -2.1688,-0.065 c -6.415,45.0751 -8.7411,130.39903 -20.0537,202.10009 -3.8938,32.71461 -41.7482,20.43955 -60.353,38.15332 -44.0113,30.71139 -50.5526,94.36977 -31.232,141.02344 15.9429,35.27857 61.4493,59.15192 97.5352,38.36719 42.9756,-20.06987 52.4836,-72.48543 48.4424,-115.16748 -6.9013,-28.59832 -13.7443,-57.36854 -2.628,-86.26026 5.1649,-16.25131 7.8294,-48.82172 12.8467,-56.27197 9.0186,33.08779 25.5751,64.2032 30.8526,98.13428 -4.7972,28.88996 -5.2254,58.65653 4.0547,86.86377 9.0329,45.57671 62.0423,81.5338 106.4604,60.55078 32.0849,-15.61392 48.4245,-52.77607 46.0708,-87.30615 C 686.0368,329.96111 664.8074,285.67777 623.6019,270.6037 596.6263,261.43348 564.857,266.78118 562.846,230.7702 550.3633,176.76565 542.0498,127.84736 524.2005,51.5539 l -2.8633,-0.092 c -3.7862,-13.1651 22.6072,-224.4661 8.4868,-245.9298 z m 77.6895,493.58934 c 7.6278,0.28091 15.2333,2.58516 22.1411,7.3667 21.8625,13.61616 31.4281,40.10046 32.417,64.81201 4.4186,32.42715 -21.4513,71.6256 -57.041,66.05273 -42.6586,-7.91717 -59.2412,-60.61969 -48.5493,-98.33642 5.0637,-23.36441 28.149,-40.73775 51.0322,-39.89502 z M 411.2376,311.6353 c 2.2335,-0.055 4.519,0.0493 6.8526,0.32519 29.8497,4.9459 47.8082,35.91852 47.6499,64.40039 2.3117,33.0479 -17.5034,75.09036 -55.1265,74.94141 -35.1937,-1.49618 -55.2635,-38.62948 -53.02,-70.71973 -1.6986,-31.43733 20.1421,-68.12228 53.644,-68.94726 z"
+  ];
+  const scViewboxes  = ["0 0 354.14407 707.8291","0 0 354.14355 673.4068","0 0 477.05582 582.75037","0 0 354.14355 673.4068"];
+  const scTransforms = ["translate(139.03787,207.75)","translate(-333.35076,194.4682)","translate(-802.34177,105.6028)","translate(-333.35076,194.4682)"];
+
+  let scIdx = 0, mouseMoving = false;
+  let mouseMoveTimer = null, snipInterval = null;
   let lastX = null, lastY = null, currentAngle = 0;
-  document.addEventListener('mousemove', function(e) {
+
+  function updateCursor(x, y) {
     if (lastX !== null) {
-      const dx = e.clientX - lastX, dy = e.clientY - lastY;
-      if (Math.sqrt(dx*dx+dy*dy) > 3) currentAngle = Math.atan2(dy, dx) * (180/Math.PI) + 90;
+      const dx = x - lastX, dy = y - lastY;
+      if (Math.sqrt(dx*dx + dy*dy) > 3) currentAngle = Math.atan2(dy, dx) * (180/Math.PI) + 90;
     }
-    lastX = e.clientX; lastY = e.clientY;
-    cursorEl.style.left = e.clientX + 'px';
-    cursorEl.style.top = e.clientY + 'px';
+    lastX = x; lastY = y;
+    cursorEl.style.left = x + 'px';
+    cursorEl.style.top  = y + 'px';
     cursorEl.style.transform = `translate(-12px,-8px) rotate(${currentAngle}deg)`;
+  }
+
+  document.addEventListener('mousemove', function(e) {
+    updateCursor(e.clientX, e.clientY);
     cursorEl.style.opacity = '1';
+    if (mouseMoving && Math.random() < 0.4) spawnSnippet(e.clientX, e.clientY);
+    if (!mouseMoving) {
+      mouseMoving = true;
+      snipInterval = setInterval(() => {
+        scIdx = (scIdx + 1) % scPaths.length;
+        cursorSvg.setAttribute('viewBox', scViewboxes[scIdx]);
+        cursorG.setAttribute('transform', scTransforms[scIdx]);
+        cursorPath.setAttribute('d', scPaths[scIdx]);
+      }, 200);
+    }
+    clearTimeout(mouseMoveTimer);
+    mouseMoveTimer = setTimeout(() => {
+      mouseMoving = false;
+      clearInterval(snipInterval);
+      snipInterval = null;
+      scIdx = 0;
+      cursorSvg.setAttribute('viewBox', scViewboxes[0]);
+      cursorG.setAttribute('transform', scTransforms[0]);
+      cursorPath.setAttribute('d', scPaths[0]);
+    }, 150);
   });
-  document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; });
+
+  document.addEventListener('mouseleave', () => { cursorEl.style.opacity = '0'; lastX = null; lastY = null; });
+  document.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
+
+  /* ── ANIMAL CONFETTI ──
+     Dog, llama, pelican and seagull silhouettes in earthy
+     terracotta tones — clay, rust, sand, warm cream.         */
+  const ANIMAL_COLORS = [
+    '#b85c38',  // terracotta
+    '#d4845a',  // clay
+    '#e8a882',  // soft peach
+    '#c8743a',  // rust
+    '#f0c898',  // sand
+    '#8c3e22',  // deep rust
+    '#e8d0b0',  // warm cream
+    '#a06840'   // warm brown
+  ];
+
+  // Dog (dog.svg) — viewBox 0 0 216.5687 174.85289
+  function dogSvg(size, color) {
+    const h = Math.round(size * 174.853 / 216.569);
+    return `<svg width="${size}" height="${h}" viewBox="0 0 216.5687 174.85289" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" transform="translate(-88.278123,-116.88075)"
+        d="m 273.4233,117.18695 c -0.23759,0.007 -0.44552,0.0733 -0.63992,0.19169 -2.30124,1.40293 -4.83019,2.99189 -6.78932,4.70934 -47.50815,5.92335 -40.11349,33.02387 -62.82975,38.30176 -23.59821,5.28179 -66.96955,-14.85098 -84.01419,8.25148 -23.413298,-24.32471 19.30704,-32.66673 27.07718,-21.55839 0.9286,4.6049 2.84594,1.52109 2.57707,2.14038 7.03063,-16.09223 -7.33786,-23.79499 -15.71016,-27.12364 -24.34797,-9.68022 -72.026548,27.06721 -23.69489,60.19347 -15.858271,20.753 -12.579421,45.88711 -12.562478,59.65459 0.112819,3.35855 -1.714339,8.26754 -3.472458,11.17465 -3.57513,6.97563 -2.300959,24.89548 -1.041755,28.73908 0.222268,2.73543 1.514983,4.79619 3.069489,6.07162 7.008352,3.9062 20.420222,1.12117 19.886022,-2.78612 -0.2153,-1.5744 -2.6956,-4.10083 -8.77061,-5.25634 -3.22177,-0.49944 -0.12878,-10.07164 2.55268,-17.33218 1.59233,6.20477 3.84146,12.90483 6.07043,14.72028 1.73693,3.28092 4.70834,5.41878 9.92502,5.16924 2.6426,-0.11373 6.43459,0.3382 8.84611,-1.52953 1.82761,-1.4155 2.44605,-4.43166 -7.00187,-9.61143 -3.4751,-1.90522 -3.06453,-13.95535 -1.32161,-19.22522 9.69047,-8.28012 7.16496,-4.87483 12.39753,-9.94358 2.18754,-2.11907 4.15998,-7.05797 8.81825,-13.76913 18.82947,8.28785 46.14331,8.63383 63.89121,4.93 10.09783,12.31369 4.96883,42.62848 16.03495,54.76523 4.83184,4.01473 26.8291,6.13736 20.89176,-3.60022 8.42534,-5.01248 -2.57277,-7.39118 -7.09941,-12.35922 -0.98026,-7.70311 1.46787,-25.05257 5.04498,-36.94761 13.67799,-9.91252 25.21358,-21.26415 25.76483,-59.45717 -0.34662,-5.72148 2.96435,-8.88026 6.93101,-6.17147 6.37767,2.61111 14.16029,6.1539 16.54246,1.37854 2.93608,-0.4019 6.33478,-4.63249 6.49203,-5.27957 6.68123,-3.75593 1.35197,-7.65938 -0.58069,-7.70797 -1.95578,-2.74743 -7.57327,-5.46447 -10.07831,-10.56958 1.48398,-5.76549 -2.2127,-11.47537 -4.81269,-15.44149 0.0861,-7.01475 1.68283,-13.30327 -2.30646,-12.70297 -2.03524,1.36599 -6.09954,5.79077 -6.34686,4.80338 -2.4838,-5.87214 -2.46034,-5.98613 -3.73958,-6.82184 z"/>
+    </svg>`;
+  }
+
+  // Llama (llama.svg) — viewBox 0 0 187.45908 212.9442
+  function llamaSvg(size, color) {
+    const h = Math.round(size * 212.944 / 187.459);
+    return `<svg width="${size}" height="${h}" viewBox="0 0 187.45908 212.9442" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" transform="translate(-88.278118,-328.43903)"
+        d="m 215.11717,369.40754 c -2.6698,13.58322 -9.22,30.67287 -12.73912,37.19487 -20.60364,-2.28441 -68.79913,-7.36478 -91.5058,3.18648 -18.482122,-23.89423 -32.899697,18.59682 -11.421219,17.06807 12.451909,-3.52473 -9.746052,38.43772 5.318819,56.42837 -0.21532,16.70048 -1.17075,34.71565 6.86408,46.69293 3.27313,4.87915 -0.66361,8.91453 2.11275,10.15879 2.31653,1.03819 8.13758,1.59124 10.9597,-1.68804 1.12757,-1.31025 0.52044,-5.45715 1.52732,-7.2963 2.05791,-1.59924 16.55402,-43.82416 16.39376,-48.48543 8.82321,-2.92374 17.49,-2.73368 28.10231,-0.65995 10.05891,-0.77794 14.05521,31.35095 23.6703,48.91371 1.00688,1.83917 0.39885,5.98606 1.52642,7.2963 2.8221,3.27932 8.64314,2.72625 10.95969,1.68806 2.77637,-1.24426 -0.21683,-4.76507 2.11275,-10.15879 7.18573,-16.63755 7.12758,-33.97541 7.12717,-48.19981 36.17403,-23.27043 27.94097,-60.78714 31.05808,-97.35374 0.35709,-3.77829 18.16268,-6.48391 24.96079,-10.04354 2.49436,-1.30612 3.70077,-4.32609 2.91873,-8.52241 0.61186,-6.34097 -2.04204,-5.2112 -4.92352,-5.46136 -3.05537,-1.20875 -6.94314,-1.96777 -9.30147,-2.67225 -3.0904,-12.77577 -12.88277,-13.96642 -22.53454,-15.37162 -6.40423,-6.60664 -3.66424,-15.33576 -8.59375,-12.78833 -2.71414,1.96294 -5.4979,7.161 -6.74412,11.98338 -8.74251,4.15835 -6.48491,21.01379 -7.84913,28.09061 z"/>
+    </svg>`;
+  }
+
+  // Pelican (pelican.svg) — viewBox 0 0 141.47975 205.72018
+  function pelicanSvg(size, color) {
+    const h = Math.round(size * 205.720 / 141.480);
+    return `<svg width="${size}" height="${h}" viewBox="0 0 141.47975 205.72018" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" transform="translate(-361.26012,-329.13991)"
+        d="m 440.99688,487.02801 c 0,0 -10.7992,-1.14887 -13.25553,-4.59574 -0.73141,-5.06751 -3.44399,-14.47707 -2.67443,-18.73178 0.8,-4.1053 3.9143,-7.2076 9.34253,-8.37021 13.48571,-7.81551 26.62135,-17.12137 35.61432,-30.08129 2.72063,-7.58512 7.98425,-14.26937 7.42006,-21.98242 -0.73195,-10.00708 -7.8056,-18.32122 -13.6746,-26.81607 -2.62598,-4.89211 -8.24782,-10.10247 -9.81668,-14.30619 14.87174,10.87614 27.85845,24.11941 42.93895,34.74518 5.47594,4.4535 6.93614,0.2137 3.30512,-4.71333 -12.21502,-16.5754 -29.83525,-29.30093 -40.919,-46.71911 -3.43236,-5.39399 -6.7646,-12.06843 -12.99221,-13.96784 -23.34842,-8.8083 -25.61187,16.89197 -17.1968,27.76934 2.07338,1.95215 8.90538,9.98267 19.63783,15.55979 4.72587,4.97714 12.62805,13.10806 10.64431,19.39935 -8.89379,-0.32345 -18.50637,1.42595 -26.43889,5.52693 -7.03773,1.44521 -12.48477,5.54536 -18.68218,8.85664 -5.9791,3.72403 -13.45617,6.86997 -19.05072,11.97677 -10.99859,4.63106 -6.34429,6.99989 -6.18573,7.01418 -15.68518,14.15355 -5.86949,12.90912 -6.60115,13.93093 -3.422,0.91266 -13.83516,7.40806 -5.51207,7.03148 10.04174,0.82131 0.446,5.49357 -1.57346,6.78335 -4.88467,2.56273 -19.65366,15.11737 -10.71087,14.76824 -3.21529,8.07685 6.47029,0.0587 8.86517,-2.58574 2.73164,-2.7757 8.99013,-3.37165 4.94632,0.24865 -5.56516,4.98247 15.52576,-2.53585 21.65519,-3.97144 7.30737,-1.71151 12.2335,0.81377 14.58499,5.50816 1.00028,4.19972 3.41411,9.74011 1.7868,13.70981 -2.45459,5.69852 -17.51295,1.14803 -22.42113,5.93653 -5.43677,5.30422 0.81613,32.05587 -1.02657,39.97633 6.34667,10.95567 39.11715,1.63713 52.01607,2.66362 20.06056,1.8746 4.89395,-17.93272 8.50599,-25.31568 3.5457,-7.24732 2.29843,-18.16995 -2.2425,-18.5002 z"/>
+    </svg>`;
+  }
+
+  // Seagull (seagull.svg) — viewBox 0 0 180.92343 160.78654
+  function seagullSvg(size, color) {
+    const h = Math.round(size * 160.787 / 180.923);
+    return `<svg width="${size}" height="${h}" viewBox="0 0 180.92343 160.78654" xmlns="http://www.w3.org/2000/svg">
+      <path fill="${color}" transform="translate(-352.19363,-134.30523)"
+        d="m 359.58999,160.1753 c -12.21848,4.47415 0.94979,9.22809 3.08605,16.24584 2.62543,6.56965 8.56546,10.45494 12.9616,15.86775 4.70249,5.23832 9.50984,10.38081 15.46735,14.23107 4.17073,5.23672 10.61245,8.18544 16.23107,11.25575 4.77978,2.15155 13.72181,18.66926 13.92029,32.36586 2.85899,11.61652 -30.27975,21.67976 -36.30494,21.4237 -7.92075,3.4766 5.10405,10.3023 10.15601,7.16916 5.74056,0.80814 21.90347,-4.78642 25.08377,0.47658 1.16835,4.96279 -9.30293,0.63814 -6.00221,6.1878 -2.99702,2.95002 -1.55273,6.18182 2.47831,4.29197 -2.83198,3.091 -0.63691,3.27695 2.19543,3.05707 3.44791,-2.45414 7.25988,-4.17249 8.4167,-8.03713 0.80414,-2.68649 -2.81784,-8.39119 0.0561,-10.22129 15.32607,-9.75962 40.00432,-10.17219 56.54286,-18.85078 11.41553,-7.00004 25.3519,-10.80227 38.58542,-7.26626 3.03701,1.5118 12.68585,1.87435 6.14951,-2.7301 -5.55046,-3.80096 -11.97045,-4.58792 -16.50238,-10.0159 -4.95344,-4.59174 -11.94844,-5.48662 -18.36487,-4.33614 -1.19291,-7.71654 -4.09798,-15.66632 -1.15505,-23.34673 1.45476,-8.36623 7.04473,-14.86475 12.89112,-20.6206 7.79896,-12.05423 11.52801,-28.41736 8.08246,-41.30145 2.88077,-33.6275 -33.9823,32.65715 -44.05615,42.94542 -4.56859,6.24119 -1.22726,20.18403 -2.46575,27.67604 -0.0145,2.47591 1.57961,12.45263 -2.08002,7.43967 -5.99147,-4.25248 -12.50972,-10.98675 -12.61392,-18.82199 -13.04662,-41.53877 -57.97305,-33.14731 -88.2056,-43.94506 -1.501,-0.42008 -2.98616,-1.02338 -4.5531,-1.14025 z"/>
+    </svg>`;
+  }
+
+  const ANIMAL_SHAPES = [dogSvg, llamaSvg, pelicanSvg, seagullSvg];
+
+  function animalConfettiEl(x, y) {
+    const color = ANIMAL_COLORS[Math.floor(Math.random() * ANIMAL_COLORS.length)];
+    const size  = 22 + Math.random() * 16;
+    const shape = ANIMAL_SHAPES[Math.floor(Math.random() * ANIMAL_SHAPES.length)];
+    const el    = document.createElement('div');
+    el.style.cssText = `position:fixed;left:${x}px;top:${y}px;pointer-events:none;z-index:9998;`;
+    el.innerHTML = shape(size, color);
+    return el;
+  }
+
+  function spawnSnippet(x, y) {
+    const el = animalConfettiEl(x, y);
+    document.body.appendChild(el);
+    const angle = Math.random() * Math.PI * 2;
+    const dist  = 40 + Math.random() * 100;
+    el.animate([
+      { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+      { transform: `translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) rotate(${Math.random()*360-180}deg)`, opacity: 0 }
+    ], { duration: 900 + Math.random() * 600, easing: 'ease-out' }).onfinish = () => el.remove();
+  }
+
+  function spawnConfetti(x, y) {
+    for (let i = 0; i < 8; i++) {
+      const el = animalConfettiEl(x, y);
+      el.style.zIndex = '9999';
+      document.body.appendChild(el);
+      const angle = Math.random() * Math.PI * 2;
+      const dist  = 70 + Math.random() * 140;
+      el.animate([
+        { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+        { transform: `translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) rotate(${Math.random()*360-180}deg)`, opacity: 0 }
+      ], { duration: 800 + Math.random() * 500, easing: 'ease-out' }).onfinish = () => el.remove();
+    }
+  }
+
+  /* Click / tap triggers */
+  document.addEventListener('mousedown', e => {
+    if (!e.target.closest('a') && !e.target.closest('button') && !e.target.closest('.flip-card'))
+      spawnConfetti(e.clientX, e.clientY);
+  });
+  document.addEventListener('touchend', e => {
+    if (!e.target.closest('a') && !e.target.closest('button')) {
+      const t = e.changedTouches[0];
+      spawnConfetti(t.clientX, t.clientY);
+    }
+  });
+
+  /* Make entire flip card clickable */
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (!e.target.closest('.flip-back-link')) {
+        const link = this.querySelector('.flip-back-link');
+        if (link) window.open(link.href, '_blank');
+      }
+    });
+  });
+
+  /* Fade-up on scroll */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
